@@ -1,3 +1,9 @@
+@import "mixins";
+
+@import "compass/css3/box-shadow";
+@import "fancy-buttons";
+
+
 /* Page layouts */
 $total-cols: 12;
 $col-width: 5em;
@@ -16,6 +22,7 @@ $ctmlabsheight: 2em;
     background-color: $ctmlabs-menu-background;
     color: $ctmlabs-menu-foreground;
     @include adjust-font-size-to( $base-font * 0.9 );
+    @include single-box-shadow(#aaa, 0, 0, 10px);
 
     nav.ctmlabs {
 	@include suckerfish($topLevelWidth,$lowerLevelWidth);
@@ -44,38 +51,113 @@ $ctmlabsheight: 2em;
 }
 
 #container {
-    margin-top:$ctmlabsheight;
+    @include container;
+//    @include susy-grid-background;
 
-    @include susy-grid-background;
+    margin-top:0.5*$ctmlabsheight; // after @include container
 
     header[role="banner"] {
-	@include full;
+        @include clearfix;
+        hgroup {
+            @include columns(6);
+            @include alpha;
+        }
+
+        nav.main {
+            @include columns(6);
+            text-align: right;
+            ul.menu {
+                @include horizontal-menu;
+                a {
+                    text-decoration: none;
+                    color:#fff;
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
     }
 
     /* for home only */
-    .banner {
+    .home {
+        @include full();
         @include clearfix;
-        background: transparent url('/ctmlabs/images/fairview_sh.jpg');
-        width:100%;
-        min-height: 10em;
-        color: #FC3;
+        .banner {
+            @include clearfix;
+            left: 0;
+            background: transparent url('/ctmlabs/images/fairview_sh.jpg');
+            min-height: 20em;
+            color: #FC3;
 
-        .titleblock {
-            @include container;
-            @include columns(6);
+            .titleblock {
+                @include columns(6,12);
 
-            h1,h2 { line-height: 1.2em; }
-            h2 { margin-top: 1em; }
+                /*
+                  h1,h2 { line-height: 1.2em; }
+                  h2 { margin-top: 1em; }
+                */
+            }
         }
+
+        // make the sections flow horizontally across 4 columns
+        @include flowing-blocks( section, 4, 12 );
     }
 
     nav.breadcrumb {
 	@include full;
+        ul {
+            @include delimited-list( " > ", " > " );
+        }
     }
 
     #content {
 	@include columns(9);
 	@include alpha;
+    }
+
+    #brochure {
+        @include full;
+        @include alpha;
+        @include clearfix;
+        
+        .banner {
+            position: relative; /* for placing links */
+            @include container;
+
+            hgroup {
+                @include columns(6,12);
+            }
+            .links {
+                position: absolute;
+                bottom:1em;
+                left:1em;
+                a {
+                    @include fancy-button( lighten( $background, 15% ) );
+                }
+            }
+            img {
+                @include columns(6,12);
+                @include omega(12);
+            }
+        }
+        
+        @include flowing-blocks( section, 4, 12 );
+
+        section {
+            background-color: lighten( $background, 15% );
+            p, h1, h2, h3 {
+                padding-left: 0.5em;
+                padding-right: 0.5em;
+            }
+            h1, h2, h3 {
+                background-color: lighten( $background, 30% );
+            }
+            ul {
+                margin-left: 1.5em;
+                list-style: disc outside none;
+            }
+        }
     }
 
     #sidebar {
@@ -85,6 +167,20 @@ $ctmlabsheight: 2em;
 
     footer.branding {
 	@include full;
+        margin-top: 2em;
+
+        .copyright {
+            @include columns(6,12);
+        }
+        nav {
+            @include columns(6,12);
+            @include omega(12);
+            text-align:right;
+            ul {
+                float: right;
+                text-align: left;
+            }
+        }
     }
 
 }

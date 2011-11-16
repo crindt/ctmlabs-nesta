@@ -1,0 +1,79 @@
+/* A mixin for creating susy-styled flowing block list elements */
+@mixin flowing-blocks( $type, $cols, $ctx ) {
+
+    #{$type} {
+        @include columns( $cols, $ctx );
+    }
+
+    // make sure the last element of a row is an omega
+    $freq: $ctx / $cols;
+    #{$type}:nth-of-type( #{$freq}n+#{$freq} ) {
+        @include omega( $ctx );
+    }
+}
+
+@import "compass/typography/lists/horizontal-list";
+
+@mixin horizontal-menu( $lineheight: 1, $horizontal-padding: 0.5em, $vertical-padding: 0em, $sep-border: 1px solid #ccc, $horizontal-margin: 0px ) {
+    @include horizontal-list-container;
+
+    padding-left: $horizontal-padding / 2;
+    padding-right: $horizontal-padding / 2;
+
+
+    // This makes the menu a contained block
+    display:inline-block;
+    *display: inline; /* ie 7 */
+    min-height: 0;    /* ie 7 */
+
+    > li {
+        @include horizontal-list-item;
+        text-align:center;
+        margin: 0px;
+        padding: 0px;
+        padding-left:$horizontal-padding / 2;
+        margin-left: $horizontal-margin;
+
+        a { 
+            margin: 0px;
+
+            padding-left: $horizontal-padding;
+            padding-right: $horizontal-padding;
+            border-right: $sep-border;
+            padding-top: 2*$vertical-padding;
+            padding-bottom: 2*$vertical-padding;
+            line-height: $lineheight;
+        }
+
+        &.current a {
+            /* make the current menu item inactive */
+            pointer-events: none;
+            cursor: default;
+        }
+        
+        &:first-child {
+            margin-left: 0px;
+        }
+
+        &:last-child a {
+            border-right: 0px;
+        }
+    }
+}
+
+@import "compass/typography/lists/inline-list";
+
+@mixin delimited-list( $delimiter: ", ", $last-delimiter: " and " ) {
+  @include inline-list;
+  > li {
+    &:before {
+        content: $delimiter; }
+    &:after {
+        content: ""; }
+    &:last-child {
+        &:before {
+            content: $last-delimiter; } }
+    &:first-child {
+        &:before {
+            content: ""; } } }
+}

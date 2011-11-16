@@ -1,5 +1,14 @@
 %footer.branding
-  %p
-    Powered by Nesta, a
-    = succeed "." do
-      %a(href="http://nestacms.com") Ruby CMS
+  %p.copyright
+    Copyright &copy; 
+    :javascript
+      var dToday=new Date(); document.write("2010-"+dToday.getFullYear());
+    California Traffic Management Labs
+    %br
+    A partnership between Caltrans and UC Irvine
+  %nav
+    :markdown
+      Navigation:
+
+      * [Login](/login)
+      * [Register](/register)
