@@ -1,0 +1,90 @@
+/* Page layouts */
+$total-cols: 12;
+$col-width: 5em;
+$gutter-width: 1em;
+$side-gutter-width: 1em;
+
+@import "susy";
+@import "suckerfish";
+$topLevelWidth: 6em;
+$lowerLevelWidth: 10em;
+$ctmlabsheight: 2em;
+
+#ctmlabsheader {
+    @include clearfix;
+
+    background-color: $ctmlabs-menu-background;
+    color: $ctmlabs-menu-foreground;
+    @include adjust-font-size-to( $base-font * 0.9 );
+
+    nav.ctmlabs {
+	@include suckerfish($topLevelWidth,$lowerLevelWidth);
+        ul li {
+            // menu separators
+            border-left: 1px solid #666;
+            &:first-child {
+                border-left: 0px;
+            }
+            a {
+                padding-top: 0.5em;
+                padding-left: 0.5em;
+                padding-right: 0.5em;
+                height: $ctmlabsheight;
+                vertical-align: middle;
+                background-color: $ctmlabs-menu-background;
+                color: $ctmlabs-menu-foreground;
+                text-decoration: none;
+                
+                &:hover {
+                    background-color: lighten( $ctmlabs-menu-background, 30% );
+                }
+            }
+        }
+    }
+}
+
+#container {
+    margin-top:$ctmlabsheight;
+
+    @include susy-grid-background;
+
+    header[role="banner"] {
+	@include full;
+    }
+
+    /* for home only */
+    .banner {
+        @include clearfix;
+        background: transparent url('/ctmlabs/images/fairview_sh.jpg');
+        width:100%;
+        min-height: 10em;
+        color: #FC3;
+
+        .titleblock {
+            @include container;
+            @include columns(6);
+
+            h1,h2 { line-height: 1.2em; }
+            h2 { margin-top: 1em; }
+        }
+    }
+
+    nav.breadcrumb {
+	@include full;
+    }
+
+    #content {
+	@include columns(9);
+	@include alpha;
+    }
+
+    #sidebar {
+	@include columns(3);
+	@include omega;
+    }
+
+    footer.branding {
+	@include full;
+    }
+
+}

@@ -1,0 +1,45 @@
+/* Fonts and vertical rhythm */
+
+@import "compass/typography/vertical_rhythm";
+
+
+$base-font-size: 16px;
+
+@include establish-baseline(16px);
+
+// From nestacms: https://github.com/gma/nestacms.com/blob/master/views/mixins.sass
+// Default ratios between font sizes; used to maintain the type hierarchy.
+// http://www.markboulton.co.uk/journal/comments/five-simple-steps-to-better-typography-part-4
+$h1-scale: 2.18;
+$h2-scale: 1.64;
+$h3-scale: 1.45;
+$h4-scale: 1.18;
+
+// Variables used in calculations used to maintain vertical rhythm.
+// http://webtypography.net/Rhythm_and_Proportion/Vertical_Motion/2.2.2/
+
+$base-scale: 0.88;
+$base-font: $base-scale * $base-font-size;
+$vertical-rhythm: 1.75em;
+$base-vertical-margin: 1.75em;
+
+
+h1 {
+    @include adjust-font-size-to( $base-font * $h1-scale );
+}
+
+h2 {
+    @include adjust-font-size-to( $base-font * $h2-scale );
+}
+
+h3 {
+    @include adjust-font-size-to( $base-font * $h3-scale );
+}
+
+h4 {
+    @include adjust-font-size-to( $base-font * $h4-scale );
+}
+
+
+
+
