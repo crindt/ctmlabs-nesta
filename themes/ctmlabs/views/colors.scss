@@ -1,0 +1,20 @@
+/* Color palette */
+
+/* Defaults */
+//$background: #1A2C45;
+//$foreground: #fff;
+$background: #fff;
+$foreground: #000;
+
+/* Content elements: e.g., articles */
+$content-background: $background;
+$content-foreground: $foreground;
+
+/* CTMLabs background */
+$ctmlabs-menu-background: #000;
+$ctmlabs-menu-foreground: #fff;
+
+body {
+    background-color: $background;
+    color: $foreground;
+}
