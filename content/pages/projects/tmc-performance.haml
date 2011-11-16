@@ -1,0 +1,53 @@
+Categories: projects:-1
+Template: brochure
+Summary: A simulation environment with the full functionality of a Caltrans TMC
+Contact: mailto:support@ctmlabs.net&subject=Information about ATMS Training and Development System
+Url: http://tmcpe.ctmlabs.net/
+Image: tmcsim1.jpg
+
+
+.banner
+  %hgroup
+    %br
+    %h1 TMC Performance Evaulation
+    %h2 #{@page.summary}
+
+  %div.links
+    %a.contact(href="#{@page.metadata('contact')}") Contact
+    %a.page(href="#{@page.metadata('url')}") More details
+
+  %img(src="/attachments/images/#{@page.metadata('Image')}")
+
+%section.what
+  %h3 What does it consist of?
+
+  :markdown
+
+    * A TMC simulator with a full installation of Caltrans ATMS
+      software
+
+    * Simulation-backed traffic management scenarios
+
+    * Connections to real-world data feeds
+
+    * "Live" and "virtual" connections to Caltrans field traffic
+      control systems
+
+%section.how
+  %h3 How can it be used?
+  :markdown
+
+    Test and evaulate enhancements to TMC operations in a secure
+    environment that duplicates actual TMC software systems and data
+    feeds.
+
+%section.applications
+  %h3 Applications
+  :markdown
+
+    * [TMC Operator Training]
+
+    * Classroom for vendor-based microsimulation courses
+
+    * A platform for ATMS software testing and evaluation including
+      incorporating TMC operator processes
