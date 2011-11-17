@@ -1,23 +1,57 @@
 /* Color palette */
+$ctmlabs-deep-blue:#1A2C45;
+$ctmlabs-steel-blue: #51698A;
+$ctmlabs-yellow:#fc3;
+$ctmlabs-light-blue: lighten( $ctmlabs-deep-blue, 30% );
+$ctmlabs-grey: #aaa;
+$ctmlabs-white: #fff;
+$ctmlabs-black: #000;
 
 /* Defaults */
-$background: #1A2C45;
-$foreground: #fff;
-//$background: #fff;
-//$foreground: #000;
+$background: $ctmlabs-deep-blue;
+$foreground: $ctmlabs-white;
+
+$link-color: lighten( $ctmlabs-yellow, 20% );
+$link-visited: lighten( $ctmlabs-yellow, 20% );
+$link-hover: lighten( $ctmlabs-yellow, 20% );
+
+$button-color: lighten( $background, 15% );
+
+$accent-foreground: $ctmlabs-yellow;
+$deemphasized-foreground: $ctmlabs-grey;
 
 $footer-background: $background;
-$footer-foreground: #aaa;
+$footer-foreground: $ctmlabs-grey;
 
 /* Content elements: e.g., articles */
 $content-background: $background;
 $content-foreground: $foreground;
+$content-border-subtle: solid 1px $ctmlabs-steel-blue;
 
-/* CTMLabs background */
-$ctmlabs-menu-background: #000;
-$ctmlabs-menu-foreground: #fff;
+$callout-background: lighten( $background, 15% );
+$callout-foreground: $foreground;
+$callout-heading-background: lighten( $background, 30% );
+$callout-heading-foreground: $callout-foreground;
 
 body {
     background-color: $background;
     color: $foreground;
+
+    #container {
+        h1,h2,h3,h4,h5,h6 {
+            color: $accent-foreground;
+        }
+    }
+
+    a {
+        color: $link-color;
+        text-decoration: none;
+        &:visited {
+            color: $link-visited;
+        }
+        &:hover {
+            color: $link-hover;
+            text-decoration: underline;
+        }
+    }
 }

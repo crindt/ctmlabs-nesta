@@ -3,7 +3,6 @@
 @import "compass/css3/box-shadow";
 @import "fancy-buttons";
 
-
 /* Page layouts */
 $total-cols: 12;
 $col-width: 5em;
@@ -11,67 +10,45 @@ $gutter-width: 1em;
 $side-gutter-width: 1em;
 
 @import "susy";
-@import "suckerfish";
-$topLevelWidth: 6em;
-$lowerLevelWidth: 10em;
-$ctmlabsheight: 2em;
 
-#ctmlabsheader {
-    @include clearfix;
+$shadowcolor: transparentize( #000, 0.5 );
 
-    background-color: $ctmlabs-menu-background;
-    color: $ctmlabs-menu-foreground;
-    @include adjust-font-size-to( $base-font * 0.9 );
-    @include single-box-shadow(#aaa, 0, 0, 10px);
-
-    nav.ctmlabs {
-	@include suckerfish($topLevelWidth,$lowerLevelWidth);
-        ul li {
-            // menu separators
-            border-left: 1px solid #666;
-            &:first-child {
-                border-left: 0px;
-            }
-            a {
-                padding-top: 0.5em;
-                padding-left: 0.5em;
-                padding-right: 0.5em;
-                height: $ctmlabsheight;
-                vertical-align: middle;
-                background-color: $ctmlabs-menu-background;
-                color: $ctmlabs-menu-foreground;
-                text-decoration: none;
-                
-                &:hover {
-                    background-color: lighten( $ctmlabs-menu-background, 30% );
-                }
-            }
-        }
-    }
-    nav.account {
-        float:right;
-        @include horizontal-menu;
-        a {
-            text-decoration: none;
-            color:#fff;
-            &:hover {
-                text-decoration: underline;
-            }
-        }
-    }
-}
+@import "ctmlabsheader";
 
 #container {
     @include container;
 //    @include susy-grid-background;
+    border-collapse: collapse;
+    box-sizing:border-box; 
+
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+
 
     margin-top:0.5*$ctmlabsheight; // after @include container
 
     header[role="banner"] {
         @include clearfix;
+
+        /* We either have this...*/
         hgroup {
             @include columns(6);
             @include alpha;
+            h3 { display: inline-block; }
+
+            h5 { 
+                letter-spacing: 1px;
+                color: $deemphasized-foreground;
+            }
+        }
+
+        /* Or this...*/
+        nav.breadcrumb {
+            @include columns(6);
+            @include alpha;
+            ul {
+                @include delimited-list( " > ", " > " );
+            }
         }
 
         nav.main {
@@ -99,34 +76,18 @@ $ctmlabsheight: 2em;
             left: 0;
             background: transparent url('/ctmlabs/images/fairview_sh.jpg');
             min-height: 20em;
-            color: #FC3;
 
             .titleblock {
                 @include columns(6,12);
 
-                /* Override to make sure we don't over expand */
-                h1 {
-                    max-width: 15em;
-                }
-                h2 {
-                }
-
-                /*
-                  h1,h2 { line-height: 1.2em; }
-                  h2 { margin-top: 1em; }
-                */
+                @include heading-block;  /* standardize spacing */
             }
         }
 
+        @include adjust-font-size-to( $base-font * 1.2 );
+
         // make the sections flow horizontally across 4 columns
         @include flowing-blocks( section, 4, 12 );
-    }
-
-    nav.breadcrumb {
-	@include full;
-        ul {
-            @include delimited-list( " > ", " > " );
-        }
     }
 
     #content {
@@ -143,44 +104,83 @@ $ctmlabsheight: 2em;
             position: relative; /* for placing links */
             @include container;
 
+            /* Do a background gradient */
+            @include background(/*image-url("foo.png"),*/
+                                linear-gradient(top, lighten( $background, 30%), $background));
+            border-bottom: $content-border-subtle;
+
+            /* Leave space for the contact buttons */
+            padding-bottom:  2 * $vertical-rhythm; /* bottem margin + button height */
+
             hgroup {
                 @include columns(6,12);
+                @include heading-block;  /* standardize spacing */
             }
             .links {
                 position: absolute;
                 bottom:1em;
                 left:1em;
                 a {
-                    @include fancy-button( lighten( $background, 15% ) );
+                    @include ctmlabs-button;
                 }
             }
-            img {
+            .image {
                 @include columns(6,12);
                 @include omega(12);
+                img {
+                    @include single-box-shadow($shadowcolor, 5px, 5px, 5px);
+                    margin: $vertical-rhythm 10px;
+                    height: 12 * $vertical-rhythm;  /* bound the image height */
+                    width: auto;                    /* keep the aspect ratio */
+                    max-width: 100%;
+                }
             }
         }
-        
-        @include flowing-blocks( section, 4, 12 );
 
+        .keypoints {
+            @include container;
+        }
+        
+        /* must quote the selectors if they've got special chars */
+        @include flowing-blocks( '.keypoints section', 4, 12 );
+        @include flowing-blocks( '.related section', 6, 12 );
+
+        /* some additional styling on the info sections */
+        .keypoints section, .related section {
+            @include callout-box;
+
+            /* Try to get consistency in the block height by setting a min */
+            min-height: 8 * $vertical-rhythm; 
+        }
+    }
+
+    article[role="main"] {
+        &> h1 {
+            @include background(image-url("/ctmlabs/images/logo_jem_060.png"));
+            background-size: 2 * $vertical-rhythm auto;
+            padding-left: 140 / 60 * $vertical-rhythm;
+            background-repeat: no-repeat;
+        }
         section {
-            background-color: lighten( $background, 15% );
-            p, h1, h2, h3 {
-                padding-left: 0.5em;
-                padding-right: 0.5em;
-            }
-            h1, h2, h3 {
-                background-color: lighten( $background, 30% );
-            }
-            ul {
-                margin-left: 1.5em;
-                list-style: disc outside none;
-            }
+            @include clearfix;
+        }
+    }
+
+    section.pages {
+        article {
+            margin-top: $vertical-rhythm;
+            border-top: $content-border-subtle;
         }
     }
 
     #sidebar {
 	@include columns(3);
 	@include omega;
+
+        nav {
+            ul.menu {
+            }
+        }
     }
 
     footer.branding {

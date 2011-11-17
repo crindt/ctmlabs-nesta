@@ -1,17 +1,35 @@
-%nav.breadcrumb
-  - display_breadcrumbs
-
+%header(role="banner")
+  %hgroup
+    %img(src="/ctmlabs/images/logo_jem_060.png" alt="#{@heading}")
+    %h3= @subtitle
 #brochure
   %article(role="main")
-    ~ @page.to_html(self)
+    .banner
+      %hgroup
+        %br
+          %h1 #{@page.full_title}
+          %h3 #{@page.summary}
+      %div.links
+        %a.contact(href="#{@page.contact}") Contact
+        %a.page(href="#{@page.url}") Website
 
-    %section.pages
-      = article_summaries(@page.pages)
+      %div.image        
+        %img(src="/attachments/images/#{@page.metadata('Image')}")
 
-    - unless @page.articles.empty?
-      %section.articles
+    %section.keypoints
+      / emit the brochure details    
+      ~ @page.to_html(self)
+
+    %section.related
+      %section.related.pages
         %header
-          %h1= articles_heading
-        = article_summaries(@page.articles)
+          %h1 Related Pages
+        = article_summaries(@page.pages)
+
+      - unless @page.articles.empty?
+        %section.related.articles
+          %header
+            %h1= articles_heading
+          = article_summaries(@page.articles)
 
     = haml :page_meta, :layout => false, :locals => { :page => @page }
