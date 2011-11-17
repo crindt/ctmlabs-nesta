@@ -77,3 +77,53 @@
         &:before {
             content: ""; } } }
 }
+
+/* Defines standardized spacing inside a "banner" heading block */
+@mixin heading-block {
+    /* Override to make sure we don't over expand */
+    h1 {
+        margin-top: 1 * $vertical-rhythm;
+        max-width: 15em;
+        border-bottom: $content-border-subtle;
+    }
+    h2, h3, h4 {
+        margin-top: 2 * $vertical-rhythm;
+    }
+}
+
+@mixin callout-box( $background: $callout-background, $foreground: $callout-foreground ) {
+    /* Creating some spacing above the blocks */
+    margin-top: $vertical-rhythm;
+
+    background-color: $background;
+    color: $foreground;
+
+    @include border-radius( 10px );
+    border: $content-border-subtle;
+    border-collapse: collapse;
+    box-sizing:border-box; 
+
+
+    p, h1, h2, h3 {
+        padding-left: 0.5em;
+        padding-right: 0.5em;
+    }
+    h1, h2, h3 {
+        background-color: $callout-heading-background;
+        color: $callout-heading-foreground;
+    }
+    ul {
+        margin-left: 2em;
+        list-style: disc outside none;
+        li {
+        }
+    }
+}
+
+/* meant to be used in a or button tags */
+@mixin ctmlabs-button {
+    @include fancy-button( $button-color );
+    &:hover {
+        color: $accent-foreground;
+    }
+}

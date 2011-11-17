@@ -12,6 +12,8 @@ require 'fancy-buttons'
 
 require 'rack-cas-client'
 
+require 'nesta-plugin-metadata-extensions'
+
 
 Compass::Frameworks.register('susy',
                              :stylesheets_directory => '/usr/local/lib/ruby/gems/1.8/gems/compass-susy-plugin-0.9/sass',

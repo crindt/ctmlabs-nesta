@@ -1,3 +1,5 @@
 #sidebar
-  = haml :categories, :layout => false
-  = haml :feed, :layout => false
+  %nav
+    - display_menu(@menu_items, :class => "menu", :levels => 1) 
+/  = haml :categories, :layout => false
+/  = haml :feed, :layout => false

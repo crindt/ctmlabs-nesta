@@ -12,3 +12,8 @@ gem 'compass-susy-plugin', '0.9'
 gem 'i18n', '0.6'
 
 # gem (RUBY_VERSION =~ /^1.9/) ? 'ruby-debug19': 'ruby-debug'
+
+gem "nesta-plugin-metadata-extensions", \
+    :path => "../nesta-plugin-metadata-extensions"
+gem "ctmlabs-banner", \
+    :path => "../ctmlabs-banner"
