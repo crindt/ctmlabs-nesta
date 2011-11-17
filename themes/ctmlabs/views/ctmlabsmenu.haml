@@ -11,4 +11,10 @@
           %a(href="https://safety.ctmlabs.net/")Safety
     %li
       %a(href="https://tracker.ctmlabs.net/")Issue Tracker
-
+%nav.account
+  %ul
+    %li
+      - if current_user.username != "" && current_user.username != nil
+        = current_user.username
+      - else
+        %a(href="/login&back_url=http://localhost:9393/" title="Login to CTMLabs using CAS") Login
