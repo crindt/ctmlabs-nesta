@@ -10,6 +10,9 @@ require 'compass'
 #require 'compass-susy-plugin'
 require 'fancy-buttons'
 
+require 'rack-cas-client'
+
+
 Compass::Frameworks.register('susy',
                              :stylesheets_directory => '/usr/local/lib/ruby/gems/1.8/gems/compass-susy-plugin-0.9/sass',
                              :templates_directory => '/usr/local/lib/ruby/gems/1.8/gems/compass-susy-plugin-0.9/templates')
@@ -27,6 +30,7 @@ module Nesta
     # Put your assets in themes/ctmlabs/public/ctmlabs.
     #
     use Rack::Static, :urls => ["/ctmlabs"], :root => "themes/ctmlabs/public"
+    helpers Rack::Cas::ClientHelpers::Sinatra
 
     configure do        
       Compass.configuration do |config|
@@ -45,9 +49,14 @@ module Nesta
 
     helpers do
       # Add new helpers here.
+      def get_user
+        current_user
+      end
+
     end
 
     # Add new routes here.
+
     # Assume stylesheets are SCSS, unless...
     get '/css/:sheet.css' do
       content_type 'text/css', :charset => 'utf-8'

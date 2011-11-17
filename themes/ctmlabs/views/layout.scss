@@ -48,6 +48,17 @@ $ctmlabsheight: 2em;
             }
         }
     }
+    nav.account {
+        float:right;
+        @include horizontal-menu;
+        a {
+            text-decoration: none;
+            color:#fff;
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
 }
 
 #container {
@@ -92,6 +103,13 @@ $ctmlabsheight: 2em;
 
             .titleblock {
                 @include columns(6,12);
+
+                /* Override to make sure we don't over expand */
+                h1 {
+                    max-width: 15em;
+                }
+                h2 {
+                }
 
                 /*
                   h1,h2 { line-height: 1.2em; }
@@ -167,6 +185,8 @@ $ctmlabsheight: 2em;
 
     footer.branding {
 	@include full;
+        background-color: $footer-background;
+        color: $footer-foreground;
         margin-top: 2em;
 
         .copyright {
