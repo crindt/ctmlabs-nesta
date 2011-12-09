@@ -7,6 +7,7 @@ gem 'rack-cas-client', '0.1.1'
 gem 'compass', '0.11.5'
 gem 'fancy-buttons', '1.1.2'
 gem 'compass-susy-plugin', '0.9'
+gem 'json'
 
 # for rack-cas-client
 gem 'i18n', '0.6'

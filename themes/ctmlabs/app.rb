@@ -14,6 +14,10 @@ require 'rack-cas-client'
 
 require 'nesta-plugin-metadata-extensions'
 
+require 'ctmlabs-banner'
+
+require 'json'
+
 
 Compass::Frameworks.register('susy',
                              :stylesheets_directory => '/usr/local/lib/ruby/gems/1.8/gems/compass-susy-plugin-0.9/sass',
@@ -40,7 +44,7 @@ module Nesta
         config.sass_dir = 'views'
         config.environment = :development
         config.relative_assets = true
-        config.preferred_syntax = :sass
+        config.preferred_syntax = :scss
         config.javascripts_dir = 'js'
         config.images_dir = 'images'
         config.http_path = "/"
@@ -55,6 +59,44 @@ module Nesta
         current_user
       end
 
+
+      #### support paging through a category
+      def nth_page_in_category(page,nth)
+        $stderr.puts "PAGES ARE: #{page.pages}"
+        return page.parent.pages[nth]
+      end
+
+      def next_page_in_category(page,category)
+        next_idx = (-1*page.priority( category ))
+        unless next_idx == nil
+          return nth_page_in_category( page, next_idx )
+        end
+      end
+
+      def next_page_link( page, category )
+        np = next_page_in_category( page, category )
+        unless np == nil
+          haml_tag :a, :href => "/#{np.path}" do
+            haml_concat "Next"
+          end
+        end
+      end
+
+      def prev_page_in_category(page,category)
+        prev_idx = (-1*page.priority( category )-2)
+        unless prev_idx == nil
+          return nth_page_in_category( page, prev_idx )
+        end
+      end
+
+      def prev_page_link( page, category )
+        np = prev_page_in_category( page, category )
+        unless np == nil
+          haml_tag :a, :href => "/#{np.path}" do
+            haml_concat "Previous"
+          end
+        end
+      end
     end
 
     # Add new routes here.
@@ -64,7 +106,13 @@ module Nesta
       content_type 'text/css', :charset => 'utf-8'
       cache scss(params[:sheet].to_sym)
     end
+
+    get '/omnibar' do
+      content_type 'text/javascript', :charset => 'utf-8'
+      s = "var casdata = " + get_user.to_json() + ".table;\n"
+      s += IO.read('themes/ctmlabs/public/ctmlabs/js/common.js')
+      $stderr.puts s
+      s
+    end
   end
 end
-
-

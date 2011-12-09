@@ -12,7 +12,9 @@ require 'rack-cas-client'
 
 class MyNesta < Nesta::App
   use Rack::Session::Cookie
-  use Rack::Cas::Client, :cas_base_url => 'https://cas.ctmlabs.net/cas', :service_url => 'http://localhost:9393/', :enable_single_signout => true,  :cas_destination_logout_param_name => 'service', :session_dir => '/tmp/sessions'
+  use Rack::Cas::Client, :cas_base_url => 'https://cas.ctmlabs.net/cas', :enable_single_sign_out => true,  :cas_destination_logout_param_name => 'service', :session_dir => '/tmp/sessions', :service_url => 'http://localhost:9393/'
+#, :authenticate_on_every_request => true
+#, :validate_url => 'https://cas.ctmlabs.net/cas/serviceValidate'
   register Rack::Cas::ClientHelpers::Sinatra
 end
 
