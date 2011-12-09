@@ -17,6 +17,14 @@
       %link(rel="stylesheet" href="http://universal-ie6-css.googlecode.com/files/ie6.1.1.css" media="screen, projection")
     /[if lt IE 9]
       %script(src="//html5shim.googlecode.com/svn/trunk/html5.js")
+    / Load CTMLabs banner
+    %script(src="http://localhost:9393/ctmlabs/js/d3/d3.min.js")
+    /%script(src="http://localhost:9393/omnibar")
+    :javascript
+      var param = document.location.href.match(/(ticket=[^&$]*)/); var url = "http://localhost:9393/omnibar" + ( param ? "?"+param[1] : "" );  
+      window.onload = function() {
+        d3.select('head').append('script').attr('src',url);
+        };
     = local_stylesheet_link_tag('local')
     %link(href="/articles.xml" rel="alternate" type="application/atom+xml")
     = haml :analytics, :layout => false

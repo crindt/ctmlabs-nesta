@@ -21,7 +21,14 @@
       - if current_user.username != "" && current_user.username != nil
         %a(href="/manage" title="Manage your CTMLabs Account")
           = current_user.username
-        %li 
-          %a(href="/logout" title="Logout of CTMLabs") Logout
+        %ul        
+          %li
+            %a(href="/logout" title="Logout of CTMLabs") Logout
+          %li
+            %a(href="/manage" title="Manage your CTMLabs account") Manage Account
       - else
         %a(href="/login&back_url=http://localhost:9393/" title="Login to CTMLabs using CAS") Login
+    %li
+      %a(href="http://tracker.ctmlabs.net/projects/tb/issues/new" title="Report a problem with this website") Report Problem
+    %li
+      %a(href="/about" title="About CTMLabs") About

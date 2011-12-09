@@ -13,7 +13,10 @@ $side-gutter-width: 1em;
 
 $shadowcolor: transparentize( #000, 0.5 );
 
-@import "ctmlabsheader";
+@import "ctmlabs-banner";
+
+@import "mixins"; /* after ctmlabs-banner which imports compass */
+
 
 #container {
     @include container;

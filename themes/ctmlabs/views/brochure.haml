@@ -2,6 +2,9 @@
   %hgroup
     %img(src="/ctmlabs/images/logo_jem_060.png" alt="#{@heading}")
     %h3= @subtitle
+  %div
+    - prev_page_link( @page, @page.parent.path ) 
+    - next_page_link( @page, @page.parent.path ) 
 #brochure
   %article(role="main")
     .banner
@@ -10,8 +13,10 @@
           %h1 #{@page.full_title}
           %h3 #{@page.summary}
       %div.links
-        %a.contact(href="#{@page.contact}") Contact
-        %a.page(href="#{@page.url}") Website
+        -unless @page.contact == nil
+          %a.contact(href="#{@page.contact}") Contact
+        -unless @page.url == nil
+          %a.page(href="#{@page.url}") Website
 
       %div.image        
         %img(src="/attachments/images/#{@page.metadata('Image')}")
