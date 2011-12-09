@@ -23,9 +23,9 @@ Compass::Frameworks.register('susy',
                              :stylesheets_directory => '/usr/local/lib/ruby/gems/1.8/gems/compass-susy-plugin-0.9/sass',
                              :templates_directory => '/usr/local/lib/ruby/gems/1.8/gems/compass-susy-plugin-0.9/templates')
 
-Compass::Frameworks.register('sucker-compass',
-                             :stylesheets_directory => File.join(File.dirname(__FILE__), 'views', 'sucker-compass'),
-                             :templates_directory => File.join(File.dirname(__FILE__), 'views', 'sucker-compass'))
+#Compass::Frameworks.register('sucker-compass',
+#                             :stylesheets_directory => File.join(File.dirname(__FILE__), 'views', 'sucker-compass'),
+#                             :templates_directory => File.join(File.dirname(__FILE__), 'views', 'sucker-compass'))
 
 
 module Nesta
