@@ -1,6 +1,7 @@
 = haml :layout_frontmatter, :layout => false
 %body
-  #ctmlabsheader(style='min-height:30px;')
+  /#ctmlabsheader(style='min-height:30px;')
+  = haml :ctmlabsmenu, :layout => false
   #container
     = haml :headerhome, :layout => false
     = yield

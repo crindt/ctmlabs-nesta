@@ -1,34 +1,27 @@
-%nav.ctmlabs
-  %ul
-    %li 
-      %a.home(href="/" title="CTMLabs home") &nbsp;
-    %li 
-      %a(href="/projects") Project Websites
+#ctmlabsbanner(style='min-height:35px')
+  %nav.ctmlabs#menu(style='min-height:35px')
+    %ul
+      %li 
+        %a.home(href="/" title="CTMLabs home") &nbsp;
+      %li 
+        %a(href="/projects") Project Websites
+        %ul
+          %li
+            %a(href="https://tmcpe.ctmlabs.net/tmcpe-1.1")TMC Performance Evaulation
+          %li
+            %a(href="http://128.200.36.104:8080/SATMSWeb")Ramp Meter Evaluation Platform
+          %li
+            %a(href="http://moon.its.uci.edu/inside")INSIDE Laboratory
+          %li 
+            %a(href="https://safety.ctmlabs.net/")Safety
+      %li
+        %a(href="https://tracker.ctmlabs.net/" title="CTMLabs project management")Issue Tracker
+    %nav.account#account
       %ul
+        %li(id="loginLink")
+        %li(id="logoutLink")
         %li
-          %a(href="https://tmcpe.ctmlabs.net/")TMC Performance Evaulation
+          %a(href="http://tracker.ctmlabs.net/projects/tb/issues/new" title="Report a problem with this website") Report Problem
         %li
-          %a(href="http://128.200.36.104:8080/SATMSWeb")Ramp Meter Evaluation Platform
-        %li
-          %a(href="http://moon.its.uci.edu/inside")INSIDE Laboratory
-        %li 
-          %a(href="https://safety.ctmlabs.net/")Safety
-    %li
-      %a(href="https://tracker.ctmlabs.net/" title="CTMLabs project management")Issue Tracker
-%nav.account
-  %ul
-    %li
-      - if current_user.username != "" && current_user.username != nil
-        %a(href="/manage" title="Manage your CTMLabs Account")
-          = current_user.username
-        %ul        
-          %li
-            %a(href="/logout" title="Logout of CTMLabs") Logout
-          %li
-            %a(href="/manage" title="Manage your CTMLabs account") Manage Account
-      - else
-        %a(href="/login&back_url=http://localhost:9393/" title="Login to CTMLabs using CAS") Login
-    %li
-      %a(href="http://tracker.ctmlabs.net/projects/tb/issues/new" title="Report a problem with this website") Report Problem
-    %li
-      %a(href="/about" title="About CTMLabs") About
+          %a(href="/about" title="About CTMLabs") About
+
