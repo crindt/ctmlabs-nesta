@@ -10,11 +10,7 @@ require 'compass'
 #require 'compass-susy-plugin'
 require 'fancy-buttons'
 
-require 'rack-cas-client'
-
 require 'nesta-plugin-metadata-extensions'
-
-require 'ctmlabs-banner'
 
 require 'json'
 
@@ -36,7 +32,6 @@ module Nesta
     # Put your assets in themes/ctmlabs/public/ctmlabs.
     #
     use Rack::Static, :urls => ["/ctmlabs"], :root => "themes/ctmlabs/public"
-    helpers Rack::Cas::ClientHelpers::Sinatra
 
     configure do        
       Compass.configuration do |config|
@@ -105,14 +100,6 @@ module Nesta
     get '/css/:sheet.css' do
       content_type 'text/css', :charset => 'utf-8'
       cache scss(params[:sheet].to_sym)
-    end
-
-    get '/omnibar' do
-      content_type 'text/javascript', :charset => 'utf-8'
-      s = "var casdata = " + get_user.to_json() + ".table;\n"
-      s += IO.read('themes/ctmlabs/public/ctmlabs/js/common.js')
-      $stderr.puts s
-      s
     end
   end
 end

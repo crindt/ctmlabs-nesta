@@ -1,10 +1,5 @@
-%header(role="banner")
-  %hgroup
-    %img(src="/ctmlabs/images/logo_jem_060.png" alt="#{@heading}")
-    %h3= @subtitle
-  %div
-    - prev_page_link( @page, @page.parent.path ) 
-    - next_page_link( @page, @page.parent.path ) 
+- prev_page_link( @page, @page.parent.path ) 
+- next_page_link( @page, @page.parent.path ) 
 #brochure
   %article(role="main")
     .banner
