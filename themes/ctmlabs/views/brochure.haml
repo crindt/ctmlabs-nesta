@@ -1,40 +1,43 @@
-%header(role="banner")
-  %hgroup
-    %img(src="/ctmlabs/images/logo_jem_060.png" alt="#{@heading}")
-    %h3= @subtitle
-  %div
-    - prev_page_link( @page, @page.parent.path ) 
-    - next_page_link( @page, @page.parent.path ) 
 #brochure
   %article(role="main")
-    .banner
-      %hgroup
-        %br
-          %h1 #{@page.full_title}
-          %h3 #{@page.summary}
-      %div.links
+    .banner.row
+      .span1.align-left(style="font-size:400%; margin-top:2em")
+        - prev_page_link( @page, @page.parent.path ) 
+      .span5
+        %p &nbsp
+        %hgroup
+          %br
+            %h1 #{@page.full_title}
+            %h3 #{@page.summary}
         -unless @page.contact == nil
-          %a.contact(href="#{@page.contact}") Contact
+          %a.btn.btn-primary.contact(href="#{@page.contact}" title="Contact the project maintainer") 
+            %i.icon-envelope.icon-white
+            Contact
         -unless @page.url == nil
-          %a.page(href="#{@page.url}") Website
+          %a.btn.btn-primary.page(href="#{@page.url}" target="_blank" title="Go to the #{@page.full_title} application website (opens a new window)") 
+            %i.icon-share-alt.icon-white
+            Website
+      .image.span5
+        %img.thumbnail(src="/attachments/images/#{@page.metadata('Image')}")
+      .span1.align-right(style="font-size:400%;margin-top:2em;text-align:right;")
+        - next_page_link( @page, @page.parent.path ) 
 
-      %div.image        
-        %img(src="/attachments/images/#{@page.metadata('Image')}")
+    .row
+      %section.keypoints.span6
+        / emit the brochure details    
+        ~ @page.to_html(self)
 
-    %section.keypoints
-      / emit the brochure details    
-      ~ @page.to_html(self)
-
-    %section.related
-      %section.related.pages
-        %header
-          %h1 Related Pages
-        = article_summaries(@page.pages)
-
-      - unless @page.articles.empty?
-        %section.related.articles
-          %header
-            %h1= articles_heading
-          = article_summaries(@page.articles)
+      %section.related.span6
+        - unless @page.pages.empty?
+          %section.related.pages
+            %header
+              %h3 Related Pages
+            = haml :compact_summaries, :layout => false, :locals => { :pages => @page.pages }
+        - unless @page.articles.empty?
+          %section.related.articles
+            %header
+              /%h4= articles_heading
+              %h3 Related events and announcements
+            = haml :compact_summaries, :layout => false, :locals => { :pages => @page.articles }
 
     = haml :page_meta, :layout => false, :locals => { :page => @page }

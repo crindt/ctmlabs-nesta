@@ -1,0 +1,5 @@
+- unless pages.empty?
+  %ul
+    - pages.each do |page|
+      %li
+        %a(href="#{page.abspath}" title="#{page.summary}")= page.heading
