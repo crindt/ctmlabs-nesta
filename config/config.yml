@@ -61,7 +61,7 @@ content: content
 #
 # Don't forget to uncomment the "production:" line too...
 
-production:
-  cache: true    
-  content: /var/lib/nesta/ctmlabs/shared/content
+#production:
+#  cache: true    
+#  content: /var/lib/nesta/ctmlabs/shared/content
 #  google_analytics_code: "UA-???????-?"
