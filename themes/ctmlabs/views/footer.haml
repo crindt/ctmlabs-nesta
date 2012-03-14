@@ -1,12 +1,11 @@
-%footer.branding
-  %p.copyright
-    Copyright &copy; 
-    :javascript
-      var dToday=new Date(); document.write("2010-"+dToday.getFullYear());
-    California Traffic Management Labs
-    %br
-    A partnership between Caltrans and UC Irvine
-  %nav
-    :markdown
-      Navigation:
-    - display_menu(@menu_items, :class => "menu", :levels => 1)
+%footer.branding.footer.container
+  %div.row
+    %p.copyright.span6
+      Copyright &copy; 
+      :javascript
+        var dToday=new Date(); document.write("2010-"+dToday.getFullYear());
+      California Traffic Management Labs
+      %br
+      A partnership between Caltrans and UC Irvine
+    %nav.subnav.span6
+      - display_bootstrap_menu(@menu_items, :class => "nav pull-right", :levels => 1)

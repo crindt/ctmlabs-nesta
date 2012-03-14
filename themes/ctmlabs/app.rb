@@ -5,23 +5,10 @@ require 'sinatra'
 require 'haml'
 
 # compass and plugins
-require 'compass'
-
-#require 'compass-susy-plugin'
-require 'fancy-buttons'
 
 require 'nesta-plugin-metadata-extensions'
 
 require 'json'
-
-
-Compass::Frameworks.register('susy',
-                             :stylesheets_directory => '/usr/local/lib/ruby/gems/1.8/gems/compass-susy-plugin-0.9/sass',
-                             :templates_directory => '/usr/local/lib/ruby/gems/1.8/gems/compass-susy-plugin-0.9/templates')
-
-#Compass::Frameworks.register('sucker-compass',
-#                             :stylesheets_directory => File.join(File.dirname(__FILE__), 'views', 'sucker-compass'),
-#                             :templates_directory => File.join(File.dirname(__FILE__), 'views', 'sucker-compass'))
 
 
 module Nesta
@@ -34,18 +21,8 @@ module Nesta
     use Rack::Static, :urls => ["/ctmlabs"], :root => "themes/ctmlabs/public"
 
     configure do        
-      Compass.configuration do |config|
-        config.project_path = File.dirname(__FILE__)
-        config.sass_dir = 'views'
-        config.environment = :development
-        config.relative_assets = true
-        config.preferred_syntax = :scss
-        config.javascripts_dir = 'js'
-        config.images_dir = 'images'
-        config.http_path = "/"
-      end
       set :haml, { :format => :html5 }
-      set :scss, Compass.sass_engine_options
+      #set :scss, Compass.sass_engine_options
     end
 
     helpers do
@@ -71,8 +48,9 @@ module Nesta
       def next_page_link( page, category )
         np = next_page_in_category( page, category )
         unless np == nil
-          haml_tag :a, :href => "/#{np.path}" do
-            haml_concat "Next"
+          haml_tag :a, :class=>"navarrow", :href => "/#{np.path}", :title => "See the page for #{np.full_title}" do
+            #haml_concat "Next"
+            haml_concat "&#187;"
           end
         end
       end
@@ -87,8 +65,9 @@ module Nesta
       def prev_page_link( page, category )
         np = prev_page_in_category( page, category )
         unless np == nil
-          haml_tag :a, :href => "/#{np.path}" do
-            haml_concat "Previous"
+          haml_tag :a, :class=>"navarrow", :href => "/#{np.path}", :title => "See the page for #{np.full_title}" do
+            #haml_concat "Previous"
+            haml_concat "&#171;"
           end
         end
       end
@@ -100,6 +79,45 @@ module Nesta
     get '/css/:sheet.css' do
       content_type 'text/css', :charset => 'utf-8'
       cache scss(params[:sheet].to_sym)
+    end
+  end
+
+  module Navigation
+    module Renderers
+
+      # monkey patch menu to use "active" instead of "current" to support bootstrap
+      def display_bootstrap_menu(menu, options = {})
+        defaults = { :class => nil, :levels => 2 }
+        options = defaults.merge(options)
+        if options[:levels] > 0
+          haml_tag :ul, :class => options[:class] do
+            menu.each do |item|
+              display_bootstrap_menu_item(item, options)
+            end
+          end
+        end
+      end
+      def display_bootstrap_menu_item(item, options = {})
+        if item.respond_to?(:each)
+          if (options[:levels] - 1) > 0
+            haml_tag :li do
+              display_menu(item, :levels => (options[:levels] - 1))
+            end
+          end
+        else
+          html_class = current_item_in_path?(item) ? "active" : nil
+          haml_tag :li, :class => html_class do
+            haml_tag :a, :<, :href => url(item.abspath) do
+              haml_concat item.heading
+            end
+          end
+        end
+      end
+      def current_item_in_path?(item)
+        #request.path == item.abspath
+
+        request.path =~ /#{item.abspath}/
+      end
     end
   end
 end

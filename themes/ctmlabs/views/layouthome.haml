@@ -2,9 +2,9 @@
 %body
   /#ctmlabsheader(style='min-height:30px;')
   = haml :ctmlabsmenu, :layout => false
-  #container
+  #container.container
     = haml :headerhome, :layout => false
     = yield
 
-  #ctmlabsfooter
+  #ctmlabsfooter.container-fluid
     = haml :footer, :layout => false
