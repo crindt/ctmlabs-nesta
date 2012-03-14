@@ -121,7 +121,11 @@ module Nesta
       # Override nesta's breadcrumb_label to show the menu attribute
       # in the breadcrumbs, if given
       def breadcrumb_label(page)
-        (page.abspath == '/') ? 'Home' : ( page.metadata('menu').nil? ? page.heading : page.metadata('menu') )
+        if ( page != nil )
+          (page.abspath == '/') ? 'Home' : ( page.metadata('menu').nil? ? page.heading : page.metadata('menu') )
+        else
+          'Home'
+        end
       end
     end
   end
