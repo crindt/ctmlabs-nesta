@@ -1,8 +1,11 @@
-%header(role="banner")
-  %hgroup
-    %img(src="/ctmlabs/images/logo_jem_100.png" alt="#{@heading}")
-    %h5= @subtitle
-  %nav.main
-    - display_menu(@menu_items, :class => "menu", :levels => 1)
+%header.row(role="banner")
+  %div.span6
+    %hgroup
+      %img(src="/ctmlabs/images/logo_jem_100.png" alt="#{@heading}")
+      %h5= @subtitle
+  %div.span6    
+    %nav.subnav
+      %nav.subnav
+        - display_menu(@menu_items, :class => "nav nav-pills pull-right", :levels => 1)
   
   

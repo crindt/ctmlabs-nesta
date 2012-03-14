@@ -1,6 +1,8 @@
-Title: About CTMLabs
+Title: History of CTMLabs
+Menu: History
+Categories: about:10
 
-# About CTMLabs
+# History
 
 The California Traffic Management Labs (CTMLabs) were established in early 1991
 as the California ATMS Testbed to provide an instrumented, multi-jurisdictional,

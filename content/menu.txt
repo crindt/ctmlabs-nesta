@@ -2,3 +2,6 @@ facilities
 data
 services
 projects
+about
+  history
+  people

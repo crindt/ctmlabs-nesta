@@ -2,42 +2,43 @@ Title: Home
 Template: home
 Layout: layouthome
 
-%div.banner
-  %div.titleblock
-    %h1 Merging traffic management research into the physical world
+%header.hero-unit.clearfix
+  %div.hgroup.span6
+    %h2 Merging traffic management research into the physical world
     %h4 A partnership between UC Irvine and Caltrans
 
-%section 
+%div.row
 
-  :markdown
+  %div.span4
+    %section
+      %header
+        %h2 RESEARCH
+      :markdown
 
-    # RESEARCH
+        At our core we are a research facility with a demonstrated history of
+        cutting-edge developments in traffic management and operations. Our team
+        of researchers and technical staff are always looking for new problems
+        to solve.
 
-    At our core we are a research facility with a demonstrated
-    history of cutting-edge developments in traffic management and
-    operations. Our team of researchers and technical staff are
-    always looking for new problems to solve.
+  %div.span4      
+    %section
+      %header
+        %h2 IMPLEMENT
+      :markdown
 
-%section
+        Our facilities offer a combination of a instrumented real-world
+        traffic system connected to virtual systems supported by institutional
+        partnerships allowing us to test and evaluate deployments on both
+        technological and procedural grounds.
 
-  :markdown
+  %div.span4
+    %section
+      %header
+        %h2 EVALUATE
+      :markdown
 
-    # IMPLEMENT...
-
-    Our facilities offer a combination of a instrumented
-    real-world traffic system connected to virtual systems
-    supported by institutional partnerships allowing us to test
-    and evaluate deployments on both technological and procedural
-    grounds.
-
-%section
-
-  :markdown
-
-    # EVALUATE...
-
-    A one-stop shop for simulation, data analysis, testing, and
-    evaluation providing a trajectory for moving ideas from the
-    research journals into everyday practice.
+        A one-stop shop for simulation, data analysis, testing, and evaluation
+        providing a trajectory for moving ideas from the research journals into
+        everyday practice.
 
 /%section.articles= article_summaries(latest_articles)
