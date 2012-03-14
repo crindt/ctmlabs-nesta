@@ -1,5 +1,5 @@
 PATH
-  remote: ../nesta-plugin-metadata-extensions
+  remote: vendor/nesta-plugin-metadata-extensions
   specs:
     nesta-plugin-metadata-extensions (0.0.1)
       nesta (>= 0.9.11)
