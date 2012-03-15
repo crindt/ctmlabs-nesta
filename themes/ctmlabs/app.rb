@@ -108,7 +108,7 @@ module Nesta
           html_class = current_item_in_path?(item) ? "active" : nil
           haml_tag :li, :class => html_class do
             haml_tag :a, :<, :href => url(item.abspath) do
-              haml_concat item.heading
+              haml_concat item.menu_label
             end
           end
         end
@@ -117,6 +117,26 @@ module Nesta
         #request.path == item.abspath
 
         request.path =~ /#{item.abspath}/
+      end
+      def render_sliding_image_viewer(page)
+        img = page.metadata('image')
+        if img
+          imgs = img.split(",")
+          if imgs.length > 1
+            #haml_tag :div, :id => 'slider', :class => 'nivoSlider theme-default' do
+            #  imgs.each do |i|
+            #    haml_tag :img, :width=>"100%", :src => '/attachments/images/'+i
+            #  end
+            #end
+            haml_tag :div, :id => 'slides' do
+              imgs.each do |i|
+                haml_tag :img, :width=>"100%", :src => '/attachments/images/'+i
+              end
+            end
+          else
+            haml_tag :img, :src => '/attachments/images/'+imgs[0]
+          end
+        end
       end
     end
   end

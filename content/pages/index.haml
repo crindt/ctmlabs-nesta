@@ -3,24 +3,28 @@ Template: home
 Layout: layouthome
 
 %header.hero-unit.clearfix
-  %div.hgroup.span6
+  .hgroup.span6
     %h2 Merging traffic management research into the physical world
     %h4 A partnership between UC Irvine and Caltrans
 
-%div.row
+.row
 
-  %div.span4
+  .span4
     %section
       %header
         %h2 RESEARCH
       :markdown
 
-        At our core we are a research facility with a demonstrated history of
-        cutting-edge developments in traffic management and operations. Our team
-        of researchers and technical staff are always looking for new problems
-        to solve.
+        At our core we are a research facility with a demonstrated
+        [history] of cutting-edge [developments] in traffic management
+        and operations. Our team of researchers and technical staff
+        are always looking for new problems to [solve].
 
-  %div.span4      
+        [history]: /about
+        [developments]: /projects
+        [solve]: services/custom-application-development
+
+  .span4      
     %section
       %header
         %h2 IMPLEMENT
@@ -28,17 +32,37 @@ Layout: layouthome
 
         Our facilities offer a combination of a instrumented real-world
         traffic system connected to virtual systems supported by institutional
-        partnerships allowing us to test and evaluate deployments on both
+        [partnerships] allowing us to test and evaluate deployments on both
         technological and procedural grounds.
 
-  %div.span4
+        [facility]: /facilities
+        [partnerships]: /about/partners
+
+  .span4
     %section
       %header
         %h2 EVALUATE
       :markdown
 
-        A one-stop shop for simulation, data analysis, testing, and evaluation
+        A one-stop shop for [simulation], data analysis, testing, and evaluation
         providing a trajectory for moving ideas from the research journals into
         everyday practice.
 
-/%section.articles= article_summaries(latest_articles)
+        [simulation]: /services/custom-simulation-development
+
+%hr.soften
+
+.row
+  .span6
+    %section
+      %header
+        %h2 What's new
+        %section.articles= article_summaries(latest_articles)
+  .span6
+    %section
+      %header
+        %h2 Quick Links
+        :markdown
+          * Link1
+          * Link2
+          * Link3
