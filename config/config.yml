@@ -63,5 +63,5 @@ content: content
 
 production:
   cache: true    
-  content: /Web/apps/ctmlabs-nesta/shared/content
+#  content: /Web/apps/ctmlabs-nesta/shared/content
 #  google_analytics_code: "UA-???????-?"

@@ -1,6 +1,7 @@
 source 'http://rubygems.org'
 
-gem 'nesta', '0.9.13'
+#gem 'nesta', '0.9.13'
+gem "nesta", :git => "git://github.com/gma/nesta.git"
 
 # these are really theme requirements
 gem 'json'
