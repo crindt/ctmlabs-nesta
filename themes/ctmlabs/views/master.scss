@@ -54,8 +54,8 @@ nav ul.breadcrumb {
     border-radius: 4px;
 }*/
 
-#brochure .banner img.thumbnail {
-    min-height: 300px;
+#brochure .banner .thumbnail, .pages .thumbnail {
+    min-height: 12em;
 }
 
 .navbar-fixed-top {
