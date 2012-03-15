@@ -1,6 +1,6 @@
 - if page.date
   %footer
-    %p.meta
+    %p.meta.small
       Published
       - if page.date
         on
@@ -10,7 +10,7 @@
         - page.categories.each do |category|
           - if category != page.categories[-1]
             = succeed ',' do
-              %a(href="#{category.abspath}")= category.heading
+              %a.label(href="#{category.abspath}")= category.heading
           - else
-            %a(href="#{category.abspath}")= category.heading
+            %a.label(href="#{category.abspath}")= category.heading
 

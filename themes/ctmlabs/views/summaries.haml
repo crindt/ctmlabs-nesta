@@ -17,7 +17,7 @@
                 %a(href="#{page.abspath}")= page.heading
               ~ page.summary
             %p.read_more
-              %a.btn.btn-primary(href="#{page.abspath}")
+              %a(href="#{page.abspath}")
                 /%i.icon-envelope.icon-white
                 = page.read_more
           = haml :page_meta, :layout => false, :locals => { :page => page }
