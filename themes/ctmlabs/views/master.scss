@@ -61,8 +61,63 @@ nav ul.breadcrumb {
     min-height: 300px;
 }
 
+.navbar-fixed-top {
+    a.brand {
+        background-image: url("/ctmlabs/images/logo_jem_060.png");
+        background-position: 5px 0px;
+        background-size: 80px auto;
+        padding-left: 93.33333333333334px;
+        background-repeat: no-repeat;
+    }
+}
+
 #container {
     header {
         //border-bottom: 1px solid #E5E5E5;
     }
+}
+
+section {
+    margin-top: 1em;
+    &:first-child {
+        margin-top: 0em;
+    }
+}
+.row {
+    margin-top: 1em;
+}
+
+.thumbnail {
+    footer {
+        //border-top: 1px solid #E5E5E5;
+    }
+}
+
+hr.soften {
+    height: 1px;
+    margin: 54px 0;
+    background-image: -webkit-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,.1), rgba(0,0,0,0));
+    background-image: -moz-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,.1), rgba(0,0,0,0));
+    background-image: -ms-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,.1), rgba(0,0,0,0));
+    background-image: -o-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,.1), rgba(0,0,0,0));
+    border: 0;
+}
+
+
+// nivo slider
+.nivoSlider {
+    position:relative;
+    width:618px; /* Change this to your images width */
+    height:246px; /* Change this to your images height */
+    background:url(images/loading.gif) no-repeat 50% 50%;
+}
+.nivoSlider img {
+    position:absolute;
+    top:0px;
+    left:0px;
+    display:none;
+}
+.nivoSlider a {
+    border:0;
+    display:block;
 }

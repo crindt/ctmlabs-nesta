@@ -1,0 +1,21 @@
+Title: Partners
+Menu: Partners
+Categories: about
+
+# CTMLabs Partners
+
+CTMLabs is a collaborative effort involving the following institutions:
+
+* [Institute of Transportation Studies] at the [University of California, Irvine]
+* [Caltrans]
+
+
+Prior involvement has included:
+
+* City of Irvine
+* City of Anaheim
+* ...
+
+[Institute of Transportation Studies]: http://www.its.uci.edu
+[University of California, Irvine]: http://www.uci.edu
+[Caltrans]: http://dot.ca.gov
