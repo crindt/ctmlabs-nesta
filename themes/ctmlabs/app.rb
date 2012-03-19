@@ -82,6 +82,49 @@ module Nesta
     end
   end
 
+  # add some features to Nesta::Page
+  class Page
+    def image_url(index = 0)
+      img = metadata('image')
+      if img
+        imgs = img.split(",")
+        i = index
+        if imgs.length - 1 < i
+          i = imgs.length-1
+        elsif i < 0 
+          i = 0
+        end
+        return '/attachments/images/'+imgs[i]
+      else
+        return ''
+      end
+    end
+
+    # filter the page listing by Tag
+    def pages_with_flag(filt)
+      return pages().select do |p|
+        p.flags.include?(filt)
+      end
+    end
+    def pages_without_flag(filt)
+      return pages().select do |p|
+        !p.flags.include?(filt)
+      end
+    end
+
+    def flags
+      return flag_strings
+    end
+
+    private
+      def flag_strings
+        strings = metadata('flags')
+        strings.nil? ? [] : strings.split(',').map { |string| string.strip }
+      end
+  end
+
+
+
   module Navigation
     module Renderers
 
@@ -105,7 +148,7 @@ module Nesta
             end
           end
         else
-          html_class = current_item_in_path?(item) ? "active" : nil
+          html_class = current_item_in_path?(item) ? "current active" : nil
           haml_tag :li, :class => html_class do
             haml_tag :a, :<, :href => url(item.abspath) do
               haml_concat item.menu_label

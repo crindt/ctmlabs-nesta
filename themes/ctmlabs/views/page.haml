@@ -1,8 +1,9 @@
 #content
   %div.row
-    %article.span12(role="main")
+    %article.span8(role="main")
       ~ @page.to_html(self)
 
+    %article.span4(role="main")
       %section.pages
         = article_summaries(@page.pages)
 
