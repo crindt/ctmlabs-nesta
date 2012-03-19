@@ -8,16 +8,12 @@
               %h2
                 /%a(href="#{page.abspath}")= page.heading
                 = page.heading
-              ~ page.body(self)
+            ~ page.body(self)
       - else
         %li.span6
-          %article.thumbnail
-            %header
-              %h2
-                %a(href="#{page.abspath}")= page.heading
+          %a.thumbnail(style="background: url('#{page.image_url()}')" href="#{page.abspath}") 
+            %div(style="width:100%;height:100%;background-color:rgba(0,0,0,0.75);")
+              %header
+                %h2= page.heading
               ~ page.summary
-            %p.read_more
-              %a(href="#{page.abspath}")
-                /%i.icon-envelope.icon-white
-                = page.read_more
-          = haml :page_meta, :layout => false, :locals => { :page => page }
+              = haml :page_meta, :layout => false, :locals => { :page => page }
