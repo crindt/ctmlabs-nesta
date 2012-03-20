@@ -55,7 +55,7 @@ nav ul.breadcrumb {
 }*/
 
 #brochure .banner .thumbnail, .pages .thumbnail {
-    min-height: 12em;
+    min-height: 200px
 }
 
 .navbar-fixed-top {
@@ -87,6 +87,7 @@ section {
 }
 
 .thumbnail {
+    background-size: 100%;
     footer {
         //border-top: 1px solid #E5E5E5;
     }
@@ -95,10 +96,10 @@ section {
 hr.soften {
     height: 1px;
     margin: 54px 0;
-    background-image: -webkit-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,.1), rgba(0,0,0,0));
-    background-image: -moz-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,.1), rgba(0,0,0,0));
-    background-image: -ms-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,.1), rgba(0,0,0,0));
-    background-image: -o-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,.1), rgba(0,0,0,0));
+    background-image: -webkit-linear-gradient(left, rgba(255,255,255,0), rgba(255,255,255,.3), rgba(255,255,255,0));
+    background-image: -moz-linear-gradient(left, rgba(255,255,255,0), rgba(255,255,255,.3), rgba(255,255,255,0));
+    background-image: -ms-linear-gradient(left, rgba(255,255,255,0), rgba(255,255,255,.3), rgba(255,255,255,0));
+    background-image: -o-linear-gradient(left, rgba(255,255,255,0), rgba(255,255,255,.3), rgba(255,255,255,0));
     border: 0;
 }
 
@@ -139,6 +140,7 @@ a {
 .breadcrumb {
     background-color: transparent;
     background-image: none;
+    border: none;
 
     box-shadow: none;
     
@@ -155,3 +157,41 @@ a {
         text-shadow: 2px 2px rgba(0,0,0,0.25);
     }
 }
+
+body {
+    background-image: -webkit-linear-gradient(bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.3));
+}
+
+/* make brochure images fit in their container */
+#brochure {
+    .banner .image {
+        min-height: 200px;
+        img {
+            width:100%;
+        }
+    }
+}
+
+.pages {
+    .thumbnails {
+        .thumbnail {
+            .header {
+                padding: 1em 1em 1em 1em;
+            }
+        }
+        /* handle narrow screen by expanding thumbnail to 100% */
+        li {
+            @media (max-width: 767px) {
+                width: 100%;
+            }
+        }
+
+    }
+}
+
+/* fix header menu background */
+.nav li a {
+    &:hover {
+    }
+}
+

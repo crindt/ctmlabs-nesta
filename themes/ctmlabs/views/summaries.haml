@@ -11,9 +11,10 @@
             ~ page.body(self)
       - else
         %li.span6
-          %a.thumbnail(style="background: url('#{page.image_url()}')" href="#{page.abspath}") 
-            %div(style="width:100%;height:100%;background-color:rgba(0,0,0,0.75);")
+          %a.thumbnail.curl(style="background: url('#{page.image_url()}')" href="#{page.abspath}") 
+            .header(style="background-color:rgba(0,0,0,0.75);")
               %header
                 %h2= page.heading
               ~ page.summary
-              = haml :page_meta, :layout => false, :locals => { :page => page }
+              %div
+                = haml :page_meta, :layout => false, :locals => { :page => page }
