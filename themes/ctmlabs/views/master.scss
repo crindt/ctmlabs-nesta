@@ -61,7 +61,7 @@ nav ul.breadcrumb {
 .navbar-fixed-top {
 /*
     a.brand {
-        background-image: url("/ctmlabs/images/logo_jem_060.png");
+        background-image: url("../ctmlabs/images/logo_jem_060.png");
         background-position: 5px 0px;
         background-size: 80px auto;
         padding-left: 93.33333333333334px;
@@ -103,27 +103,8 @@ hr.soften {
     border: 0;
 }
 
-
-// nivo slider
-.nivoSlider {
-    position:relative;
-    width:618px; /* Change this to your images width */
-    height:246px; /* Change this to your images height */
-    background:url(images/loading.gif) no-repeat 50% 50%;
-}
-.nivoSlider img {
-    position:absolute;
-    top:0px;
-    left:0px;
-    display:none;
-}
-.nivoSlider a {
-    border:0;
-    display:block;
-}
-
 #ctmllink {
-    background: url("/ctmlabs/images/ctml.png") no-repeat 50% 50%;
+    background: url("../ctmlabs/images/ctml.png") no-repeat 50% 50%;
     background-color: transparent;
     border: 0 none;
     color: transparent;
@@ -150,7 +131,7 @@ a {
 }
 
 .home .hero-unit {
-    background: url("/ctmlabs/images/fairview_sh.jpg") no-repeat;
+    background: url("../ctmlabs/images/fairview_sh.jpg") no-repeat;
     background-position: right top;
 
     hgroup {
