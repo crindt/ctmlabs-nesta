@@ -48,7 +48,7 @@ module Nesta
       def next_page_link( page, category )
         np = next_page_in_category( page, category )
         unless np == nil
-          haml_tag :a, :class=>"navarrow", :href => "/#{np.path}", :title => "See the page for #{np.full_title}" do
+          haml_tag :a, :class=>"navarrow", :href => url("/#{np.path}"), :title => "See the page for #{np.full_title}" do
             #haml_concat "Next"
             haml_concat "&#187;"
           end
@@ -65,7 +65,7 @@ module Nesta
       def prev_page_link( page, category )
         np = prev_page_in_category( page, category )
         unless np == nil
-          haml_tag :a, :class=>"navarrow", :href => "/#{np.path}", :title => "See the page for #{np.full_title}" do
+          haml_tag :a, :class=>"navarrow", :href => url("/#{np.path}"), :title => "See the page for #{np.full_title}" do
             #haml_concat "Previous"
             haml_concat "&#171;"
           end
