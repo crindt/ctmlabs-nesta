@@ -4,10 +4,11 @@
 - if @keywords
   %meta(name="keywords" content=@keywords)
 %link(rel="shortcut icon" href="/attachments/ctmlabs_favicon.ico")
+%base(href="url(:action => 'index')")
 %title= "CTMLabs - #{@title}"
 
-%link(rel="stylesheet" type="text/css" href="/ctmlabs/bootstrap/css/bootstrap.css")
-%link(rel="stylesheet" type="text/css" href="/ctmlabs/bootstrap/css/bootstrap-responsive.css")
+%link(rel="stylesheet" type="text/css" href="#{url('/ctmlabs/bootstrap/css/bootstrap.css')}")
+%link(rel="stylesheet" type="text/css" href="#{url('/ctmlabs/bootstrap/css/bootstrap-responsive.css')}")
 
 <!--[if ! lte IE 6]><!-->
 <!-- web fonts -->

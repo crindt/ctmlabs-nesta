@@ -179,8 +179,11 @@ body {
                 padding: 1em 1em 1em 1em;
             }
         }
-        /* handle narrow screen by expanding thumbnail to 100% */
-        li {
+        > li {
+            /* Add some more vertical spacing between tiles */
+            margin-bottom:30px;
+
+            /* handle narrow screen by expanding thumbnail to 100% */
             @media (max-width: 767px) {
                 width: 100%;
             }
