@@ -3,8 +3,8 @@
   %meta(name="description" content=@description)
 - if @keywords
   %meta(name="keywords" content=@keywords)
-%link(rel="shortcut icon" href="/attachments/ctmlabs_favicon.ico")
-%base(href="url(:action => 'index')")
+%link(rel="shortcut icon" href="attachments/ctmlabs_favicon.ico")
+%base(href="#{url('/')}")
 %title= "CTMLabs - #{@title}"
 
 %link(rel="stylesheet" type="text/css" href="#{url('/ctmlabs/bootstrap/css/bootstrap.css')}")
