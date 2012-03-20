@@ -173,11 +173,11 @@ module Nesta
             #end
             haml_tag :div, :id => 'slides' do
               imgs.each do |i|
-                haml_tag :img, :width=>"100%", :src => '/attachments/images/'+i
+                haml_tag :img, :width=>"100%", :src => url('/attachments/images/'+i)
               end
             end
           else
-            haml_tag :img, :src => '/attachments/images/'+imgs[0]
+            haml_tag :img, :src => url('/attachments/images/'+imgs[0])
           end
         end
       end
