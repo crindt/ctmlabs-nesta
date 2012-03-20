@@ -1,39 +1,36 @@
-<!DOCTYPE html>
-%html(lang="en")
-  %head
-    %meta(charset="utf-8")
-    - if @description
-      %meta(name="description" content=@description)
-    - if @keywords
-      %meta(name="keywords" content=@keywords)
-    %link(rel="shortcut icon" href="/attachments/favion.ico")
-    %title= "CTMLabs - #{@title}"
+%meta(charset="utf-8")
+- if @description
+  %meta(name="description" content=@description)
+- if @keywords
+  %meta(name="keywords" content=@keywords)
+%link(rel="shortcut icon" href="/attachments/ctmlabs_favicon.ico")
+%title= "CTMLabs - #{@title}"
 
-    %link(rel="stylesheet" type="text/css" href="/ctmlabs/bootstrap/css/bootstrap.css")
-    %link(rel="stylesheet" type="text/css" href="/ctmlabs/bootstrap/css/bootstrap-responsive.css")
+%link(rel="stylesheet" type="text/css" href="/ctmlabs/bootstrap/css/bootstrap.css")
+%link(rel="stylesheet" type="text/css" href="/ctmlabs/bootstrap/css/bootstrap-responsive.css")
 
-    <!--[if ! lte IE 6]><!-->
-    <!-- web fonts -->
-    %link(href='http://fonts.googleapis.com/css?family=Metrophobic' rel='stylesheet' type='text/css')
-    %link(href="/css/master.css" media="screen" rel="stylesheet")
-    <!--<![endif]-->
+<!--[if ! lte IE 6]><!-->
+<!-- web fonts -->
+%link(href='http://fonts.googleapis.com/css?family=Metrophobic' rel='stylesheet' type='text/css')
+%link(href="/css/master.css" media="screen" rel="stylesheet")
+<!--<![endif]-->
 
-    /[if lte IE 6]
-      %link(rel="stylesheet" href="http://universal-ie6-css.googlecode.com/files/ie6.1.1.css" media="screen, projection")
-    /[if lt IE 9]
-      %script(src="//html5shim.googlecode.com/svn/trunk/html5.js")
+/[if lte IE 6]
+  %link(rel="stylesheet" href="http://universal-ie6-css.googlecode.com/files/ie6.1.1.css" media="screen, projection")
+/[if lt IE 9]
+  %script(src="//html5shim.googlecode.com/svn/trunk/html5.js")
 
-    %script(src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js")
-    %script(src="/ctmlabs/bootstrap/js/bootstrap.js")
-    %script(src="/ctmlabs/js/common.js")
+%script(src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js")
+%script(src="/ctmlabs/bootstrap/js/bootstrap.js")
+%script(src="/ctmlabs/js/common.js")
 
-    /%script(src="/ctmlabs/js/nivo-slider/jquery.nivo.slider.pack.js")
-    /%link(href="/ctmlabs/js/nivo-slider/themes/default/default.css" media="screen" rel="stylesheet")
-    %link(href="/ctmlabs/js/simple.css" media="screen" rel="stylesheet")
-    %link(href="/ctmlabs/css/curl.css" media="screen" rel="stylesheet")
-    %script(src="/ctmlabs/js/slides.js")
+/%script(src="/ctmlabs/js/nivo-slider/jquery.nivo.slider.pack.js")
+/%link(href="/ctmlabs/js/nivo-slider/themes/default/default.css" media="screen" rel="stylesheet")
+%link(href="/ctmlabs/js/simple.css" media="screen" rel="stylesheet")
+%link(href="/ctmlabs/css/curl.css" media="screen" rel="stylesheet")
+%script(src="/ctmlabs/js/slides.js")
 
-    %script(src="http://mbostock.github.com/d3/d3.js?2.7.0")
-    = local_stylesheet_link_tag('local')
-    %link(href="/articles.xml" rel="alternate" type="application/atom+xml")
-    = haml :analytics, :layout => false
+%script(src="http://mbostock.github.com/d3/d3.js?2.7.0")
+= local_stylesheet_link_tag('local')
+%link(href="/articles.xml" rel="alternate" type="application/atom+xml")
+= haml :analytics, :layout => false

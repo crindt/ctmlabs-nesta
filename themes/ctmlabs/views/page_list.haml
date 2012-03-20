@@ -3,19 +3,23 @@
     %article.span12(role="main")
       ~ @page.to_html(self)
 
+      %h2 &nbsp;
       %section.pages
-        - unless @page.pages_with_flag("deployed").empty?
+        - if @page.metadata('group by') != nil
+          - unless @page.pages_with_flag(@page.metadata('group by')).empty?
+            %section.deployed_pages
+              %header
+                %h2 Active 
+              = article_summaries(@page.pages_with_flag(@page.metadata('group by')))
+
+          - unless @page.pages_without_flag(@page.metadata('group by')).empty?
+            %section.coming_pages
+              %header
+                %h2 Coming Soon
+              = article_summaries(@page.pages_without_flag(@page.metadata('group by')))
+        - else
           %section.deployed_pages
-            %header
-              %h1 Active 
-            = article_summaries(@page.pages_with_flag("deployed"))
-
-        - unless @page.pages_without_flag("deployed").empty?
-          %section.coming_pages
-            %header
-              %h1 Coming Soon
-            = article_summaries(@page.pages_without_flag("deployed"))
-
+            = article_summaries(@page.pages)
       - unless @page.articles.empty?
         %section.articles
           %header
