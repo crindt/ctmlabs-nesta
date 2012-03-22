@@ -3,7 +3,6 @@
 
     window.onload = function(){
         $(".container [title]").tooltip();
-        $(".navbar-fixed-top [title]").tooltip({placement:"bottom"});
 
         //$("#slider").nivoSlider({effect:'fade'});
         $("#slides").slides({responsive:true,startAtSlide:1,
