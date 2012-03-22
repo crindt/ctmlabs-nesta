@@ -132,7 +132,7 @@ textarea {
 }
 body {
   margin: 0;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-size: 13px;
   line-height: 18px;
   color: #ffffff;
@@ -322,7 +322,7 @@ a:hover {
 }
 p {
   margin: 0 0 9px;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-size: 13px;
   line-height: 18px;
 }
@@ -343,9 +343,9 @@ h4,
 h5,
 h6 {
   margin: 0;
-  font-family: inherit;
-  font-weight: bold;
-  color: #eecc55;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-weight: 600;
+  color: inherit;
   text-rendering: optimizelegibility;
 }
 h1 small,
@@ -907,7 +907,7 @@ input,
 button,
 select,
 textarea {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: 'Open Sans', sans-serif;
 }
 label {
   display: block;
@@ -1618,15 +1618,15 @@ legend + .control-group {
   color: rgba(255, 255, 255, 0.75);
 }
 .btn-primary {
-  background-color: #0060cc;
-  background-image: -moz-linear-gradient(top, #0074cc, #0041cc);
-  background-image: -ms-linear-gradient(top, #0074cc, #0041cc);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0074cc), to(#0041cc));
-  background-image: -webkit-linear-gradient(top, #0074cc, #0041cc);
-  background-image: -o-linear-gradient(top, #0074cc, #0041cc);
-  background-image: linear-gradient(top, #0074cc, #0041cc);
+  background-color: #0054cc;
+  background-image: -moz-linear-gradient(top, #0060cc, #0041cc);
+  background-image: -ms-linear-gradient(top, #0060cc, #0041cc);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0060cc), to(#0041cc));
+  background-image: -webkit-linear-gradient(top, #0060cc, #0041cc);
+  background-image: -o-linear-gradient(top, #0060cc, #0041cc);
+  background-image: linear-gradient(top, #0060cc, #0041cc);
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0074cc', endColorstr='#0041cc', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0060cc', endColorstr='#0041cc', GradientType=0);
   border-color: #0041cc #0041cc #002980;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
   filter: progid:dximagetransform.microsoft.gradient(enabled=false);
@@ -3370,7 +3370,7 @@ a.thumbnail:hover {
 .hero-unit {
   padding: 60px;
   margin-bottom: 30px;
-  background-color: #2f4f7d;
+  background-color: #eeeeee;
   -webkit-border-radius: 6px;
   -moz-border-radius: 6px;
   border-radius: 6px;
@@ -3379,7 +3379,7 @@ a.thumbnail:hover {
   margin-bottom: 0;
   font-size: 60px;
   line-height: 1;
-  color: #eecc55;
+  color: inherit;
   letter-spacing: -1px;
 }
 .hero-unit p {
