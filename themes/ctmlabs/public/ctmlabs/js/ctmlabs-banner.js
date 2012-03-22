@@ -1,7 +1,7 @@
 (function(){
     ctmlabs = {version:"0.0.1"};
 
-    window.onload = function(){
+    $(document).ready(function(){
         var menuStr ='  <nav id="ctmlabs-nav" class="navbar"> \
     <div class="navbar-inner"> \
       <div class="container-fluid"> \
@@ -66,7 +66,7 @@
 
         $(".navbar-fixed-top [title]").tooltip({placement:"bottom"});
         
-    };
+    });
         
 })()
 
