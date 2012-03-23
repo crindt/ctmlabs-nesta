@@ -142,7 +142,7 @@ module Nesta
         elsif i < 0 
           i = 0
         end
-        return '/attachments/images/'+imgs[i]
+        return imgs[i]
       else
         return ''
       end
@@ -273,7 +273,7 @@ module Nesta
               end
             end
           else
-            haml_tag :img, :class => 'curl', :src => url('/attachments/images/'+imgs[0])
+            haml_tag :img, :class => 'curl', :src => url(imgs[0])
           end
         end
       end
