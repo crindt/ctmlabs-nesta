@@ -7,8 +7,9 @@
         %p &nbsp
         %hgroup
           %br
-            %h1 #{@page.full_title}
-            %h3 #{@page.summary}
+            %h1
+              #{@page.full_title}
+              %small #{@page.summary}
         -unless @page.contact == nil
           %a.btn.btn-primary.contact(href="#{@page.contact}" title="Contact the project maintainer") 
             %i.icon-envelope.icon-white

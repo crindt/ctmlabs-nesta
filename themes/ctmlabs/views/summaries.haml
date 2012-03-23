@@ -11,10 +11,15 @@
             ~ page.body(self)
       - else
         %li.span6
-          %a.thumbnail.curl(style="background: url('#{url(page.image_url())}'); background-size:cover;" href="#{url(page.abspath)}") 
-            .header(style="background-color:rgba(0,0,0,0.75);")
-              %header
-                %h2= page.heading
-              ~ page.summary
-              %div
-                = haml :page_meta, :layout => false, :locals => { :page => page }
+          %a.thumbnail.curl(href="#{url(page.abspath)}") 
+            .row-fluid
+              .header(style="background-color:rgba(0,0,0,0.75);")
+                %header
+                  %h2= page.heading
+            .row-fluid
+              %div.span6.align-right
+                %img(src="#{url(page.image_url())}" width="100%")
+              %div.span6              
+                ~ page.summary
+          %div
+            = haml :page_meta, :layout => false, :locals => { :page => page }

@@ -1,8 +1,7 @@
 %header.row(role="banner")
   %div.span6
-    %hgroup
-      %img(style="min-height:100px;" height=100 src="#{url('/ctmlabs/images/logo_jem_100.png')}" alt="#{@heading}")
-      %h3= @subtitle
+    %img(style="min-height:100px;" height=100 src="#{url('/ctmlabs/images/logo_jem_100.png')}" alt="#{@heading}")
+    %h3= @subtitle
   %div.span6    
     %nav.subnav
       - display_bootstrap_menu(@menu_items, :class => "nav nav-pills pull-right", :levels => 1)
