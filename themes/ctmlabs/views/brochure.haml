@@ -19,28 +19,30 @@
           %a.btn.btn-primary.page(href="#{@page.url}" target="_blank" title="Go to the #{@page.full_title} application website (opens a new window)") 
             %i.icon-share-alt.icon-white
             Website
-      .image.span5.curl
+      .image.span5
         /%img.thumbnail(src="/attachments/images/#{@page.metadata('Image')}")
         - render_sliding_image_viewer(@page)
       .span1.align-right(style="font-size:400%;margin-top:2em;text-align:right;")
         - next_page_link( @page, @page.parent.path ) 
     %hr.soften
     .row
-      %section.keypoints.span6
-        / emit the brochure details    
-        ~ @page.to_html(self)
+      %section.span12.ataglance
+        %h2 At a glance
+        %section.keypoints.span12
+          / emit the brochure details    
+          ~ @page.to_html(self)
 
-      %section.related.span6
-        - unless @page.pages.empty?
-          %section.related.pages
-            %header
-              %h3 Related Pages
-            = haml :compact_summaries, :layout => false, :locals => { :pages => @page.pages }
-        - unless @page.articles.empty?
-          %section.related.articles
-            %header
-              /%h4= articles_heading
-              %h3 Related events and announcements
-            = haml :compact_summaries, :layout => false, :locals => { :pages => @page.articles }
+        %section.related.span6
+          - unless @page.pages.empty?
+            %section.related.pages
+              %header
+                %h3 Related Pages
+              = haml :compact_summaries, :layout => false, :locals => { :pages => @page.pages }
+          - unless @page.articles.empty?
+            %section.related.articles
+              %header
+                /%h4= articles_heading
+                %h3 Related events and announcements
+              = haml :compact_summaries, :layout => false, :locals => { :pages => @page.articles }
 
     = haml :page_meta, :layout => false, :locals => { :page => @page }

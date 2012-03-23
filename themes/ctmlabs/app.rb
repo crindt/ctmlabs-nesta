@@ -208,13 +208,32 @@ module Nesta
             #    haml_tag :img, :width=>"100%", :src => '/attachments/images/'+i
             #  end
             #end
-            haml_tag :div, :id => 'slides' do
-              imgs.each do |i|
-                haml_tag :img, :width=>"100%", :src => url('/attachments/images/'+i)
+            haml_tag :div, :id => 'slides', :class => 'carousel curl' do
+              haml_tag :div, :class => 'carousel-inner' do
+                is_set = nil
+                imgs.each do |i|
+                  active = nil
+                  if !is_set 
+                    active = "active"
+                    is_set = true
+                  end
+                  haml_tag :div, :class=>"item #{active}" do
+                    haml_tag :img, :width=>"100%", :src => url('/attachments/images/'+i)
+                    haml_tag :div, :class=>"carousel-caption" do
+                      haml_concat "Caption"
+                    end
+                  end
+                end
+              end
+              haml_tag :a, :class=>"carousel-control left", :href=>"#slides", :"data-slide"=>"prev" do
+                haml_concat "&lsaquo;"
+              end
+              haml_tag :a, :class=>"carousel-control right", :href=>"#slides", :"data-slide"=>"next" do
+                haml_concat "&rsaquo;"
               end
             end
           else
-            haml_tag :img, :src => url('/attachments/images/'+imgs[0])
+            haml_tag :img, :class => 'curl', :src => url('/attachments/images/'+imgs[0])
           end
         end
       end
