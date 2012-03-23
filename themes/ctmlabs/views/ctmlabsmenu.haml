@@ -16,15 +16,7 @@
             %a.dropdown-toggle(href="#" data-toggle="dropdown")
               Applications
               %b.caret
-            %ul.dropdown-menu
-              %li
-                %a(href="https://tmcpe.ctmlabs.net/tmcpe-1.3")TMC Performance Evaulation
-              %li
-                %a(href="http://128.200.36.104:8080/SATMSWeb")Ramp Meter Evaluation Platform
-              %li
-                %a(href="http://moon.its.uci.edu/inside")INSIDE Laboratory
-              %li 
-                %a(href="http://safety.ctmlabs.net/safetynet")Safety
+            - category_page_link_list( "projects", "dropdown-menu" )
         %ul.nav.pull-right
           %li
             %a(href="http://tracker.ctmlabs.net/projects/tb/issues/new" title="Report a problem with this website") Report Problem

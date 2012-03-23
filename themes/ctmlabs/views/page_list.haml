@@ -9,13 +9,13 @@
           - unless @page.pages_with_flag(@page.metadata('group by')).empty?
             %section.deployed_pages
               %header
-                %h2 Active 
+                %h2 Active pages...
               = article_summaries(@page.pages_with_flag(@page.metadata('group by')))
 
           - unless @page.pages_without_flag(@page.metadata('group by')).empty?
             %section.coming_pages
               %header
-                %h2 Coming Soon
+                %h2 Coming soon...
               = article_summaries(@page.pages_without_flag(@page.metadata('group by')))
         - else
           %section.deployed_pages

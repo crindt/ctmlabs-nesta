@@ -9,7 +9,8 @@
           %br
             %h1
               #{@page.full_title}
-              %small #{@page.summary}
+              %br              
+              %small= @page.metadata("summary")
         -unless @page.contact == nil
           %a.btn.btn-primary.contact(href="#{@page.contact}" title="Contact the project maintainer") 
             %i.icon-envelope.icon-white

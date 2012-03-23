@@ -71,6 +71,31 @@ module Nesta
           end
         end
       end
+
+      def category_page_link_list( category, list_class = "", item_class = "" )
+        ppage = Page.find_by_path(category)
+        pp = Page.find_all.select do |page|
+          page.date.nil? && page.url && page.flags.include?('deployed') && page.categories.include?(ppage)
+        end
+        # sort by priority
+        pp = pp.sort do |x,y|
+          by_priority = y.priority(category) <=> x.priority(category)
+          if by_priority == 0
+            x.heading.downcase <=> y.heading.downcase
+          else
+            by_priority
+          end
+        end
+        haml_tag :ul, :class=>list_class do
+          pp.each do |p|
+            haml_tag :li, :class=>item_class do
+              haml_tag :a, :href=>"#{p.url}", :"data-placement"=>"right", :"data-delay"=>"50", :title=>"#{p.title}" do
+                haml_concat "#{p.menu || p.title}"
+              end
+            end
+          end
+        end
+      end
     end
 
     # Add new routes here.
@@ -97,6 +122,18 @@ module Nesta
         return '/attachments/images/'+imgs[i]
       else
         return ''
+      end
+    end
+
+    def url
+      metadata('url')
+    end
+
+    def menu
+      if metadata('menu')
+        metadata('menu')
+      elsif metadata('menu item')
+        metadata('menu item')
       end
     end
 
