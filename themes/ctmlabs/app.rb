@@ -34,15 +34,29 @@ module Nesta
 
       #### support paging through a category
       def nth_page_in_category(page,nth)
-        $stderr.puts "PAGES ARE: #{page.pages}"
-        return page.parent.pages[nth]
+        # $stderr.puts "PAGES ARE: #{page.parent.pages.collect{|p| p.title}}"
+        # $stderr.puts "NTH IS: #{nth} === #{page.parent.pages[nth].title} "
+        if nth >=0 && nth < page.parent.pages.length
+          return page.parent.pages[nth]
+        else
+          return nil
+        end
       end
 
       def next_page_in_category(page,category)
-        next_idx = (-1*page.priority( category ))
-        unless next_idx == nil
-          return nth_page_in_category( page, next_idx )
+        # find location of this page in pages
+        idx = 0
+        the_idx = nil
+        page.parent.pages.each do |pp|
+          if pp == page
+            the_idx = idx
+          end
+          idx = idx + 1
         end
+        unless (the_idx == nil) || (the_idx+1 >= page.parent.pages.length)
+          return nth_page_in_category( page, the_idx + 1 )
+        end
+        nil
       end
 
       def next_page_link( page, category )
@@ -56,10 +70,19 @@ module Nesta
       end
 
       def prev_page_in_category(page,category)
-        prev_idx = (-1*page.priority( category )-2)
-        unless prev_idx == nil
-          return nth_page_in_category( page, prev_idx )
+        # find location of this page in pages
+        idx = 0
+        the_idx = nil
+        page.parent.pages.each do |pp|
+          if pp == page
+            the_idx = idx
+          end
+          idx = idx + 1
         end
+        unless (the_idx == nil) || (the_idx+1 <= 0)
+          return nth_page_in_category( page, the_idx - 1 )
+        end
+        nil
       end
 
       def prev_page_link( page, category )
@@ -214,7 +237,7 @@ module Nesta
               haml_tag :div, :class => 'carousel-inner' do
                 is_set = nil
                 imgs.each do |i|
-                  $stderr.puts("IMAGE IS #{i}===========")
+                  # $stderr.puts("IMAGE IS #{i}===========")
                   active = nil
                   if !is_set 
                     active = "active"
@@ -223,16 +246,16 @@ module Nesta
                   haml_tag :div, :class=>"item #{active}" do
                     haml_tag :img, :width=>"100%", :src => url(i)
                     xmp = img_xmp(i)
-                    $stderr.puts("XMP?: #{xmp}")
+                    # $stderr.puts("XMP?: #{xmp}")
                     if xmp
                       xmp.namespaces.each do |nn|
                         n = xmp.send(nn)
                         n.attributes.each do |a|
-                          $stderr.puts("XMP[#{nn}.#{a}]: #{xmp.attribute_or(a,'wha?')}") #: #{n.send(a).inspect}")
+                          # $stderr.puts("XMP[#{nn}.#{a}]: #{xmp.attribute_or(a,'wha?')}") #: #{n.send(a).inspect}")
                         end
                       end
                       cap = xmp.attribute_or('dc.description',nil)
-                      $stderr.puts("cap: #{cap}")                      
+                      # $stderr.puts("cap: #{cap}")                      
                       if cap && cap.length > 0
                         haml_tag :div, :class=>"carousel-caption" do
                           haml_concat "#{cap[0]}"
