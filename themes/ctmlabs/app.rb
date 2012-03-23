@@ -125,6 +125,8 @@ module Nesta
       end
     end
 
+    
+
     def url
       metadata('url')
     end
@@ -212,15 +214,30 @@ module Nesta
               haml_tag :div, :class => 'carousel-inner' do
                 is_set = nil
                 imgs.each do |i|
+                  $stderr.puts("IMAGE IS #{i}===========")
                   active = nil
                   if !is_set 
                     active = "active"
                     is_set = true
                   end
                   haml_tag :div, :class=>"item #{active}" do
-                    haml_tag :img, :width=>"100%", :src => url('/attachments/images/'+i)
-                    haml_tag :div, :class=>"carousel-caption" do
-                      haml_concat "Caption"
+                    haml_tag :img, :width=>"100%", :src => url(i)
+                    xmp = img_xmp(i)
+                    $stderr.puts("XMP?: #{xmp}")
+                    if xmp
+                      xmp.namespaces.each do |nn|
+                        n = xmp.send(nn)
+                        n.attributes.each do |a|
+                          $stderr.puts("XMP[#{nn}.#{a}]: #{xmp.attribute_or(a,'wha?')}") #: #{n.send(a).inspect}")
+                        end
+                      end
+                      cap = xmp.attribute_or('dc.description',nil)
+                      $stderr.puts("cap: #{cap}")                      
+                      if cap && cap.length > 0
+                        haml_tag :div, :class=>"carousel-caption" do
+                          haml_concat "#{cap[0]}"
+                        end
+                      end
                     end
                   end
                 end
