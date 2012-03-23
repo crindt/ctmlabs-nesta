@@ -50,4 +50,5 @@ DEPENDENCIES
   json
   nesta!
   nesta-plugin-metadata-extensions!
+  nokogiri (= 1.5.2)
   xmp (= 0.2.0)

@@ -13,6 +13,7 @@ gem 'i18n', '0.6'
 
 gem 'xmp', '0.2.0'
 gem 'exifr', '1.1.2'
+gem 'nokogiri', '1.5.2'
 
 #gem (RUBY_VERSION =~ /^1.9/) ? 'ruby-debug19': 'ruby-debug'
 
