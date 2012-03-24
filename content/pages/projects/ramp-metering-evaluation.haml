@@ -1,6 +1,7 @@
 Title: Ramp Metering Evaluation Platform
 H1: Ramp Metering Evaluation Platform
-Menu Label: SATMS
+Menu Label: RMEP
+Menu: RMEP
 Categories: projects:-3,services/custom-application-development
 Template: brochure
 Summary: Evaluating ramp metering effectiveness 
@@ -9,11 +10,130 @@ Url: http://128.200.36.104:8080/SATMSWeb
 Image: /attachments/images/rampmetering1.jpg
 flags: deployed
 
-%section.what
-  %h3 What does it consist of?
+%section.row.ataglance
 
-%section.how
-  %h3 How can it be used?
+  .span12
+    %h2 At a glance...
+    %hr.soften-right.near
 
-%section.applications
-  %h3 Applications
+  %section.what.span4
+    %h3 What does it consist of?
+    :markdown
+      * Live data feed from ramp meter controllers
+      * Multiple ramp metering strategies
+
+  %section.how.span4
+    %h3 How can it be used?
+    :markdown
+      Used to evaluate and test different ramp metering strategies
+      using actual field data.
+
+  %section.related.span4
+    - unless @page.pages.empty?
+      %section.related.pages
+        %header
+          %h3 Related Pages
+        = haml :compact_summaries, :layout => false, :locals => { :pages => @page.pages }    
+    - unless @page.articles.empty?
+      %section.related.articles
+        %header
+          /%h4= articles_heading
+          %h3 Related events and announcements
+        = haml :compact_summaries, :layout => false, :locals => { :pages => @page.articles }
+
+
+%section.row.twopage
+  .span12
+    %h2 In more detail...
+    %hr.soften-right.near
+
+      .multi-column-20
+        %section
+          :markdown
+
+            ### What is the Ramp Meter Evaluation Platform?
+
+            The product allows engineers, researchers, and managers to
+            display, evaluate, and analyze the performance of current
+            ramp metering operation through a web interface.
+
+            ### What does it do?
+
+            The product can be used to display the operation of ramp
+            meters based on real-time and historical ramp metering
+            data collected from the field controllers. It can be used
+            to show the performance of the meters in terms of queue
+            override, ramp flow, metering rate, etc. It also provides
+            functions to analyze the performance of ramp metering
+            control. For example, frequent queue override may indicate
+            continuous high demands or inappropriate metering rate
+            setup. The frequent use of time-of-day metering rate
+            instead of traffic responsive metering rate may indicate
+            inappropriate settings for traffic responsive metering
+            parameters.
+
+            ### What is the current status?
+
+            CTMLabs is currently receiving ramp metering related data
+            together with loop detector data from the field
+            controllers every 30 sec. Researchers are in the process
+            of parsing these data that will need to be saved to the
+            database. The ramp metering related data have been
+            analyzed based on the SATMS protocol and some sample data.
+            Researchers have roughly designed the web interfaces and
+            started coding the web-based program.
+
+            ### Who are the customers?
+
+            Ramp metering traffic engineers can use this system to
+            check the performance of current meters and fine-tune
+            their performance by analyzing historical ramp metering
+            data.  Managers can thus know the capabilities of the
+            existing metering system and allocate resources to utilize
+            this freeway control method for freeway operation
+            improvement.
+
+            ### What roadblocks are preventing Caltrans wide implementation?
+
+            Although Caltrans has spent a lot of resources to seek the
+            improvement of ramp metering system, the performance and
+            capabilities of the existing meters are not investigated
+            based on available data.
+
+            According to District 12 and 7’s SATMS system, ramp
+            metering data are collected and sent to TMC together with
+            loop detector data. Detector data have been widely
+            used. But, ramp metering data have been forgotten.
+
+            ### Who are your current partners?
+
+            Outside Caltrans:
+
+            * California Center for Innovative Transportation, University of California at Berkeley
+            * Institute of Transportation Studies, University of California at Irvine
+
+            Within Caltrans District 12:
+
+            * Mort Fahrtash, Caltrans/D12 TSD
+            * Zhongren Wang, Caltrans HQ
+            * Herasmo Iniguez, Caltrans HQ
+
+            ### What partners are missing?
+
+            Extending the system to other Caltrans Districts would
+            require ramp metering traffic managers and engineers from
+            other Caltrans districts and decision makers from
+            headquarters.
+
+            ### What resources are needed to move forward?
+
+            Extending the system to other districts would require a
+            commitment by participating districts to provide access to
+            ramp metering data received from the field controllers. In
+            addition, developers need to analyze the ramp metering
+            data contents from other districts.  Some time would be
+            needed to alter the system to work with the (almost
+            certainly) altered data sources. The amount of developer
+            time would depend on how much the processes and software
+            differ from the current systems in use at Caltrans
+            District 12.

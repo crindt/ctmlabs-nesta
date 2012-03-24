@@ -6,148 +6,177 @@ Categories: projects:-1, services/custom-application-development
 Template: brochure
 Summary: Quantitative evaluation of traffic management center benefits
 Contact: mailto:support@ctmlabs.net&subject=Information about TMC Performance Evaluation
-Url: http://tmcpe.ctmlabs.net/
+Url: http://tmcpe.ctmlabs.net/tmcpe-1.3
 Image: /attachments/images/tmcpe-1.png
 Flags: deployed
 
-%section.ataglance.column-count-2
-  %h2 At a glance...
-  %hr.soften-tight.tight
+%section.row.ataglance
+  .span12
+    %h2 At a glance...
+    %hr.soften-right.near
+
+  %section.what.span4
+    %h3 What does it consist of?
+    :markdown
+
+      * Loop detector analysis
+      * TMC log analysis
+      * CHP CAD analysis
+      * Data fusion
+      * Model estimation
     
-.row
-  .span6
-    %section.what
-      %h3 What does it consist of?
+  %section.how.span4
+  
+    %h3 How can it be used?
+  
+    %p
       :markdown
 
-        * Loop detector analysis
-        * TMC log analysis
-        * CHP CAD analysis
-        * Data fusion
-        * Model estimation
-
-    %section.how
-
-      %h3 How can it be used?
-
-      :markdown
-
-        This project analyzes the raw data from an incident, compares
+        This tool analyzes the raw data from an incident, compares
         what actually happened to the historic norms, and then
         develops an estimate of how bad the traffic resulting from the
         incident *would have been* but for the intervention of the
         TMC.
 
-%hr.soften
+  %section.related.span4
+    - unless @page.pages.empty?
+      %section.related.pages
+        %header
+          %h3 Related Pages
+        = haml :compact_summaries, :layout => false, :locals => { :pages => @page.pages }    
+    - unless @page.articles.empty?
+      %section.related.articles
+        %header
+          /%h4= articles_heading
+          %h3 Related events and announcements
+        = haml :compact_summaries, :layout => false, :locals => { :pages => @page.articles }
 
 %section.row.twopage
-  %h2 In more detail...
-  %hr.soften-right.near
+  .span12
+    %h2 In more detail...
+    %hr.soften-right.near
 
-  .span12.multi-column-20
-    %section
-      :markdown
+    .multi-column-20
+      %section
+        :markdown
   
-        ### Why was this research undertaken?
+          ### Why was this research undertaken?
   
-        Caltrans has a significant investment in Transportation Management Centers
-        (TMCs) throughout the state. These operations centers are tasked with
-        maintaining the safety and efficiency of California's highways by actively
-        managing disruptions to the system caused by anticipated and unanticipated
-        events that impact the available capacity and/or the demand to use
-        individual facilities. Presently, however, no comprehensive methods are
-        available to quantify the benefits of existing TMC deployments.
+          Caltrans has a significant investment in Transportation
+          Management Centers (TMCs) throughout the state. These
+          operations centers are tasked with maintaining the safety
+          and efficiency of California's highways by actively managing
+          disruptions to the system caused by anticipated and
+          unanticipated events that impact the available capacity
+          and/or the demand to use individual facilities. Presently,
+          however, no comprehensive methods are available to quantify
+          the benefits of existing TMC deployments.
   
-    %section
-      :markdown
+      %section
+        :markdown
   
-        ### What was done as part of this research?
+          ### What was done as part of this research?
   
-        This research developed a method of evaluating TMC operations using data
-        available from the Caltrans District 12 activity logging software and the
-        Caltrans Performance Measurement System (PeMS). For a given incident, the
-        technique first models the extent of delay caused by the incident using a
-        novel mathematically programming technique. This provides a baseline delay
-        from which various what-if scenarios can be considered to explore who the
-        absence of the TMC might increase delays incurred by travelers in the
-        system.  To support this method, changes were made to the District 12
-        activity log to record critical events during incident management.
+          This research developed a method of evaluating TMC
+          operations using data available from the Caltrans District
+          12 activity logging software and the Caltrans Performance
+          Measurement System (PeMS). For a given incident, the
+          technique first models the extent of delay caused by the
+          incident using a novel mathematically programming
+          technique. This provides a baseline delay from which various
+          what-if scenarios can be considered to explore who the
+          absence of the TMC might increase delays incurred by
+          travelers in the system.  To support this method, changes
+          were made to the District 12 activity log to record critical
+          events during incident management.
   
-        The end product of the research is a web-based TMC Performance Evaluation
-        (TMCPE) application that addresses this problem. The system allows TMC
-        managers to evaluate the performance of various bundles of TMC technologies
-        and operational policies by mapping their effects onto events in the system
-        that can be measured using existing surveillance systems and daily activity
-        logs.  The resulting tool provides managers with the long needed
-        capabilities to:
+          The end product of the research is a web-based TMC
+          Performance Evaluation (TMCPE) application that addresses
+          this problem. The system allows TMC managers to evaluate the
+          performance of various bundles of TMC technologies and
+          operational policies by mapping their effects onto events in
+          the system that can be measured using existing surveillance
+          systems and daily activity logs.  The resulting tool
+          provides managers with the long needed capabilities to:
   
-           * justify valuable technology, personnel allocations, and maintenance
-             costs,
+          * justify valuable technology, personnel allocations, and
+            maintenance costs,
+          
+          * identify technologies that aren't meeting their initial promise, and
+          
+          * identify gaps in current operational strategies that might
+            be filled with new technology deployments.
   
-           * identify technologies that aren't meeting their initial promise, and
-  
-           * identify gaps in current operational strategies that might be filled
-             with new technology deployments.
-  
-        The evaluation method used considers delay savings that are attributable to
-        specific TMC actions. All computations are based on direct measurement of
-        the system using available sensors and do not rely on speculative simulation
-        models requiring extensive assumptions.
-  
-  
-        ### What can be concluded?
-  
-        Significant delay savings are attributable to TMC operations even when only
-        considering improved incident response times. The use of TMC technologies
-        such as CCTV for improved incident awareness and tight integration with
-        other responders leads to vastly improved verification and subsequent
-        response times.  These, in turn, lead to reductions in incident induced
-        delay compared to the hypothetical absence of TMC operations.
-  
-        Furthermore, by enhancing the TMC activity logs to record the specific
-        stages of incident response, this project obtained a finer resolution of TMC
-        actions that allowed for more detailed modeling of incident dynamics.
-        Similar logging improvements would no doubt be beneficial beyond District
-        12.
+            The evaluation method used considers delay savings that
+            are attributable to specific TMC actions. All computations
+            are based on direct measurement of the system using
+            available sensors and do not rely on speculative
+            simulation models requiring extensive assumptions.
   
   
-        ### What do researchers recommend?
+          ### What can be concluded?
   
-        First, we recommend continued development and fine-tuning of the TMC Impact
-        model that estimates savings attributable to the TMC.
+          Significant delay savings are attributable to TMC operations
+          even when only considering improved incident response
+          times. The use of TMC technologies such as CCTV for improved
+          incident awareness and tight integration with other
+          responders leads to vastly improved verification and
+          subsequent response times.  These, in turn, lead to
+          reductions in incident induced delay compared to the
+          hypothetical absence of TMC operations.
   
-        Second, we explored alternative statistical techniques that offer an
-        alternative and more robust approach to determining which time- space
-        sections are impacted by external disruptions. These data-mining methods are
-        currently too computationally intensive to be included in the live website,
-        but the techniques show promise for later deployment as the algorithms are
-        optimized.
-  
-        Third, many benefits offered by the TMC are not currently included in this
-        tool. These include the many direct and indirect benefits attributable to
-        information dissemination. We recommend continued work on enhancements to
-        the TMC impact model to consider diversionary effects due to such
-        information.
-  
-        Fourth, the system is currently limited to analyzing incidents managed by
-        Caltrans District 12. This is solely due to the system's reliance on the
-        augmented data now available from District 12 activity log due to
-        improvements made in support of this project.  The methods used, however,
-        are completely transferable to any system with similar activity logging data
-        and speed and volume estimates for impacted sections. Because the TMCAL
-        system currently being deployed by Caltrans appears to be a developing
-        standard for recording TMC actions, we recommend that the TMCPE system be
-        augmented to accept data from the TMCAL data source as well as its current
-        District 12 activity log backend.
+          Furthermore, by enhancing the TMC activity logs to record
+          the specific stages of incident response, this project
+          obtained a finer resolution of TMC actions that allowed for
+          more detailed modeling of incident dynamics.  Similar
+          logging improvements would no doubt be beneficial beyond
+          District 12.
   
   
-        ### Implementation Strategies
+          ### What do researchers recommend?
   
-        The system is implemented using a modular software architecture that can
-        interface with a variety of existing or planned systems used by
-        Caltrans. The initial deployment focused on delivering a reporting system
-        accessible from the recently deployed website for the California Traffic
-        Management Laboratories (CTMLabs), formerly known as the California Advanced
-        Transportation Management System (ATMS) Testbed.  Possible future
-        deployments could integrate the core performance evaluation models with
-        real-time TMC management systems
+          First, we recommend continued development and fine-tuning of
+          the TMC Impact model that estimates savings attributable to
+          the TMC.
+  
+          Second, we explored alternative statistical techniques that
+          offer an alternative and more robust approach to determining
+          which time- space sections are impacted by external
+          disruptions. These data-mining methods are currently too
+          computationally intensive to be included in the live
+          website, but the techniques show promise for later
+          deployment as the algorithms are optimized.
+  
+          Third, many benefits offered by the TMC are not currently
+          included in this tool. These include the many direct and
+          indirect benefits attributable to information
+          dissemination. We recommend continued work on enhancements
+          to the TMC impact model to consider diversionary effects due
+          to such information.
+  
+          Fourth, the system is currently limited to analyzing
+          incidents managed by Caltrans District 12. This is solely
+          due to the system's reliance on the augmented data now
+          available from District 12 activity log due to improvements
+          made in support of this project.  The methods used, however,
+          are completely transferable to any system with similar
+          activity logging data and speed and volume estimates for
+          impacted sections. Because the TMCAL system currently being
+          deployed by Caltrans appears to be a developing standard for
+          recording TMC actions, we recommend that the TMCPE system be
+          augmented to accept data from the TMCAL data source as well
+          as its current District 12 activity log backend.
+  
+  
+          ### Implementation Strategies
+  
+          The system is implemented using a modular software
+          architecture that can interface with a variety of existing
+          or planned systems used by Caltrans. The initial deployment
+          focused on delivering a reporting system accessible from the
+          recently deployed website for the California Traffic
+          Management Laboratories (CTMLabs), formerly known as the
+          California Advanced Transportation Management System (ATMS)
+          Testbed.  Possible future deployments could integrate the
+          core performance evaluation models with real-time TMC
+          management systems.

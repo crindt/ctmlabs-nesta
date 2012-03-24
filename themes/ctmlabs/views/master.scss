@@ -259,6 +259,9 @@ hgroup h1 small { line-height: 1em; }
     -webkit-column-width: 20em;
     -webkit-column-gap: 1em;
     -webkit-column-rule: 1px solid rgba(255,255,255,0.3);
+    h1,h2,h3,h4,h5,h6 {
+        -moz-break-after: avoid;
+    }
 }
 .multi-column-15 {
     -moz-column-width: 15em;
@@ -271,9 +274,17 @@ hgroup h1 small { line-height: 1em; }
 .column-count-3 {
     -moz-column-count: 3;
     -webkit-column-count: 3;
+    h1,h2,h3,h4,h5,h6 {
+        -moz-column-break-before: left;
+        -webkit-column-break-before: left;
+    }
 }
 .column-count-2 {
     -moz-column-count: 2;
     -webkit-column-count: 2;
+    h1,h2,h3,h4,h5,h6 {
+        -moz-column-break-after: avoid;
+        -webkit-column-break-after: avoid;
+    }
 }
 
