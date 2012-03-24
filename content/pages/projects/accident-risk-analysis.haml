@@ -9,22 +9,258 @@ h1: Accident Risk Analysis (ARA)
 flags: deployed
 
 
-%section.what 
-  %h3 What does it consist of?
+%section.row.ataglance
 
-  :markdown
+  .span12
+    %h2 At a glance...
+    %hr.soften-right.near
 
-    * Model estimation
-    * Model implementation with real data
-    * Data storage system
+  %section.what.span4
+    %h3 What does it consist of?
 
-%section.how
-  %h3 How can it be used?
-  :markdown
+    :markdown
 
-    The primary uses of the outcome of this project should be to
-    identify dangerous conditions before accidents happen, and to
-    analyze roadway segments after the fact to identify the riskier
-    segments of road. In addition, the methods developed should be
-    generalizable to modeling other phenomena that are dependent upon
-    or a result of traffic flow conditions over time.
+      * Model estimation
+      * Model implementation with real data
+      * Data storage system
+
+  %section.how.span4
+    %h3 How can it be used?
+    :markdown
+
+      The primary uses of the outcome of this project should be to
+      identify dangerous conditions before accidents happen, and to
+      analyze roadway segments after the fact to identify the riskier
+      segments of road. In addition, the methods developed should be
+      generalizable to modeling other phenomena that are dependent
+      upon or a result of traffic flow conditions over time.
+
+  %section.related.span4
+    - unless @page.pages.empty?
+      %section.related.pages
+        %header
+          %h3 Related Pages
+        = haml :compact_summaries, :layout => false, :locals => { :pages => @page.pages }    
+    - unless @page.articles.empty?
+      %section.related.articles
+        %header
+          /%h4= articles_heading
+          %h3 Related events and announcements
+        = haml :compact_summaries, :layout => false, :locals => { :pages => @page.articles }
+
+
+%section.row.twopage
+  .span12
+    %h2 In more detail...
+    %hr.soften-right.near
+
+    .multi-column-20
+      %section
+        :markdown
+
+          ### Why this Research was undertaken
+
+          Accidents have many causes and contributing factors. It has
+          been suggested that improving traffic flow (for example, by
+          investing in advanced ITS technologies) will result in
+          improved safety performance. A previous research project
+          (PATH 5307) developed a tool for measuring freeway safety
+          performance based on raw loop detector data. The previous
+          project combined the raw data across lanes and over a 20
+          minute period into 27 distinct variables that together
+          capture the temporal and spatial dynamics of traffic
+          flow. These variables were then used to model the relative
+          risk of different kinds of accidents.
+
+          The earlier project produced interesting results, but there
+          were some outstanding questions. The primary purpose of this
+          project was to re-estimate the original models with more
+          recent accident and traffic data using a full year of data;
+          to deploy those models for Caltrans District 12 data; and to
+          validate the predictions of the models against actual
+          accidents for a different year.
+
+          This project examined the impact of traffic dynamics on the
+          relative safety of a roadway. The developed models do not
+          predict accidents based on current conditions. Instead they
+          should be understood to predict slight increases or
+          decreases in the risk of an accident as traffic patterns
+          change throughout the day. By summing up these differences
+          over time, an overall picture of the relative safety of the
+          roadway section can be developed. Our hope is that this tool
+          can be used by evaluate the net improvements to roadway
+          safety as a result of traffic flow improvements.
+
+          ### What was done
+
+          Updating the prior project’s results meant using newer, more
+          recent data to re-estimate the different models of freeway
+          safety performance. Deploying the tool meant developing a
+          data storage solution for the raw and computed variables;
+          writing efficient code to process new data streams; and
+          setting up a web site and web services to expose the
+          transformed raw data and the final safety performance
+          estimates.
+
+          New data consisted of accident information for 2007 obtained
+          from the Federal Highway Safety Information System (HSIS)
+          multistate database. New traffic data consisted of raw,
+          30-second loop detector data downloaded from Caltrans’
+          Performance Measurement System (PeMS) bulk data
+          repository. Raw loop data was also downloaded and stored for
+          2008, 2009, and 2010.
+
+          Standard relational databases do not perform well with such
+          a large data set, and so much of the deployment work had to
+          be done prior to any analysis. We designed a data solution
+          that uses plain files to store the raw data, and CouchDB to
+          store the 27 variables, and compute the model predictions on
+          those variables.
+
+          The analysis consists of two steps. First each of the raw
+          data observations needs to be transformed into the 27
+          variables, using the left lane (1), the right lane (R), and
+          one of the middle lanes (M), for 20 minutes of data (40
+          observed periods). The algorithm can work with as little as
+          15 good minutes out of the 20 minute window.
+
+          All of the raw data in Caltrans District 12 has been
+          processed in this way, and the results have been stored in
+          the project database. Query performance for a single
+          detector’s data is quite good. Identical map-reduce views
+          were written in all of the databases (for example, to
+          compute a safety model prediction), and the results collated
+          into a single database to perform District-wide queries on
+          hourly or daily aggregate values.
+
+          Four separate models were estimated. First we modeled the
+          risk of any accident occurring, using a standard binary
+          logit model. If an accident occurs, the result variable is
+          set to 1, and if an accident doesn’t occur, the result
+          variable is set to 0. The modeling process combined all of
+          the observed accidents with the prevailing conditions at
+          those times, and then sampled a sufficient number of
+          non-accident cases to provide a large data set for the
+          modeling process. The non-accident cases were also weighted
+          so as to reflect the actual proportions of accidents cases
+          to non-accident cases.
+
+          The other three models all required multinomial logit
+          modeling tools, as there were multiple outcomes. In all of
+          these cases the reference category is the no accident
+          case. The first model was of the severity of an
+          accident:property damage only or injury accident. Next we
+          modeled the vehicles involved: 1 vehicle, 2 vehicles or 3 or
+          more vehicles. Finally, we estimated a model of accident
+          location: left lane, interior lanes, right lane and out of
+          lanes.
+
+          Once the models were estimated, the parameters were coded
+          into JavaScript and saved as views in each detector’s
+          CouchDB database, and reduced into a single District-wide
+          summary database. The foundational database work translates
+          directly into a more responsive framework for the
+          website. The deployment work was capped off by developing a
+          web server that exposes the data to any valid user
+          request. The deployed website presents the data in a
+          particular way, but authorized users are free to develop
+          their own websites and data mashups using standard Internet
+          querying techniques.
+
+          ### Results of the Research
+
+          While we thought the models would be similar to the prior
+          research project, it turned out that the new model
+          parameters are quite different and not really
+          comparable. The primary factor explaining the differences in
+          two projects’ results is that an entire year of data was
+          used in this project. The prior project only included
+          relatively drier months of the year (Spring and
+          Summer). Another factor is that the current project used a
+          more rigorous approach to drawing a random sample of
+          non-accident data. A third difference is the source of the
+          raw travel data. The earlier project drew its data directly
+          from the Caltrans District 12 data feed while this project
+          drew its data straight from PeMS’s bulk data
+          repository. Although labeled “raw data”, the PeMS data in
+          fact required almost no cleaning, which implies that PeMS
+          has processed the raw data differently from what was done in
+          our previous project.
+
+          The models were validated by comparing predictions for 2008
+          with actual accident data from 2008. When aggregated over
+          time and space, the models did an acceptable job of matching
+          the relative frequencies of the different kinds of accidents
+          and accident characteristics. For example, Table 1 shows the
+          relative fraction of injury type accidents compared to
+          property damage only accidents for 2007 and 2008. All four
+          models showed similar results for annual share of different
+          outcomes as well as the (scaled) total numbers of accident
+          types over the year.
+
+          insert table 1 output here
+
+          The predictions also compare favorably with observed
+          outcomes for most freeways, with the notable exception that
+          the models perform poorly for the toll roads in Caltrans
+          District 12. An example is shown in Table 2 for the accident
+          location model on SR–241 (a toll road) and SR–91 (a
+          primarily general purpose road). This is most likely due to
+          the extremely light truck traffic on the toll roads, which
+          in turn leads to distinct traffic flow dynamics compared to
+          the non-tolled facilities.
+
+          insert table 2 output here
+
+          Finally, the website serves as a portal to the data and
+          results. The client-side JavaScript of the website also
+          serves as a working example of how other client programs,
+          such as R, Excel or a GIS program, might access the results
+          of this project for further analysis.
+
+          ### Researcher recommendations
+
+          The tool developed by this project is well suited to
+          examining and quantifying changes in the relative safety
+          characteristics of a general purpose freeway section. While
+          the estimated models perform badly for toll roads, this also
+          indicates an area for future study.
+
+          An ideal application would be to evaluate the differences in
+          predicted accident characteristics and quantities for an
+          entire section of roadway before and after a significant
+          modification, with both before and after periods including
+          at least one month of data to include sufficient accidents
+          to make the models applicable.
+
+          The tool is not well suited to short term predictions of
+          accident risk. While there are cases in which the models
+          show a spike in accident probability, the absolute
+          probabilities of an accident are still extremely low and
+          highly unlikely.
+
+          ### Implementation strategies
+
+          The models were estimated and deployed for Caltrans District
+          12. Moving the work to other Districts is made easier by the
+          fact that the PeMS raw data repository provides the bulk of
+          the input data, and so provides a common starting point for
+          most Caltrans Districts. The most processor- and
+          disk-intensive step is to preprocess and store the raw data.
+
+          Once that is done, the 27 variables and accident data for
+          the District should be merged, a random sampling of
+          non-accident cases drawn, and then new models estimated that
+          capture the unique driving patterns of the District in
+          question. Building on the results of this project, separate
+          models should be estimated where the mix of vehicles is
+          known before hand to be different, as in the toll roads case
+          in District 12.
+
+          The 27 variables are also available through the website
+          generated by this project for any other modeling work that
+          might relate traffic dynamics to some variable of
+          interest. One such area is to model the the numbers of heavy
+          duty trucks in the traffic stream, using Weigh-In Motion
+          data and the various toll roads in the state as the
+          observations.

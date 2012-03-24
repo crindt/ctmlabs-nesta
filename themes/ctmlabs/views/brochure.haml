@@ -25,24 +25,5 @@
       .span1.align-right(style="font-size:400%;margin-top:2em;text-align:right;")
         - next_page_link( @page, @page.parent.path ) 
     %hr.soften
-    .row
-      %section.span12.ataglance
-        %h2 At a glance
-        %section.keypoints.span12
-          / emit the brochure details    
-          ~ @page.to_html(self)
-
-        %section.related.span6
-          - unless @page.pages.empty?
-            %section.related.pages
-              %header
-                %h3 Related Pages
-              = haml :compact_summaries, :layout => false, :locals => { :pages => @page.pages }
-          - unless @page.articles.empty?
-            %section.related.articles
-              %header
-                /%h4= articles_heading
-                %h3 Related events and announcements
-              = haml :compact_summaries, :layout => false, :locals => { :pages => @page.articles }
-
+    ~ @page.to_html(self)
     = haml :page_meta, :layout => false, :locals => { :page => @page }
