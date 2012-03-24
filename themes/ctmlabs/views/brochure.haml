@@ -26,13 +26,15 @@
         - next_page_link( @page, @page.parent.path ) 
     %hr.soften
     .row
-      %section.span12.ataglance
-        %h2 At a glance
-        %section.keypoints.span12
+      %section.ataglance
+        %h2 At a glance...
+        %hr.soften-right.tight
+        %section.keypoints.span6
           / emit the brochure details    
           ~ @page.to_html(self)
 
         %section.related.span6
+          .row
           - unless @page.pages.empty?
             %section.related.pages
               %header
