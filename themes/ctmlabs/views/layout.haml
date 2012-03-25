@@ -5,9 +5,13 @@
   %body
     /#ctmlabsheader(style='min-height:30px;')
     = haml :ctmlabsmenu, :layout => false
-    #container.container
-      = haml :header, :layout => false
-      = yield
+    #container
+      .container-fluid(style="background:#555;")
+        .container
+          = haml :header, :layout => false
+
+      .container
+        = yield
   
     #ctmlabsfooter
       = haml :footer, :layout => false

@@ -6,11 +6,20 @@
 
 
 body {
-    padding-top: 60px;
 
-    @media screen and (max-width: 980px) {
+    @media screen and (min-width: 980px) {
+        padding-top: 40px;
+    }
+
+    @media screen and (max-width: 979px) {
         /* fix the top menu */
         padding-top: 0px;
+    }
+    /* override some bootstrap ugliness */
+    @media (max-width: 979px) {
+        .navbar-fixed-top {
+            margin-bottom: 0px;
+        }
     }
 
     header[role=banner] {
