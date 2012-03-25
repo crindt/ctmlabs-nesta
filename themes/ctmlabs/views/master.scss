@@ -141,7 +141,8 @@ hr.soften-right {
     }
 
     &.tight {
-        margin: 0;
+        margin-top: 0;
+        margin-bottom: 1em;
     }
 }
 
@@ -288,3 +289,36 @@ hgroup h1 small { line-height: 1em; }
     }
 }
 
+#technology {
+    img { height: 50px; }
+
+    .invert {
+        background: #fff;
+    }
+
+    .nestacms {
+        /* From the nestacms.com website */
+        color: #313126;
+        display: block;
+        font-family: "ff-tisa-web-pro-1", "ff-tisa-web-pro-2", Georgia, serif;
+        font-size: 21px;
+        font-style: italic;
+        font-weight: 700;
+        letter-spacing: -1px;
+        text-shadow: 0 2px 5px #DCDBD1;
+        height: 50px;
+        text-align:center;
+        margin-top:14px; /* (50-21)/2 */
+    }
+    .d3js {
+        text-align:center;
+        font: 14px Helvetica Neue;
+        font-size:36px;
+        font-weight:300;
+        color:#000;
+    }
+    .twitterbootstrap {
+        font-face:'Helvetica Neue';
+        color:#333;
+    }
+}
