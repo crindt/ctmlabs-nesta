@@ -1,7 +1,14 @@
-= haml :layout_frontmatter, :layout => false
-%body
-  #ctmlabsheader(style='min-height:30px;')
-  #container
-    = haml :headerhome, :layout => false
-    = yield
-    = haml :footer, :layout => false
+<!DOCTYPE html>
+%html(lang="en")
+  %head
+    = haml :layout_frontmatter, :layout => false
+  %body
+    /#ctmlabsheader(style='min-height:30px;')
+    = haml :ctmlabsmenu, :layout => false
+    #container.container
+      = haml :headerhome, :layout => false
+      = yield
+
+    #ctmlabsfooter.container-fluid
+      = haml :footer, :layout => false
+ 

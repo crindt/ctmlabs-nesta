@@ -1,0 +1,77 @@
+// This is your framework's main stylesheet. Use it to import all default modules.
+@import "compass";
+@import "compass/css3/box-shadow";
+@import "suckerfish";
+$topLevelWidth: 6em;
+$lowerLevelWidth: 10em;
+
+/* CTMLabs colors */
+$ctmlabs-menu-background: #000;
+$ctmlabs-menu-foreground: #fff;
+
+$ctmlabsheight: 35px;
+$ctmlabsfontsize: 16px;
+$menuborder: #666 1px solid;
+$ctmlabs-shadowcolor: transparentize( #000, 0.5 );
+
+#ctmlabsbanner {
+    @include clearfix;
+
+    background-color: $ctmlabs-menu-background;
+    color: $ctmlabs-menu-foreground;
+    /*@include adjust-font-size-to( 16px );*/
+    font-size: $ctmlabsfontsize;
+    line-height: $ctmlabsheight;
+    @include single-box-shadow(#aaa, 0, 0, 10px);
+    z-index: 1000;
+
+    nav.ctmlabs,nav.account {
+	@include suckerfish($topLevelWidth,$lowerLevelWidth);
+        ul {
+            z-index: 1000;
+            li {
+                &>ul {
+                    @include single-box-shadow($ctmlabs-shadowcolor, 5px, 5px, 5px);
+                    margin-left: -1px; /* shift left so the borders align */
+                    border-left: $menuborder;
+                    border-top: $menuborder;
+                    border-bottom: $menuborder;
+                    li {
+                        border: 0px;
+                    }
+                }
+                // menu separators
+                height: $ctmlabsheight;
+                border-left: $menuborder;
+                &:first-child {
+                    border-left: 0px;
+                }
+                a,span {
+                    //padding-top: ($ctmlabsheight - $ctmlabsfontsize) / 2;
+                line-height: $ctmlabsheight;
+                padding: 0px 10px;;
+                vertical-align: middle;
+                background-color: $ctmlabs-menu-background;
+                color: $ctmlabs-menu-foreground;
+                text-decoration: none;
+
+                /* style the home link with the logo */ 
+                &.home {
+                    @include background(image-url("/ctmlabs/images/logo_jem_060.png"));
+                    background-position: 5px 0px;
+                    background-size:$ctmlabsheight * 2 auto;
+                    padding-left: 140 / 60 * $ctmlabsheight; /* logo is 140 x 60 */
+                    background-repeat: no-repeat;
+                }
+                
+                &:hover {
+                    background-color: lighten( $ctmlabs-menu-background, 30% );
+                }
+                }
+            }
+        }
+    }
+    nav.account {
+        float:right;
+    }
+}

@@ -1,4 +1,8 @@
+projects
+services
 facilities
 data
-services
-projects
+technology
+about
+  history
+  people

@@ -1,12 +1,19 @@
-%footer.branding
-  %p.copyright
-    Copyright &copy; 
-    :javascript
-      var dToday=new Date(); document.write("2010-"+dToday.getFullYear());
-    California Traffic Management Labs
-    %br
-    A partnership between Caltrans and UC Irvine
-  %nav
-    :markdown
-      Navigation:
-    - display_menu(@menu_items, :class => "menu", :levels => 1)
+.container
+  %hr.soften
+%footer.branding.footer.container
+  %div.row
+    %p.copyright.span9
+      Copyright &copy; 
+      :javascript
+        var dToday=new Date(); document.write("2010-"+dToday.getFullYear());
+      California Traffic Management Labs
+      %br
+        A partnership between 
+        %a(href="http://dot.ca.gov") Caltrans
+        and the
+        %a(href="http://www.its.uci.edu") Institute of Transportation Studies
+        at 
+        %a(href="http://www.uci.edu") UC Irvine
+
+    %nav.subnav.span3
+      - display_bootstrap_menu(@menu_items, :class => "nav pull-right", :levels => 1)

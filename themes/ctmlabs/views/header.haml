@@ -1,10 +1,8 @@
-/%header(role="banner")
-/  %hgroup
-/    %img(src="/ctmlabs/images/logo_jem_060.png" alt="#{@heading}")
-/    %h3= @subtitle
-/  %nav.main
-/    - display_menu(@menu_items, :class => "menu", :levels => 1)
-/%nav.breadcrumb
-/  - display_breadcrumbs
-  
-  
+%header.row(role="banner")
+  %div.span4
+    %nav
+      - display_breadcrumbs( :class => "breadcrumb" )
+  %div.span8
+    %nav.subnav
+      - display_bootstrap_menu(@menu_items, :class => "nav nav-pills pull-right", :levels => 1)
+  /%hr.soften

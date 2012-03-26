@@ -1,15 +1,39 @@
 - unless pages.empty?
-  %ol
+  %ol.thumbnails
     - pages.each do |page|
-      %li
-        %article
-          %header
-            %h1
-              %a(href="#{page.abspath}")= page.heading
-          - if page.summary.nil? || page.summary.empty?
+      - if page.summary.nil? || page.summary.empty?
+        %li.span12
+          %article
+            %header
+              %h3
+                /%a(href="#{page.abspath}")= page.heading
+                = page.heading
             ~ page.body(self)
+      - else
+        %li.span6
+          - if page.image_url()
+            %a.blank(href="#{url(page.abspath)}" title="Click for more information") 
+              .thumbnail.curl
+                .row-fluid
+                  %header
+                    %h3= page.heading
+                .row-fluid
+                  %div.span6.align-right
+                    %img(src="#{url(page.image_url())}" width="100%")
+                  %div.span6              
+                    %section
+                      ~ page.summary
           - else
-            ~ page.summary
-            %p.read_more
-              %a(href="#{page.abspath}")= page.read_more
-          = haml :page_meta, :layout => false, :locals => { :page => page }
+            .blank
+              .thumbnail.curl
+                .row-fluid
+                  .header
+                    %header
+                      %h3= page.heading
+                .row-fluid
+                  %div.span12
+                    ~ page.summary
+                  .pull-right
+                    %a(href="#{url(page.abspath)}")
+                      ~ page.read_more
+                = haml :page_meta, :layout => false, :locals => { :page => page }

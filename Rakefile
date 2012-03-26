@@ -1,6 +1,6 @@
 begin
   require "vlad"
-  Vlad.load(:app => nil, :scm => "git", :web => nil)
+  Vlad.load(:app => "passenger", :scm => "git", :web => nil)
 rescue LoadError
-  # do nothing
+  puts 'Could not load Vlad'
 end

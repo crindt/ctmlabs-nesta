@@ -1,0 +1,35 @@
+#content
+  %div.row
+    %article.span12(role="main")
+      ~ @page.to_html(self)
+
+      %h2 &nbsp;
+      %section.pages
+        - if @page.metadata('group by') != nil
+          - unless @page.pages_with_flag(@page.metadata('group by')).empty?
+            %section.deployed_pages
+              %header
+                %h2 Active pages...
+              %hr.soften-right.near
+              = article_summaries(@page.pages_with_flag(@page.metadata('group by')))
+
+          - unless @page.pages_without_flag(@page.metadata('group by')).empty?
+            %section.coming_pages
+              %header
+                %h2 Coming soon...
+              %hr.soften-right.near
+              = article_summaries(@page.pages_without_flag(@page.metadata('group by')))
+        - else
+          %section.deployed_pages
+            = article_summaries(@page.pages)
+      - unless @page.articles.empty?
+        %section.articles
+          %header
+            %h1= articles_heading
+          = article_summaries(@page.articles)
+
+      = haml :page_meta, :layout => false, :locals => { :page => @page }
+
+    = haml :comments, :layout => false
+
+/= haml :sidebar, :layout => false

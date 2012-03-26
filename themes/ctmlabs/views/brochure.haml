@@ -1,40 +1,71 @@
-%header(role="banner")
-  %hgroup
-    %img(src="/ctmlabs/images/logo_jem_060.png" alt="#{@heading}")
-    %h3= @subtitle
-  %div
-    - prev_page_link( @page, @page.parent.path ) 
-    - next_page_link( @page, @page.parent.path ) 
 #brochure
   %article(role="main")
-    .banner
-      %hgroup
-        %br
-          %h1 #{@page.full_title}
-          %h3 #{@page.summary}
-      %div.links
+    .banner.row
+      .span1.align-left(style="font-size:400%; margin-top:2em")
+        - prev_page_link( @page, @page.parent.path ) 
+      .span5
+        %p &nbsp
+        %hgroup
+          %br
+            %h1
+              #{@page.full_title}
+              %br              
+              %small= @page.metadata("summary")
         -unless @page.contact == nil
-          %a.contact(href="#{@page.contact}") Contact
+          %a.btn.btn-primary.contact(href="#{@page.contact}" title="Contact the project maintainer") 
+            %i.icon-envelope.icon-white
+            Contact
         -unless @page.url == nil
-          %a.page(href="#{@page.url}") Website
+          %a.btn.btn-primary.page(href="#{@page.url}" target="_blank" title="Go to the #{@page.full_title} application website (opens a new window)") 
+            %i.icon-share-alt.icon-white
+            Website
+      .span5
+        .image.blank
+          .curl
+            /%img.thumbnail(src="/attachments/images/#{@page.metadata('Image')}")
+            - render_sliding_image_viewer(@page)
+      .span1.align-right(style="font-size:400%;margin-top:2em;text-align:right;")
+        - next_page_link( @page, @page.parent.path ) 
+    %hr.soften
+    .row
+      .div.curl
+        %section.ataglance.clearfix
+          .span12
+            %h2 At a glance...
+            %hr.soften-right.tight
+            .row
+              .span4
+                %section.what
+                  ~ @page.render_metadata_as_markdown( 'what', "What does it consist of?" )
+              .span4
+                %section.how
+                  ~ @page.render_metadata_as_markdown( 'how', "How can it be used?" )
+              .span4
+                - unless @page.metadata('applications')
+                  %section.related
+                    - unless @page.pages.empty?
+                      %section.related.pages
+                        %header
+                          %h3 Related Pages
+                        = haml :compact_summaries, :layout => false, :locals => { :pages => @page.pages }    
+                    - unless @page.articles.empty?
+                      %section.related.articles
+                        %header
+                          /%h4= articles_heading
+                          %h3 Related events and announcements
+                        = haml :compact_summaries, :layout => false, :locals => { :pages => @page.articles }
+                - else
+                  %section.applications
+                  ~ @page.render_metadata_as_markdown( 'applications', "Applications" )
 
-      %div.image        
-        %img(src="/attachments/images/#{@page.metadata('Image')}")
-
-    %section.keypoints
-      / emit the brochure details    
-      ~ @page.to_html(self)
-
-    %section.related
-      %section.related.pages
-        %header
-          %h1 Related Pages
-        = article_summaries(@page.pages)
-
-      - unless @page.articles.empty?
-        %section.related.articles
-          %header
-            %h1= articles_heading
-          = article_summaries(@page.articles)
-
-    = haml :page_meta, :layout => false, :locals => { :page => @page }
+      - unless @page.body == ""
+        .div.curl
+          %section.twopage.clearfix
+            .span12
+              %h2 In more detail...
+              %hr.soften-right.tight
+          
+              %div.multi-column-20
+                %section
+                  ~ @page.to_html(self)
+              = haml :page_meta, :layout => false, :locals => { :page => @page }

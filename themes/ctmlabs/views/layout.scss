@@ -17,6 +17,16 @@ $shadowcolor: transparentize( #000, 0.5 );
 
 @import "mixins"; /* after ctmlabs-banner which imports compass */
 
+#ctmlabsbanner {
+    #menu ul {
+        padding: 0;
+        li {
+            a {
+                margin-right: 0px;
+            }
+        }
+    }
+}
 
 #container {
     @include container;
@@ -76,6 +86,10 @@ $shadowcolor: transparentize( #000, 0.5 );
         @include clearfix;
         .banner {
             @include clearfix;
+
+            padding-left: 0.5em;
+            padding-right: 0.5em;
+
             left: 0;
             background: transparent url('/ctmlabs/images/fairview_sh.jpg');
             min-height: 20em;
@@ -106,6 +120,9 @@ $shadowcolor: transparentize( #000, 0.5 );
         .banner {
             position: relative; /* for placing links */
             @include container;
+
+            padding-left: 0.5em;
+            padding-right: 0.5em;
 
             /* Do a background gradient */
             @include background(/*image-url("foo.png"),*/
@@ -159,9 +176,9 @@ $shadowcolor: transparentize( #000, 0.5 );
 
     article[role="main"] {
         &> h1 {
-            @include background(image-url("/ctmlabs/images/logo_jem_060.png"));
+            /*@include background(image-url("/ctmlabs/images/logo_jem_060.png"));*/
+            /*padding-left: 140 / 60 * $vertical-rhythm;*/
             background-size: 2 * $vertical-rhythm auto;
-            padding-left: 140 / 60 * $vertical-rhythm;
             background-repeat: no-repeat;
         }
         section {
@@ -186,11 +203,22 @@ $shadowcolor: transparentize( #000, 0.5 );
         }
     }
 
+}
+
+#ctmlabsfooter {
+
+    @include container;
+
+    width: 100%;
+    
+    background-color: $footer-background;
+    color: $footer-foreground;
+    margin-top: 2em;
+
+    border-top: $content-border-subtle;
+
     footer.branding {
-	@include full;
-        background-color: $footer-background;
-        color: $footer-foreground;
-        margin-top: 2em;
+        @include full;
 
         .copyright {
             @include columns(6,12);
@@ -205,5 +233,4 @@ $shadowcolor: transparentize( #000, 0.5 );
             }
         }
     }
-
 }
