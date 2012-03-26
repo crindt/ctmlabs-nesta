@@ -36,14 +36,10 @@
             .row
               .span4
                 %section.what
-                  %header
-                    %h3 What does it consist of?         
-                  ~ @page.render_metadata_as_markdown( 'what' )
+                  ~ @page.render_metadata_as_markdown( 'what', "What does it consist of?" )
               .span4
                 %section.how
-                  %header
-                    %h3 How can it be used?
-                  ~ @page.render_metadata_as_markdown( 'how' )
+                  ~ @page.render_metadata_as_markdown( 'how', "How can it be used?" )
               .span4
                 %section.related
                   - unless @page.pages.empty?

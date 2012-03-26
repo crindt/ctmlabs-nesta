@@ -178,22 +178,28 @@ module Nesta
     end
 
     def convert_to_html(format, scope, text)
-      $stderr.puts "format: #{format}"
+      # $stderr.puts "format: #{format}"
       #text = tag_lines_of_haml(text) if @format == :haml
       template = Tilt[format].new { text }
       template.render(scope)
     end
 
-    def render_metadata_as_markdown( meta )
+    def render_metadata_as_markdown( meta, defhead = nil )
       text = metadata( meta )
       if text != nil
-        text = text.sub(/^#[^#].*$\r?\n(\r?\n)?/, '')
+        #text = text.sub(/^#[^#].*$\r?\n(\r?\n)?/, '')
+        # see if there's a heading
+        if !(text =~ /^ *###.*$*/) && defhead != nil
+          htxt = "### #{defhead}\n"
+        else
+          htxt = ""
+        end
         text.gsub!('\n', "\n")
-        $stderr.puts "TEXT: #{text}"
-        template = Tilt['mdown'].new{ text }
+        # $stderr.puts "TEXT: #{text}"
+        template = Tilt['mdown'].new{ htxt+text }
         res = template.render(nil)
         #res = convert_to_html( 'mdown', nil, text )
-        $stderr.puts "RES: #{res}"
+        # $stderr.puts "RES: #{res}"
         res
       else
         return "<div class='alert alert-warning'>This description is coming soon...</div>"
