@@ -11,7 +11,7 @@
         - page.categories.each do |category|
           - if category != page.categories[-1]
             = succeed ',' do
-              %a.label.label-success(href="#{category.abspath}")= category.heading
+              %a.label.label-success(href="url(#{category.abspath})")= category.heading
           - else
-            %a.label.label-success(href="#{category.abspath}")= category.heading
+            %a.label.label-success(href="url(#{category.abspath})")= category.heading
 
