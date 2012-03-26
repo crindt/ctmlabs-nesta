@@ -112,8 +112,8 @@ module Nesta
         haml_tag :ul, :class=>list_class do
           pp.each do |p|
             haml_tag :li, :class=>item_class do
-              haml_tag :a, :href=>"#{p.url}", :"data-placement"=>"right", :"data-delay"=>"50" do
-                haml_concat "#{p.title}"
+              haml_tag :a, :href=>"#{p.url}", :"data-placement"=>"right", :"data-delay"=>"50", :title => "#{p.title}" do
+                haml_concat "#{p.menu || p.title}"
               end
             end
           end
@@ -255,7 +255,7 @@ module Nesta
             #    haml_tag :img, :width=>"100%", :src => '/attachments/images/'+i
             #  end
             #end
-            haml_tag :div, :id => 'slides', :class => 'carousel curl' do
+            haml_tag :div, :id => 'slides', :class => 'carousel' do
               haml_tag :div, :class => 'carousel-inner' do
                 is_set = nil
                 imgs.each do |i|
@@ -295,7 +295,7 @@ module Nesta
               end
             end
           else
-            haml_tag :img, :class => 'curl', :src => url(imgs[0])
+            haml_tag :img, :src => url(imgs[0])
           end
         end
       end

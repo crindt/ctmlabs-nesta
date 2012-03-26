@@ -272,7 +272,10 @@ body {
 .nav > li > a {
     &:hover {
         text-decoration: none;
-        background-color: #A2C5DA;
+        //background-color: #A2C5DA;
+        /* Per james */
+        background-color: $gray;
+
     }
 }
 
@@ -385,3 +388,6 @@ body > .navbar {
 .menu-container {
      background:lighten($bodyBackground, 15%);
 }
+
+.blank { background: $bodyBackground }
+

@@ -19,9 +19,11 @@
           %a.btn.btn-primary.page(href="#{@page.url}" target="_blank" title="Go to the #{@page.full_title} application website (opens a new window)") 
             %i.icon-share-alt.icon-white
             Website
-      .image.span5
-        /%img.thumbnail(src="/attachments/images/#{@page.metadata('Image')}")
-        - render_sliding_image_viewer(@page)
+      .span5
+        .image.blank
+          .curl
+            /%img.thumbnail(src="/attachments/images/#{@page.metadata('Image')}")
+            - render_sliding_image_viewer(@page)
       .span1.align-right(style="font-size:400%;margin-top:2em;text-align:right;")
         - next_page_link( @page, @page.parent.path ) 
     %hr.soften
