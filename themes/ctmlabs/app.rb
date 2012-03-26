@@ -112,8 +112,8 @@ module Nesta
         haml_tag :ul, :class=>list_class do
           pp.each do |p|
             haml_tag :li, :class=>item_class do
-              haml_tag :a, :href=>"#{p.url}", :"data-placement"=>"right", :"data-delay"=>"50", :title=>"#{p.title}" do
-                haml_concat "#{p.menu || p.title}"
+              haml_tag :a, :href=>"#{p.url}", :"data-placement"=>"right", :"data-delay"=>"50" do
+                haml_concat "#{p.title}"
               end
             end
           end
