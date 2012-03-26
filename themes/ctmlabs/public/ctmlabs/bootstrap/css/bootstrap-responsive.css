@@ -410,14 +410,14 @@
     display: none;
   }
   .navbar .nav .nav-header {
-    color: #cccccc;
+    color: #666666;
     text-shadow: none;
   }
   .navbar .nav > li > a,
   .navbar .dropdown-menu a {
     padding: 6px 15px;
     font-weight: bold;
-    color: #cccccc;
+    color: #666666;
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     border-radius: 3px;

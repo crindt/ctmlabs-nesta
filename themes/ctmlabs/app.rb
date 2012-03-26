@@ -144,12 +144,11 @@ module Nesta
         end
         return imgs[i]
       else
-        return ''
+        return nil
       end
     end
 
     
-
     def url
       metadata('url')
     end
@@ -176,6 +175,29 @@ module Nesta
 
     def flags
       return flag_strings
+    end
+
+    def convert_to_html(format, scope, text)
+      $stderr.puts "format: #{format}"
+      #text = tag_lines_of_haml(text) if @format == :haml
+      template = Tilt[format].new { text }
+      template.render(scope)
+    end
+
+    def render_metadata_as_markdown( meta )
+      text = metadata( meta )
+      if text != nil
+        text = text.sub(/^#[^#].*$\r?\n(\r?\n)?/, '')
+        text.gsub!('\n', "\n")
+        $stderr.puts "TEXT: #{text}"
+        template = Tilt['mdown'].new{ text }
+        res = template.render(nil)
+        #res = convert_to_html( 'mdown', nil, text )
+        $stderr.puts "RES: #{res}"
+        res
+      else
+        return "<div class='alert alert-warning'>This description is coming soon...</div>"
+      end
     end
 
     private

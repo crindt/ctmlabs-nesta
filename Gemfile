@@ -19,3 +19,4 @@ gem 'nokogiri', '1.5.2'
 
 gem "nesta-plugin-metadata-extensions", \
     :path => "vendor/nesta-plugin-metadata-extensions"
+gem "nesta-plugin-yaml-metadata"

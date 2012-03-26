@@ -135,15 +135,15 @@ body {
   font-family: 'Open Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 15px;
   line-height: 20px;
-  color: #ffffff;
-  background-color: #1a2c45;
+  color: #333333;
+  background-color: #c6dce9;
 }
 a {
-  color: #a2c5da;
+  color: #185ab8;
   text-decoration: none;
 }
 a:hover {
-  color: #6ba3c4;
+  color: #377fe5;
   text-decoration: underline;
 }
 .row {
@@ -328,7 +328,7 @@ p {
 }
 p small {
   font-size: 13px;
-  color: #cccccc;
+  color: #666666;
 }
 .lead {
   margin-bottom: 20px;
@@ -355,7 +355,7 @@ h4 small,
 h5 small,
 h6 small {
   font-weight: normal;
-  color: #cccccc;
+  color: #666666;
 }
 h1 {
   font-size: 30px;
@@ -394,13 +394,13 @@ h5 {
 }
 h6 {
   font-size: 11px;
-  color: #cccccc;
+  color: #666666;
   text-transform: uppercase;
 }
 .page-header {
   padding-bottom: 19px;
   margin: 20px 0;
-  border-bottom: 1px solid #eeeeee;
+  border-bottom: 1px solid #bbbbbb;
 }
 .page-header h1 {
   line-height: 1;
@@ -456,7 +456,7 @@ dd {
 hr {
   margin: 20px 0;
   border: 0;
-  border-top: 1px solid #eeeeee;
+  border-top: 1px solid #bbbbbb;
   border-bottom: 1px solid #ffffff;
 }
 strong {
@@ -466,7 +466,7 @@ em {
   font-style: italic;
 }
 .muted {
-  color: #cccccc;
+  color: #666666;
 }
 abbr[title] {
   border-bottom: 1px dotted #ddd;
@@ -479,7 +479,7 @@ abbr.initialism {
 blockquote {
   padding: 0 0 0 15px;
   margin: 0 0 20px;
-  border-left: 5px solid #eeeeee;
+  border-left: 5px solid #bbbbbb;
 }
 blockquote p {
   margin-bottom: 0;
@@ -490,7 +490,7 @@ blockquote p {
 blockquote small {
   display: block;
   line-height: 20px;
-  color: #cccccc;
+  color: #666666;
 }
 blockquote small:before {
   content: '\2014 \00A0';
@@ -500,7 +500,7 @@ blockquote.pull-right {
   padding-left: 0;
   padding-right: 15px;
   border-left: 0;
-  border-right: 5px solid #eeeeee;
+  border-right: 5px solid #bbbbbb;
 }
 blockquote.pull-right p,
 blockquote.pull-right small {
@@ -591,7 +591,7 @@ legend {
 }
 legend small {
   font-size: 15px;
-  color: #cccccc;
+  color: #666666;
 }
 label,
 input,
@@ -839,7 +839,7 @@ textarea[disabled],
 input[readonly],
 select[readonly],
 textarea[readonly] {
-  background-color: #eeeeee;
+  background-color: #bbbbbb;
   border-color: #ddd;
   cursor: not-allowed;
 }
@@ -936,7 +936,7 @@ select:focus:required:invalid:focus {
   padding: 19px 20px 20px;
   margin-top: 20px;
   margin-bottom: 20px;
-  background-color: #eeeeee;
+  background-color: #bbbbbb;
   border-top: 1px solid #ddd;
   *zoom: 1;
 }
@@ -958,10 +958,10 @@ select:focus:required:invalid:focus {
   cursor: not-allowed;
 }
 :-moz-placeholder {
-  color: #cccccc;
+  color: #666666;
 }
 ::-webkit-input-placeholder {
-  color: #cccccc;
+  color: #666666;
 }
 .help-block,
 .help-inline {
@@ -1020,7 +1020,7 @@ select:focus:required:invalid:focus {
   text-align: center;
   text-shadow: 0 1px 0 #ffffff;
   vertical-align: middle;
-  background-color: #eeeeee;
+  background-color: #bbbbbb;
   border: 1px solid #ccc;
 }
 .input-prepend .add-on,
@@ -1853,7 +1853,7 @@ table .span24 {
 .dropdown-menu .active > a:hover {
   color: #ffffff;
   text-decoration: none;
-  background-color: #a2c5da;
+  background-color: #185ab8;
 }
 .dropdown.open {
   *z-index: 1000;
@@ -2481,7 +2481,7 @@ input[type="submit"].btn.btn-mini {
 }
 .nav > li > a:hover {
   text-decoration: none;
-  background-color: #eeeeee;
+  background-color: #bbbbbb;
 }
 .nav .nav-header {
   display: block;
@@ -2489,7 +2489,7 @@ input[type="submit"].btn.btn-mini {
   font-size: 11px;
   font-weight: bold;
   line-height: 20px;
-  color: #cccccc;
+  color: #666666;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
   text-transform: uppercase;
 }
@@ -2514,7 +2514,7 @@ input[type="submit"].btn.btn-mini {
 .nav-list > .active > a:hover {
   color: #ffffff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
-  background-color: #a2c5da;
+  background-color: #185ab8;
 }
 .nav-list [class^="icon-"] {
   margin-right: 2px;
@@ -2570,7 +2570,7 @@ input[type="submit"].btn.btn-mini {
   border-radius: 4px 4px 0 0;
 }
 .nav-tabs > li > a:hover {
-  border-color: #eeeeee #eeeeee #dddddd;
+  border-color: #bbbbbb #bbbbbb #dddddd;
 }
 .nav-tabs > .active > a,
 .nav-tabs > .active > a:hover {
@@ -2592,7 +2592,7 @@ input[type="submit"].btn.btn-mini {
 .nav-pills > .active > a,
 .nav-pills > .active > a:hover {
   color: #ffffff;
-  background-color: #a2c5da;
+  background-color: #185ab8;
 }
 .nav-stacked > li {
   float: none;
@@ -2641,14 +2641,14 @@ input[type="submit"].btn.btn-mini {
 }
 .nav-tabs .dropdown-toggle .caret,
 .nav-pills .dropdown-toggle .caret {
-  border-top-color: #a2c5da;
-  border-bottom-color: #a2c5da;
+  border-top-color: #185ab8;
+  border-bottom-color: #185ab8;
   margin-top: 6px;
 }
 .nav-tabs .dropdown-toggle:hover .caret,
 .nav-pills .dropdown-toggle:hover .caret {
-  border-top-color: #6ba3c4;
-  border-bottom-color: #6ba3c4;
+  border-top-color: #377fe5;
+  border-bottom-color: #377fe5;
 }
 .nav-tabs .active .dropdown-toggle .caret,
 .nav-pills .active .dropdown-toggle .caret {
@@ -2663,8 +2663,8 @@ input[type="submit"].btn.btn-mini {
 .nav-pills .open .dropdown-toggle,
 .nav > .open.active > a:hover {
   color: #ffffff;
-  background-color: #cccccc;
-  border-color: #cccccc;
+  background-color: #666666;
+  border-color: #666666;
 }
 .nav .open .caret,
 .nav .open.active .caret,
@@ -2675,7 +2675,7 @@ input[type="submit"].btn.btn-mini {
   filter: alpha(opacity=100);
 }
 .tabs-stacked .open > a:hover {
-  border-color: #cccccc;
+  border-color: #666666;
 }
 .tabbable {
   *zoom: 1;
@@ -2747,7 +2747,7 @@ input[type="submit"].btn.btn-mini {
   border-radius: 4px 0 0 4px;
 }
 .tabs-left .nav-tabs > li > a:hover {
-  border-color: #eeeeee #dddddd #eeeeee #eeeeee;
+  border-color: #bbbbbb #dddddd #bbbbbb #bbbbbb;
 }
 .tabs-left .nav-tabs .active > a,
 .tabs-left .nav-tabs .active > a:hover {
@@ -2766,7 +2766,7 @@ input[type="submit"].btn.btn-mini {
   border-radius: 0 4px 4px 0;
 }
 .tabs-right .nav-tabs > li > a:hover {
-  border-color: #eeeeee #eeeeee #eeeeee #dddddd;
+  border-color: #bbbbbb #bbbbbb #bbbbbb #dddddd;
 }
 .tabs-right .nav-tabs .active > a,
 .tabs-right .nav-tabs .active > a:hover {
@@ -2853,7 +2853,7 @@ input[type="submit"].btn.btn-mini {
   height: auto;
 }
 .navbar {
-  color: #cccccc;
+  color: #666666;
 }
 .navbar .brand:hover {
   text-decoration: none;
@@ -3002,7 +3002,7 @@ input[type="submit"].btn.btn-mini {
   float: none;
   padding: 10px 10px 11px;
   line-height: 19px;
-  color: #cccccc;
+  color: #666666;
   text-decoration: none;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
 }
@@ -3132,7 +3132,7 @@ input[type="submit"].btn.btn-mini {
 }
 .breadcrumb .divider {
   padding: 0 5px;
-  color: #cccccc;
+  color: #666666;
 }
 .breadcrumb .active a {
   color: #333333;
@@ -3172,13 +3172,13 @@ input[type="submit"].btn.btn-mini {
   background-color: #f5f5f5;
 }
 .pagination .active a {
-  color: #cccccc;
+  color: #666666;
   cursor: default;
 }
 .pagination .disabled span,
 .pagination .disabled a,
 .pagination .disabled a:hover {
-  color: #cccccc;
+  color: #666666;
   background-color: transparent;
   cursor: default;
 }
@@ -3238,7 +3238,7 @@ input[type="submit"].btn.btn-mini {
 }
 .pager .disabled a,
 .pager .disabled a:hover {
-  color: #cccccc;
+  color: #666666;
   background-color: #fff;
   cursor: default;
 }
@@ -3548,7 +3548,7 @@ input[type="submit"].btn.btn-mini {
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075);
 }
 a.thumbnail:hover {
-  border-color: #a2c5da;
+  border-color: #185ab8;
   -webkit-box-shadow: 0 1px 4px rgba(0, 105, 214, 0.25);
   -moz-box-shadow: 0 1px 4px rgba(0, 105, 214, 0.25);
   box-shadow: 0 1px 4px rgba(0, 105, 214, 0.25);
@@ -3571,7 +3571,7 @@ a.thumbnail:hover {
   vertical-align: middle;
   white-space: nowrap;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-  background-color: #cccccc;
+  background-color: #666666;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
@@ -3616,7 +3616,7 @@ a.thumbnail:hover {
   font-weight: bold;
   white-space: nowrap;
   color: #ffffff;
-  background-color: #cccccc;
+  background-color: #666666;
   -webkit-border-radius: 9px;
   -moz-border-radius: 9px;
   border-radius: 9px;
@@ -3955,7 +3955,7 @@ a.thumbnail:hover {
 .hero-unit {
   padding: 60px;
   margin-bottom: 30px;
-  background-color: #eeeeee;
+  background-color: #bbbbbb;
   -webkit-border-radius: 6px;
   -moz-border-radius: 6px;
   border-radius: 6px;

@@ -4,6 +4,11 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700);
 @import url(http://fonts.googleapis.com/css?family=Droid+Serif);
 
+@import "variables.scss";
+
+$common-background: lighten($lightgreyblue,15%);
+$section-background: lighten($lightgreyblue,15%); //#5D7E8F;//#7EA8BD;
+$section-foreground: darken($grayDark,15%);
 
 body {
 
@@ -60,29 +65,10 @@ nav ul.breadcrumb {
     }
 }
 
-/*
-.subnav{
-    width: 100%;
-    height: 36px;
-    background-color: #EEE;
-    background-repeat: repeat-x;
-    background-image: -moz-linear-gradient(top, #f5f5f5 0%, #eeeeee 100%);
-    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f5f5f5), color-stop(100%,#eeeeee));
-    background-image: -webkit-linear-gradient(top, #f5f5f5 0%,#eeeeee 100%);
-    background-image: -ms-linear-gradient(top, #f5f5f5 0%,#eeeeee 100%);
-    background-image: -o-linear-gradient(top, #f5f5f5 0%,#eeeeee 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f5f5f5', endColorstr='#eeeeee',GradientType=0 );
-    background-image: linear-gradient(top, #f5f5f5 0%,#eeeeee 100%);
-    border: 1px solid #E5E5E5;
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    border-radius: 4px;
-}*/
-
-#brochure .banner .thumbnail, .pages .thumbnail {
+.banner .thumbnail, .pages .thumbnail, .articles .thumbnail {
     //min-height: 300px;
     background-repeat: no-repeat;
-    background: #666;
+    background: $section-background;
 
     img {
         height:200px;
@@ -90,7 +76,32 @@ nav ul.breadcrumb {
     }
 }
 
+#brochure {
+    article .row > section, {
+        background-color: $section-background;
+        margin-top:1em;
+        padding-bottom:1em;
+        //padding-left: 1em;
+        //padding-right: 1em;
+        //padding-right: 1em;
+        //border: 1px solid rgba(255,255,255,0.3);
+        h2 {
+            border-top:10px solid #2C2C2C;
+        }
+    }
+}
+
 .navbar-fixed-top {
+    .brand {
+        float: left;
+        display: block;
+        padding: 8px 20px 12px;
+        margin-left: -20px;
+        font-size: 20px;
+        font-weight: 200;
+        line-height: 1;
+        color: white;
+    }
 /*
     a.brand {
         background-image: url("../ctmlabs/images/logo_jem_060.png");
@@ -127,33 +138,38 @@ section {
 
 hr.soften {
     height: 1px;
-    margin: 54px 0;
-    background-image: -webkit-linear-gradient(left, rgba(255,255,255,0), rgba(255,255,255,.3), rgba(255,255,255,0));
-    background-image: -moz-linear-gradient(left, rgba(255,255,255,0), rgba(255,255,255,.3), rgba(255,255,255,0));
-    background-image: -ms-linear-gradient(left, rgba(255,255,255,0), rgba(255,255,255,.3), rgba(255,255,255,0));
-    background-image: -o-linear-gradient(left, rgba(255,255,255,0), rgba(255,255,255,.3), rgba(255,255,255,0));
+    //margin: 54px 0;
+    background-image: -webkit-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,.3), rgba(0,0,0,0));
+    background-image: -moz-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,.3), rgba(0,0,0,0));
+    background-image: -ms-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,.3), rgba(0,0,0,0));
+    background-image: -o-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,.3), rgba(0,0,0,0));
     border: 0;
 }
 
 hr.soften-right {
     height: 1px;
-    margin: 54px 0;
-    background-image: -webkit-linear-gradient(left, rgba(255,255,255,.3), rgba(255,255,255,0));
-    background-image: -moz-linear-gradient(left, rgba(255,255,255,.3), rgba(255,255,255,0));
-    background-image: -ms-linear-gradient(left, rgba(255,255,255,.3), rgba(255,255,255,0));
-    background-image: -o-linear-gradient(left, rgba(255,255,255,.3), rgba(255,255,255,0));
+    //margin: 54px 0;
+    background-image: -webkit-linear-gradient(left, rgba(0,0,0,.3), rgba(0,0,0,0));
+    background-image: -moz-linear-gradient(left, rgba(0,0,0,.3), rgba(0,0,0,0));
+    background-image: -ms-linear-gradient(left, rgba(0,0,0,.3), rgba(0,0,0,0));
+    background-image: -o-linear-gradient(left, rgba(0,0,0,.3), rgba(0,0,0,0));
     border: 0;
-
-    &.near {
-        margin-top: 1em;
-        margin-bottom: 1em;
-    }
-
-    &.tight {
-        margin-top: 0;
-        margin-bottom: 1em;
-    }
 }
+
+.wide {
+    margin: 54px 0;
+}
+
+.near {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.tight {
+    margin-top: 0;
+    margin-bottom: 1em;
+}
+
 
 #ctmllink {
     background: url("../ctmlabs/images/ctml.png") no-repeat 50% 50%;
@@ -182,14 +198,18 @@ a {
     }
 }
 
+
+
 .home .hero-unit {
-    background: url("../ctmlabs/images/fairview_sh.jpg") no-repeat;
-    background-position: right top;
+    &#ctml-splash {
+        background: url("../ctmlabs/images/fairview_sh.jpg") no-repeat;
+        background-position: right top;
+    }
 
     hgroup {
         text-shadow: 2px 2px rgba(0,0,0,0.25);
 
-        h1 {
+        h1, h2, h3, h4, h5, h6 {
             font-family: 'Droid Serif', serif;
             font-weight: 300;
             color: #eecc55;
@@ -217,8 +237,12 @@ body {
 .pages {
     .thumbnails {
         .thumbnail {
-            .header {
+            header {
                 padding: 1em 1em 1em 1em;
+            }
+            section {
+                padding-left: 1em;
+                padding-right: 1em;
             }
         }
         > li {
@@ -298,12 +322,13 @@ hgroup h1 small { line-height: 1em; }
     }
 }
 
+
+.invert {
+    background: #fff;
+}
+
 #technology {
     img { height: 50px; }
-
-    .invert {
-        background: #fff;
-    }
 
     .nestacms {
         /* From the nestacms.com website */
@@ -330,4 +355,18 @@ hgroup h1 small { line-height: 1em; }
         font-face:'Helvetica Neue';
         color:#333;
     }
+}
+
+body > .navbar {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    line-height: 18px;
+}
+
+.meta, .meta .label {
+    font-size: 8px;
+}
+
+.menu-container {
+     background:lighten($lightgreyblue, 15%);
 }

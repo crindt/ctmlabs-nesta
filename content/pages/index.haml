@@ -2,7 +2,7 @@ Title: Home
 Template: home
 Layout: layouthome
 
-%header.hero-unit.curl
+%header.hero-unit.curl#ctml-splash
   %hgroup
     %h1 Merging traffic management research into the physical world
     %h3 A partnership between UC Irvine and Caltrans
@@ -57,11 +57,13 @@ Layout: layouthome
     %section
       %header
         %h2 What's new
+        %hr.soften-right.tight
       %section.articles= article_summaries(latest_articles)
   .span6
     %section
       %header
         %h2 Quick Links
+        %hr.soften-right.tight
       :markdown
         * Link1
         * Link2
