@@ -14,8 +14,8 @@ $black:                 #000;
 $grayDarker:            #222;
 $grayDark:              #333;
 $gray:                  #555;
-$grayLight:             #666;
-$grayLighter:           #bbb;
+$grayLight:             #999;
+$grayLighter:           #ccc;
 $white:                 #fff;
 
 
@@ -42,14 +42,20 @@ $ctmlabsyellow:         #FC3;
 
 // Scaffolding
 // -------------------------
-$bodyBackground:        $whitegrey; // $ctmlabsblue; //$whitegrey; // #1a2c45; // $white
-$textColor:             $grayDark; //#fff;    // $grayDark
+$bodyBackground:        $ctmlabsblue;
+$textColor:             #fff;
+
+//$bodyBackground:        $whitegrey; //$ctmlabsblue; //$whitegrey; // #1a2c45; // $white
+//$textColor:             $grayDark; // $whitegrey; //#fff;    // $grayDark
 
 
 // Links
 // -------------------------
-$linkColor:             lighten($skyblue, 15%); //#08c;
-$linkColorHover:        lighten($linkColor, 15%);// $ctmlabsyellow; //darken($linkColor, 15%);
+//$linkColor:             lighten($skyblue, 15%); //#08c;
+//$linkColorHover:        lighten($linkColor, 15%);// $ctmlabsyellow; //darken($linkColor, 15%);
+
+$linkColor:             lighten($lightgreyblue, 15%); //#08c;
+$linkColorHover:        darken($linkColor, 15%);// $ctmlabsyellow; //darken($linkColor, 15%);
 
 
 // Typography

@@ -6,11 +6,16 @@
 
 @import "variables.scss";
 
-$common-background: lighten($lightgreyblue,15%);
-$section-background: lighten($lightgreyblue,15%); //#5D7E8F;//#7EA8BD;
+$common-background: lighten($bodyBackground,15%);
+$section-background: lighten($bodyBackground,15%); //#5D7E8F;//#7EA8BD;
 $section-foreground: darken($grayDark,15%);
 
 body {
+
+    background-image: -webkit-linear-gradient(bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5));
+    background-image: -moz-linear-gradient(bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5));
+    background-image: linear-gradient(bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5));
+    background-repeat: no-repeat;
 
     @media screen and (min-width: 980px) {
         padding-top: 40px;
@@ -77,7 +82,7 @@ nav ul.breadcrumb {
 }
 
 #brochure {
-    article .row > section, {
+    article .row .curl > section {
         background-color: $section-background;
         margin-top:1em;
         padding-bottom:1em;
@@ -86,7 +91,14 @@ nav ul.breadcrumb {
         //padding-right: 1em;
         //border: 1px solid rgba(255,255,255,0.3);
         h2 {
-            border-top:10px solid #2C2C2C;
+            //border-top:10px solid #2C2C2C;
+            border-top:10px solid $grayLighter;
+        }
+        h3 {
+            background-image: -webkit-linear-gradient(right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.15));
+            background-image: -moz-linear-gradient(right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.15));
+            background-image: linear-gradient(right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.15));
+            background-repeat: no-repeat;
         }
     }
 }
@@ -139,20 +151,20 @@ section {
 hr.soften {
     height: 1px;
     //margin: 54px 0;
-    background-image: -webkit-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,.3), rgba(0,0,0,0));
-    background-image: -moz-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,.3), rgba(0,0,0,0));
-    background-image: -ms-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,.3), rgba(0,0,0,0));
-    background-image: -o-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,.3), rgba(0,0,0,0));
+    background-image: -webkit-linear-gradient(left, rgba(255,255,255,0), rgba(255,255,255,.3), rgba(255,255,255,0));
+    background-image: -moz-linear-gradient(left, rgba(255,255,255,0), rgba(255,255,255,.3), rgba(255,255,255,0));
+    background-image: -ms-linear-gradient(left, rgba(255,255,255,0), rgba(255,255,255,.3), rgba(255,255,255,0));
+    background-image: -o-linear-gradient(left, rgba(255,255,255,0), rgba(255,255,255,.3), rgba(255,255,255,0));
     border: 0;
 }
 
 hr.soften-right {
     height: 1px;
     //margin: 54px 0;
-    background-image: -webkit-linear-gradient(left, rgba(0,0,0,.3), rgba(0,0,0,0));
-    background-image: -moz-linear-gradient(left, rgba(0,0,0,.3), rgba(0,0,0,0));
-    background-image: -ms-linear-gradient(left, rgba(0,0,0,.3), rgba(0,0,0,0));
-    background-image: -o-linear-gradient(left, rgba(0,0,0,.3), rgba(0,0,0,0));
+    background-image: -webkit-linear-gradient(left, rgba(255,255,255,.3), rgba(255,255,255,0));
+    background-image: -moz-linear-gradient(left, rgba(255,255,255,.3), rgba(255,255,255,0));
+    background-image: -ms-linear-gradient(left, rgba(255,255,255,.3), rgba(255,255,255,0));
+    background-image: -o-linear-gradient(left, rgba(255,255,255,.3), rgba(255,255,255,0));
     border: 0;
 }
 
@@ -270,7 +282,12 @@ body {
     /*background: #fff;*/  /* set default white background */
 }
 
-hgroup h1 small { line-height: 1em; }
+h1, h2, h3, h4, h5, h6 {
+    small {
+        line-height: 1em; 
+        color: $grayLighter;
+    }
+}
 
 .carousel-control {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -368,5 +385,5 @@ body > .navbar {
 }
 
 .menu-container {
-     background:lighten($lightgreyblue, 15%);
+     background:lighten($bodyBackground, 15%);
 }
