@@ -237,6 +237,7 @@ module Nesta
           end
         end
       end
+
       def display_bootstrap_menu_item(item, options = {})
         if item.respond_to?(:each)
           if (options[:levels] - 1) > 0
@@ -253,21 +254,18 @@ module Nesta
           end
         end
       end
+
       def current_item_in_path?(item)
         #request.path == item.abspath
 
         request.path =~ /#{item.abspath}/
       end
-      def render_sliding_image_viewer(page)
+
+      def render_sliding_image_viewer(page,height=350)
         img = page.metadata('image')
         if img
           imgs = img.split(",")
           if imgs.length > 1
-            #haml_tag :div, :id => 'slider', :class => 'nivoSlider theme-default' do
-            #  imgs.each do |i|
-            #    haml_tag :img, :width=>"100%", :src => '/attachments/images/'+i
-            #  end
-            #end
             haml_tag :div, :id => 'slides', :class => 'carousel' do
               haml_tag :div, :class => 'carousel-inner' do
                 is_set = nil
@@ -279,7 +277,7 @@ module Nesta
                     is_set = true
                   end
                   haml_tag :div, :class=>"item #{active}" do
-                    haml_tag :img, :width=>"100%", :src => url(i)
+                    haml_tag :img, :height => height, :src => url(i)
                     xmp = img_xmp(i)
                     # $stderr.puts("XMP?: #{xmp}")
                     if xmp
@@ -308,7 +306,7 @@ module Nesta
               end
             end
           else
-            haml_tag :img, :src => url(imgs[0])
+            haml_tag :img, :src => url(imgs[0]), :height => height
           end
         end
       end
