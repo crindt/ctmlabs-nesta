@@ -21,6 +21,7 @@
                 <b class="caret"></b> \
               </a> \
               <ul id="applications-list" class="dropdown-menu"> \
+                 APPLIST \
               </ul> \
             </li> \
           </ul> \
@@ -53,6 +54,7 @@
 
         $(".navbar-fixed-top [title]").tooltip({placement:"bottom"});
 
+        /*
         $.getJSON("CTMLABSURLjson/ctmlabs-apps.json", function(data) {
             $.each(data.ctmlabs,function(index,item) {
                 $("#applications-list").append("<li><a href="+item.url+" title="+item.title+">"+item.label+"</a></li>");
@@ -62,6 +64,7 @@
         }).error(function(jqXHR, textStatus, errorThrown) {
             alert( textStatus );
         });
+        */
     });
         
 })()

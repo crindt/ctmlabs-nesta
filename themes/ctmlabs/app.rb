@@ -141,8 +141,28 @@ module Nesta
       cache scss(params[:sheet].to_sym)
     end
 
+    def get_ctmlabs_menu_items
+      ml = category_page_list("projects")
+      mil = []
+      ml.each do |mi|
+        mil.push({'label' => mi.menu || mi.title,
+                   'title' => mi.title,
+                   'url'   => mi.url
+                 })
+      end
+      return mil
+    end
+
     # return 
     get '/js/ctmlabs-banner.js' do
+      set :url => 'url'
+      set :title => 'title'
+      set :label => 'label'
+      mil = get_ctmlabs_menu_items()
+      li = mil.collect{ |item| 
+        $stderr.puts "#{item}"
+        '<li><a href="'+item['url']+'" title="'+item['title']+'">'+item['label']+'</a></li>' }.join("\\\n")
+
       f = File.open('themes/ctmlabs/public/ctmlabs/js/ctmlabs-banner.js')
       contents = f.read
       cc = contents.gsub(/CTMLABSURL/,url("/"))
@@ -150,6 +170,8 @@ module Nesta
         .gsub(/APPNAME/,params['appname'] || "CTMLabs")
         .gsub(/APPHELP/,params['apphelp'] || "docs/help")
         .gsub(/APPCONTACT/,params['appcontact'] || "docs/contact")
+        .gsub(/APPLIST/,li || "")
+
       if params['fixed'] == "false"
         cc = cc.gsub(/navbar-fixed-top/,'')
       end
