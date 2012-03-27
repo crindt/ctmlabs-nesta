@@ -173,6 +173,9 @@ a {
     li {
         text-shadow: none;
     }
+
+    /* Hack to fix bad breadcrumb background in IE */
+    filter: none;
 }
 
 
