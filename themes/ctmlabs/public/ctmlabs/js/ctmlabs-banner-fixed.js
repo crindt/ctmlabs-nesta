@@ -22,19 +22,7 @@
                 Applications\
                 <b class="caret"></b> \
               </a> \
-              <ul class="dropdown-menu"> \
-                <li> \
-                  <a href="https://tmcpe.ctmlabs.net/tmcpe-1.3">TMC Performance Evaulation</a> \
-                </li> \
-                <li> \
-                  <a href="http://128.200.36.104:8080/SATMSWeb">Ramp Meter Evaluation Platform</a> \
-                </li> \
-                <li> \
-                  <a href="http://moon.its.uci.edu/inside">INSIDE Laboratory</a> \
-                </li> \
-                <li> \
-                  <a href="http://safety.ctmlabs.net/safetynet">Safety</a> \
-                </li> \
+              <ul id="applications-list" class="dropdown-menu"> \
               </ul> \
             </li> \
           </ul> \
@@ -66,7 +54,14 @@
         $("body").css('padding-top','60px');
 
         $(".navbar-fixed-top [title]").tooltip({placement:"bottom"});
-        
+
+        $.getJSON("http://localhost:9393/json/ctmlabs-apps.json", function(data) {
+            $.each(data.ctmlabs,function(index,item) {
+                $("#applications-list").append("<li><a href="+item.url+" title="+item.title+">"+item.label+"</a></li>");
+            });
+        }).error(function(jqXHR, textStatus, errorThrown) {
+            alert( textStatus );
+        });
     });
         
 })()

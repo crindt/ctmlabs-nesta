@@ -102,7 +102,7 @@ module Nesta
         end
       end
 
-      def category_page_link_list( category, list_class = "", item_class = "" )
+      def category_page_list( category )
         ppage = Page.find_by_path(category)
         pp = Page.find_all.select do |page|
           page.date.nil? && page.url && page.flags.include?('deployed') && page.categories.include?(ppage)
@@ -116,6 +116,11 @@ module Nesta
             by_priority
           end
         end
+        return pp
+      end
+
+      def category_page_link_list( category, list_class = "", item_class = "" )
+        pp = category_page_list( category )
         haml_tag :ul, :class=>list_class do
           pp.each do |p|
             haml_tag :li, :class=>item_class do
@@ -134,6 +139,35 @@ module Nesta
     get '/css/:sheet.css' do
       content_type 'text/css', :charset => 'utf-8'
       cache scss(params[:sheet].to_sym)
+    end
+
+    # return 
+    get '/js/ctmlabs-banner.js' do
+      f = File.open('themes/ctmlabs/public/ctmlabs/js/ctmlabs-banner.js')
+      contents = f.read
+      cc = contents.gsub(/CTMLABSURL/,url("/"))
+        .gsub(/APPNAME/,params['appname'] || "CTMLabs")
+        .gsub(/APPHELP/,params['apphelp'] || "docs/help")
+        .gsub(/APPCONTACT/,params['appcontact'] || "docs/contact")
+      if params['fixed'] == "false"
+        cc = cc.gsub(/navbar-fixed-top/,'')
+      end
+      content_type 'application/javascript', :charset => 'utf-8'
+      cache( cc )
+    end
+
+    # return a json object with the relevant menu items
+    get '/json/ctmlabs-apps.json' do
+      content_type 'application/json', :charset => 'utf-8'
+      ml = category_page_list("projects")
+      mil = []
+      ml.each do |mi|
+        mil.push({'label' => mi.menu || mi.title,
+                   'title' => mi.title,
+                   'url'   => mi.url
+                 })
+      end
+      cache( {'ctmlabs' => mil}.to_json )
     end
   end
 
