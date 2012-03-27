@@ -5,6 +5,7 @@
 @import url(http://fonts.googleapis.com/css?family=Droid+Serif);
 
 @import "variables.scss";
+@import "ctmlnav.scss";
 
 $common-background: lighten($bodyBackground,15%);
 $section-background: lighten($bodyBackground,15%); //#5D7E8F;//#7EA8BD;
@@ -352,4 +353,3 @@ h1, h2, h3, h4, h5, h6 {
 
 .blank { background: $bodyBackground }
 
-@import "ctmlnav.scss";
