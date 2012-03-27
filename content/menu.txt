@@ -2,7 +2,8 @@ projects
 services
 facilities
 data
-technology
+blog
 about
   history
+  technology
   people

@@ -1,0 +1,23 @@
+#content
+  %div.row
+    %article.span8(role="main")
+      ~ @page.to_html(self)
+
+      %h2 &nbsp;
+      - unless @page.pages.empty?
+        %section.pages
+          %header
+            %h1 More information...
+          = article_summaries(@page.pages, :summaries)
+
+      - unless @page.articles.empty?
+        %section.articles
+          %header
+            %h1= articles_heading
+          = article_summaries(@page.articles, :summaries)
+
+      = haml :page_meta, :layout => false, :locals => { :page => @page }
+
+    = haml :comments, :layout => false
+
+/= haml :sidebar, :layout => false
