@@ -1,6 +1,7 @@
 Title: Partners
 Menu: Partners
 Categories: about
+Summary: Participating organizations in CTMLabs
 
 # CTMLabs Partners
 

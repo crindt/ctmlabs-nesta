@@ -1,0 +1,35 @@
+Title: CTMLabs research connection presentation, March 28th, 2012 1:30-3:30
+Categories: blog
+Date: "2012-03-26"
+Summary: CTMLabs researchers to deliver Caltrans research connection presentation
+
+# CTMLabs research connection presentation
+
+CTMLabs researchers will be delivering the monthly Caltrans Research Connection
+webinar from Caltrans headquarters on March 28th, 2012 from 1:30-3:30.  
+
+The California Traffic Management Laboratories (CTMLabs), formerly the
+California ATMS Testbed, is a partnership between Caltrans and the University of
+California, Irvine with a mission to support traffic management research,
+implementation, and evaluation. CTMLabs is a research and development laboratory
+offering a one-stop shop for simulation, data analysis, testing, and evaluation
+that provides end-to-end support for moving research ideas into everyday
+practice.
+
+In this presentation, we will highlight CTMLabs' capabilities and benefits and
+discuss the following projects completed in partnership with Caltrans customers:
+
+* The TMC Performance Evaluation project completed with Caltrans District 12
+  enables TMC managers and operators to evaluate the benefits of TMC operations
+  by comparing observed delays to estimated delays in the absence of TMC
+  actions.
+
+* The Safety Performance Tool that evaluates safety performance using raw,
+  30-second detector data, and demonstrates innovative data processing and
+  display techniques.
+  
+Details on how to view the webinar are provided [here].
+
+
+[here]: http://www.dot.ca.gov/researchconn/
+
