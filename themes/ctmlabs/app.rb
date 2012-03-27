@@ -154,7 +154,8 @@ module Nesta
         cc = cc.gsub(/navbar-fixed-top/,'')
       end
       content_type 'application/javascript', :charset => 'utf-8'
-      cache( cc )
+      res = cache( cc )
+      res.gsub(/(<!--.*-->)/,'/* $1 */')
     end
 
     # return a json object with the relevant menu items
