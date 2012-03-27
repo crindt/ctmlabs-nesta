@@ -5,4 +5,3 @@ rescue LoadError
   puts 'Could not load Vlad'
 end
 
-
