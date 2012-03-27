@@ -12,7 +12,7 @@
           <span class="icon-bar"></span> \
         </a> \
         <a class="ir brand" href="CTMLABSURL" id="ctmllink" title="CTMLabs home"></a> \
-        <a href="/" class="brand">APPNAME</a> \
+        <a href="APPURL" class="brand">APPNAME</a> \
         <div class="nav-collapse"> \
           <ul class="nav"> \
             <li class="dropdown"> \

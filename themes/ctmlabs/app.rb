@@ -146,6 +146,7 @@ module Nesta
       f = File.open('themes/ctmlabs/public/ctmlabs/js/ctmlabs-banner.js')
       contents = f.read
       cc = contents.gsub(/CTMLABSURL/,url("/"))
+        .gsub(/APPURL/,params['appurl'] || "/")
         .gsub(/APPNAME/,params['appname'] || "CTMLabs")
         .gsub(/APPHELP/,params['apphelp'] || "docs/help")
         .gsub(/APPCONTACT/,params['appcontact'] || "docs/contact")
