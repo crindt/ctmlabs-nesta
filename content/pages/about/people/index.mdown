@@ -2,7 +2,9 @@ Title: Researchers and Staff
 Menu: People
 Categories: about:-10
 Summary: CTMLabs is staffed by an experienced collection of researchers and technical supports staff.
+Template: page_list_2
 
 # Researchers and Staff at CTMLabs
 
-CTMLabs maintains...
+CTMLabs is operated and maintained by a dedicated group of researchers and
+staff.

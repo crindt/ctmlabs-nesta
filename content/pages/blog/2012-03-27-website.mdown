@@ -1,9 +1,12 @@
 Title: Updated CTMLabs website goes live
+categories: blog
 Summary: Improvements in usability and maintainability should provide a better user experience.
 Author: Craig Rindt
-Date: "2012-03-14"
+Menu: "2012-03-27"
+Date: "2012-03-27"
 
 # Updated CTMLabs website goes live
+<hr class="soften-right tight">
 
 We've moved the CTMLabs portal website from a [drupal] install to
 [nesta].  Nesta, a ruby-based content management system designed for

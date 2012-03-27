@@ -12,6 +12,13 @@ require 'json'
 
 
 module Nesta
+  module View
+    module Helpers
+      def article_summaries(articles, template = :summaries)
+        haml(template, :layout => false, :locals => { :pages => articles })
+      end
+    end
+  end
   class App
     # Uncomment the Rack::Static line below if your theme has assets
     # (i.e images or JavaScript).
