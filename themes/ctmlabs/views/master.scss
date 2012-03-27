@@ -5,6 +5,7 @@
 @import url(http://fonts.googleapis.com/css?family=Droid+Serif);
 
 @import "variables.scss";
+@import "ctmlnav.scss";
 
 $common-background: lighten($bodyBackground,15%);
 $section-background: lighten($bodyBackground,15%); //#5D7E8F;//#7EA8BD;
@@ -101,28 +102,6 @@ nav ul.breadcrumb {
     }
 }
 
-.navbar-fixed-top {
-    .brand {
-        float: left;
-        display: block;
-        padding: 8px 20px 12px;
-        margin-left: -20px;
-        font-size: 20px;
-        font-weight: 200;
-        line-height: 1;
-        color: white;
-    }
-/*
-    a.brand {
-        background-image: url("../ctmlabs/images/logo_jem_060.png");
-        background-position: 5px 0px;
-        background-size: 80px auto;
-        padding-left: 93.33333333333334px;
-        background-repeat: no-repeat;
-    }
-*/
-}
-
 #container {
     header {
         //border-bottom: 1px solid #E5E5E5;
@@ -180,18 +159,6 @@ hr.soften-right {
     margin-bottom: 1em;
 }
 
-
-#ctmllink {
-    background: url("../ctmlabs/images/ctml.png") no-repeat 50% 50%;
-    background-color: transparent;
-    border: 0 none;
-    color: transparent;
-    font: 0pt/0 a;
-    text-shadow: none;
-    width: 40px;
-    height: 20px;
-}
-
 a {
     &:hover { text-decoration: none; }
 }
@@ -237,9 +204,10 @@ body {
 /* make brochure images fit in their container */
 #brochure {
     .banner .image {
-        min-height: 200px;
+        min-height: 350px;
         img {
-            width:100%;
+            max-width:100%;
+            height: 350px;
         }
     }
 }
@@ -264,17 +232,6 @@ body {
                 width: 100%;
             }
         }
-
-    }
-}
-
-/* fix header menu background */
-.nav > li > a {
-    &:hover {
-        text-decoration: none;
-        //background-color: #A2C5DA;
-        /* Per james */
-        background-color: $gray;
 
     }
 }
@@ -375,18 +332,23 @@ h1, h2, h3, h4, h5, h6 {
     }
 }
 
-body > .navbar {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 13px;
-    line-height: 18px;
-}
-
 .meta, .meta .label {
     font-size: 8px;
 }
 
 .menu-container {
      background:lighten($bodyBackground, 15%);
+
+     /* fix header menu background */
+     .nav > li > a {
+         &:hover {
+             text-decoration: none;
+             //background-color: #A2C5DA;
+             /* Per james */
+             background-color: $gray;
+
+         }
+     }
 }
 
 .blank { background: $bodyBackground }

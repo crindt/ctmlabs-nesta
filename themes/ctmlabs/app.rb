@@ -102,7 +102,7 @@ module Nesta
         end
       end
 
-      def category_page_link_list( category, list_class = "", item_class = "" )
+      def category_page_list( category )
         ppage = Page.find_by_path(category)
         pp = Page.find_all.select do |page|
           page.date.nil? && page.url && page.flags.include?('deployed') && page.categories.include?(ppage)
@@ -116,6 +116,11 @@ module Nesta
             by_priority
           end
         end
+        return pp
+      end
+
+      def category_page_link_list( category, list_class = "", item_class = "" )
+        pp = category_page_list( category )
         haml_tag :ul, :class=>list_class do
           pp.each do |p|
             haml_tag :li, :class=>item_class do
@@ -134,6 +139,62 @@ module Nesta
     get '/css/:sheet.css' do
       content_type 'text/css', :charset => 'utf-8'
       cache scss(params[:sheet].to_sym)
+    end
+
+    def get_ctmlabs_menu_items
+      ml = category_page_list("projects")
+      mil = []
+      ml.each do |mi|
+        mil.push({'label' => mi.menu || mi.title,
+                   'title' => mi.title,
+                   'url'   => mi.url
+                 })
+      end
+      return mil
+    end
+
+    # return 
+    get '/js/ctmlabs-banner.js' do
+      set :url => 'url'
+      set :title => 'title'
+      set :label => 'label'
+      mil = get_ctmlabs_menu_items()
+      li = mil.collect{ |item| 
+        $stderr.puts "#{item}"
+        '<li><a href="'+item['url']+'" title="'+item['title']+'">'+item['label']+'</a></li>' }.join("\\\n")
+
+      f = File.open('themes/ctmlabs/public/ctmlabs/js/ctmlabs-banner.js')
+      contents = f.read
+      cc = contents.gsub(/CTMLABSURL/,url("/"))
+        .gsub(/APPURL/,params['appurl'] || "/")
+        .gsub(/APPNAME/,params['appname'] || "CTMLabs")
+        .gsub(/APPHELP/,params['apphelp'] || "docs/help")
+        .gsub(/APPCONTACT/,params['appcontact'] || "docs/contact")
+        .gsub(/APPLIST/,li || "")
+
+      if params['fixed'] == "false"
+        cc = cc.gsub(/navbar-fixed-top/,'')
+      end
+      content_type 'application/javascript', :charset => 'utf-8'
+      return cc
+      #res = cache( cc )
+      #res.gsub(/^.*page cached.*$/,"")
+    end
+
+    # return a json object with the relevant menu items
+    get '/json/ctmlabs-apps.json' do
+      content_type 'application/json', :charset => 'utf-8'
+      ml = category_page_list("projects")
+      mil = []
+      ml.each do |mi|
+        mil.push({'label' => mi.menu || mi.title,
+                   'title' => mi.title,
+                   'url'   => mi.url
+                 })
+      end
+      res = {'ctmlabs' => mil}.to_json 
+      return res
+      #cache( res )
     end
   end
 
@@ -237,6 +298,7 @@ module Nesta
           end
         end
       end
+
       def display_bootstrap_menu_item(item, options = {})
         if item.respond_to?(:each)
           if (options[:levels] - 1) > 0
@@ -253,21 +315,18 @@ module Nesta
           end
         end
       end
+
       def current_item_in_path?(item)
         #request.path == item.abspath
 
         request.path =~ /#{item.abspath}/
       end
-      def render_sliding_image_viewer(page)
+
+      def render_sliding_image_viewer(page,height=350)
         img = page.metadata('image')
         if img
           imgs = img.split(",")
           if imgs.length > 1
-            #haml_tag :div, :id => 'slider', :class => 'nivoSlider theme-default' do
-            #  imgs.each do |i|
-            #    haml_tag :img, :width=>"100%", :src => '/attachments/images/'+i
-            #  end
-            #end
             haml_tag :div, :id => 'slides', :class => 'carousel' do
               haml_tag :div, :class => 'carousel-inner' do
                 is_set = nil
@@ -279,7 +338,7 @@ module Nesta
                     is_set = true
                   end
                   haml_tag :div, :class=>"item #{active}" do
-                    haml_tag :img, :width=>"100%", :src => url(i)
+                    haml_tag :img, :height => height, :src => url(i)
                     xmp = img_xmp(i)
                     # $stderr.puts("XMP?: #{xmp}")
                     if xmp
@@ -308,7 +367,7 @@ module Nesta
               end
             end
           else
-            haml_tag :img, :src => url(imgs[0])
+            haml_tag :img, :src => url(imgs[0]), :height => height
           end
         end
       end

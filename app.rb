@@ -105,8 +105,5 @@ module Nesta
     helpers do
       # Add new helpers here.
     end
-
-    # Add new routes here.
-      
   end
 end

@@ -9,7 +9,7 @@
           - unless @page.pages_with_flag(@page.metadata('group by')).empty?
             %section.deployed_pages
               %header
-                %h2 Active pages...
+                %h2 Active sites...
               %hr.soften-right.near
               = article_summaries(@page.pages_with_flag(@page.metadata('group by')))
 

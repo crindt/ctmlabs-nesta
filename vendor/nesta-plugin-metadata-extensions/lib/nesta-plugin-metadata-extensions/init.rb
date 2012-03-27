@@ -46,10 +46,12 @@ module Nesta
         inferred_heading
       elsif h1
         h1
+      elsif title
+        title
       elsif menu_label
         menu_label
       else
-        "<unknown>"
+        "&lt;unknown&gt;"
       end
     end
 

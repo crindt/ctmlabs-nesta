@@ -2,19 +2,17 @@
     ctmlabs = {version:"0.0.1"};
 
     $(document).ready(function(){
-        var menuStr ='  <nav id="ctmlabs-nav" class="navbar"> \
+        var menuStr ='  <nav id="ctmlabs-nav" class="navbar navbar-fixed-top"> \
     <div class="navbar-inner"> \
-      <div class="container-fluid"> \
+      <div class="container"> \
         <!-- .btn-navbar is used as the toggle for collapsed navbar content --> \
         <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse"> \
           <span class="icon-bar"></span> \
           <span class="icon-bar"></span> \
           <span class="icon-bar"></span> \
         </a> \
-        <a alt="CTMLabs" class="ir brand" href="http://wwwdev.ctmlabs.net/ctmlabs/" id="ctmllink" title="CTMLabs home"></a> \
-        <div class="brand"> \
-          CTMLabs\
-        </div> \
+        <a class="ir brand" href="CTMLABSURL" id="ctmllink" title="CTMLabs home"></a> \
+        <a href="APPURL" class="brand">APPNAME</a> \
         <div class="nav-collapse"> \
           <ul class="nav"> \
             <li class="dropdown"> \
@@ -22,19 +20,8 @@
                 Applications\
                 <b class="caret"></b> \
               </a> \
-              <ul class="dropdown-menu"> \
-                <li> \
-                  <a href="https://tmcpe.ctmlabs.net/tmcpe-1.3">TMC Performance Evaulation</a> \
-                </li> \
-                <li> \
-                  <a href="http://128.200.36.104:8080/SATMSWeb">Ramp Meter Evaluation Platform</a> \
-                </li> \
-                <li> \
-                  <a href="http://moon.its.uci.edu/inside">INSIDE Laboratory</a> \
-                </li> \
-                <li> \
-                  <a href="http://safety.ctmlabs.net/safetynet">Safety</a> \
-                </li> \
+              <ul id="applications-list" class="dropdown-menu"> \
+                 APPLIST \
               </ul> \
             </li> \
           </ul> \
@@ -49,10 +36,10 @@
               </a> \
               <ul class="dropdown-menu"> \
                 <li> \
-                  <a href="http://wwwdev.ctmlabs.net/ctmlabs/help" title="Site help">Site Docs</a> \
+                  <a href="APPHELP" title="Site help">Site Docs</a> \
                 </li> \
                 <li> \
-                  <a href="http://wwwdev.ctmlabs.net/ctmlabs/about/people">Contact</a> \
+                  <a href="APPCONTACT">Contact</a> \
                 </li> \
               </ul> \
             </li> \
@@ -63,9 +50,21 @@
   </nav> \
 ';
         $("body").prepend(menuStr);
+        $("body").css('padding-top','40px');
 
+        $("#applications-list [title]").tooltip({placement:"right"});
         $(".navbar-fixed-top [title]").tooltip({placement:"bottom"});
-        
+        /*
+        $.getJSON("CTMLABSURLjson/ctmlabs-apps.json", function(data) {
+            $.each(data.ctmlabs,function(index,item) {
+                $("#applications-list").append("<li><a href="+item.url+" title="+item.title+">"+item.label+"</a></li>");
+            });
+
+            $(".container [title]").tooltip();
+        }).error(function(jqXHR, textStatus, errorThrown) {
+            alert( textStatus );
+        });
+        */
     });
         
 })()
