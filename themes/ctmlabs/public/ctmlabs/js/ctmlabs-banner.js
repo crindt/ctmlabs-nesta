@@ -27,7 +27,7 @@
           </ul> \
           <ul class="nav pull-right"> \
             <li> \
-              <a href="http://tracker.ctmlabs.net/projects/tb/issues/new" title="Report a problem with this website">Report Problem</a> \
+              <a href="http://tracker.ctmlabs.net/projects/REDMINEPROJECT/issues/new" title="Report a problem with this website">Report Problem</a> \
             </li> \
             <li class="dropdown"> \
               <a class="dropdown-toggle" data-toggle="dropdown" href="#"> \

@@ -170,6 +170,7 @@ module Nesta
         .gsub(/APPHELP/,params['apphelp'] || "docs/help")
         .gsub(/APPCONTACT/,params['appcontact'] || "docs/contact")
         .gsub(/APPLIST/,li || "")
+        .gsub(/REDMINEPROJECT/,params['redmineproject'] || 'tb')
 
       if params['fixed'] == "false"
         cc = cc.gsub(/navbar-fixed-top/,'')
