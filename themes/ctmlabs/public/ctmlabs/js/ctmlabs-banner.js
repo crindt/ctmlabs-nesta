@@ -52,8 +52,8 @@
         $("body").prepend(menuStr);
         $("body").css('padding-top','40px');
 
+        $("#applications-list [title]").tooltip({placement:"right"});
         $(".navbar-fixed-top [title]").tooltip({placement:"bottom"});
-
         /*
         $.getJSON("CTMLABSURLjson/ctmlabs-apps.json", function(data) {
             $.each(data.ctmlabs,function(index,item) {
