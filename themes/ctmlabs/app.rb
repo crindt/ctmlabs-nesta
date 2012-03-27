@@ -155,7 +155,7 @@ module Nesta
       end
       res = cache( cc )
       content_type :javascript, :charset => 'utf-8'
-      res.gsub(/^.*page cached.*$)/,"")
+      res.gsub(/^.*page cached.*$/,"")
     end
 
     # return a json object with the relevant menu items
