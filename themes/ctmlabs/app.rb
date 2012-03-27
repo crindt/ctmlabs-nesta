@@ -160,7 +160,6 @@ module Nesta
       set :label => 'label'
       mil = get_ctmlabs_menu_items()
       li = mil.collect{ |item| 
-        $stderr.puts "#{item}"
         '<li><a href="'+item['url']+'" title="'+item['title']+'">'+item['label']+'</a></li>' }.join("\\\n")
 
       f = File.open('themes/ctmlabs/public/ctmlabs/js/ctmlabs-banner.js')
@@ -171,6 +170,7 @@ module Nesta
         .gsub(/APPHELP/,params['apphelp'] || "docs/help")
         .gsub(/APPCONTACT/,params['appcontact'] || "docs/contact")
         .gsub(/APPLIST/,li || "")
+        .gsub(/REDMINEPROJECT/,params['redmineproject'] || 'tb')
 
       if params['fixed'] == "false"
         cc = cc.gsub(/navbar-fixed-top/,'')
