@@ -153,7 +153,7 @@ module Nesta
       if params['fixed'] == "false"
         cc = cc.gsub(/navbar-fixed-top/,'')
       end
-      content_type :javascript, :charset => 'utf-8'
+      content_type 'application/javascript', :charset => 'utf-8'
       return cc
       #res = cache( cc )
       #res.gsub(/^.*page cached.*$/,"")
