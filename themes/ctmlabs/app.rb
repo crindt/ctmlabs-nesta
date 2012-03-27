@@ -153,9 +153,10 @@ module Nesta
       if params['fixed'] == "false"
         cc = cc.gsub(/navbar-fixed-top/,'')
       end
-      res = cache( cc )
       content_type :javascript, :charset => 'utf-8'
-      res.gsub(/^.*page cached.*$/,"")
+      return cc
+      #res = cache( cc )
+      #res.gsub(/^.*page cached.*$/,"")
     end
 
     # return a json object with the relevant menu items
