@@ -14,7 +14,7 @@ $ctmlabsfontsize: 16px;
 $menuborder: #666 1px solid;
 $ctmlabs-shadowcolor: transparentize( #000, 0.5 );
 
-#ctmlabsbanner {
+#ctmlabs-nav {
     @include clearfix;
 
     background-color: $ctmlabs-menu-background;
