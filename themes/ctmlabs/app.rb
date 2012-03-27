@@ -170,7 +170,9 @@ module Nesta
                    'url'   => mi.url
                  })
       end
-      cache( {'ctmlabs' => mil}.to_json )
+      res = {'ctmlabs' => mil}.to_json 
+      return res
+      #cache( res )
     end
   end
 
