@@ -1,23 +1,31 @@
-.navbar-fixed-top {
-    .brand {
-        float: left;
-        display: block;
-        padding: 8px 20px 12px;
-        margin-left: -20px;
-        font-size: 20px;
-        font-weight: 200;
-        line-height: 1;
-        color: white;
-    }
 
-    #ctmllink {
-        background: url("../ctmlabs/images/ctml.png") no-repeat 50% 50%;
-        background-color: transparent;
-        border: 0 none;
-        color: transparent;
-        font: 0pt/0 a;
-        text-shadow: none;
-        width: 40px;
-        height: 20px;
+#ctmlabs-nav {
+    font-family:	"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size:	13px;
+    font-weight:	400;
+    font-style:	normal;
+    .navbar-fixed-top {
+
+        .brand {
+            float: left;
+            display: block;
+            padding: 8px 20px 12px;
+            margin-left: -20px;
+            font-size: 20px;
+            font-weight: 200;
+            line-height: 1;
+            color: white;
+        }
     }
+}
+
+#ctmllink {
+    background: url("http://www.ctmlabs.net/ctmlabs/images/ctml.png") no-repeat 50% 50%;
+    background-color: transparent;
+    border: 0 none;
+    color: transparent;
+    font: 0pt/0 a;
+    text-shadow: none;
+    width: 40px;
+    height: 20px;
 }
