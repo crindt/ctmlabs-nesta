@@ -175,6 +175,10 @@ module Nesta
       if params['fixed'] == "false"
         cc = cc.gsub(/navbar-fixed-top/,'')
       end
+      if params['fluid'] == 'true'
+        cc = cc.gsub(/class="container"/,'class="container-fluid"')
+      end
+
       content_type 'application/javascript', :charset => 'utf-8'
       return cc
       #res = cache( cc )
