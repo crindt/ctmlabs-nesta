@@ -12,4 +12,5 @@ gateway to CTMLabs application websites.
 # Some applications require login
 
 Some CTMLabs web applications require a user account before you can
-use them...
+use them.  Contact <a
+href="mailto:support@ctmlabs.net"><code>support@ctmlabs.net</code></a> if you would like to establish an account.
