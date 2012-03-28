@@ -54,18 +54,18 @@ Layout: layouthome
 %hr.soften
 
 .row
-  .span6
-    %section
+  .span12
+    %section.whatsnew
       %header
         %h2 What's new
         %hr.soften-right.tight
       %section.articles= article_summaries(latest_articles)
-  .span6
-    %section
-      %header
-        %h2 Quick Links
-        %hr.soften-right.tight
-      :markdown
-        * Link1
-        * Link2
-        * Link3
+  /.span6
+  /  %section
+  /    %header
+  /      %h2 Quick Links
+  /      %hr.soften-right.tight
+  /    :markdown
+  /      * Link1
+  /      * Link2
+  /      * Link3
