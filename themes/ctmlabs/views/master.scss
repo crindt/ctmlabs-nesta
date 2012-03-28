@@ -356,3 +356,16 @@ h1, h2, h3, h4, h5, h6 {
 
 .blank { background: $bodyBackground }
 
+// front page hack
+
+section.whatsnew {
+    .thumbnail {
+        min-height:12em;
+
+        footer {
+            width: 100%;
+            position: absolute;
+            bottom: 0;
+        }
+    }
+}
