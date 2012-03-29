@@ -59,7 +59,17 @@ Layout: layouthome
       %header
         %h2 What's new
         %hr.soften-right.tight
-      %section.articles= article_summaries(latest_articles)
+      .row
+        .span6
+          %header
+            %h2 Upcoming and Recent Events
+            %hr.soften-right.tight
+              %section.articles= article_summaries(latest_articles(8,'events'))
+        .span6
+          %header
+            %h2 Recent Blog Entries
+            %hr.soften-right.tight
+              %section.articles= article_summaries(latest_articles(8,'blog'))
   /.span6
   /  %section
   /    %header
