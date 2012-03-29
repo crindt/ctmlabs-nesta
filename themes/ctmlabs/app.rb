@@ -17,6 +17,19 @@ module Nesta
       def article_summaries(articles, template = :summaries)
         haml(template, :layout => false, :locals => { :pages => articles })
       end
+
+      def latest_articles(count = 8, categorypath = nil)
+        cp = Page.find_by_path(categorypath)
+        $stderr.puts "#{categorypath} ==== #{cp} "
+        unless cp == nil
+          all = Nesta::Page.find_articles
+          all = all.select do |p|
+            p.categories.include?(cp)
+          end
+          return all
+        end
+        return []
+      end
     end
   end
   class App

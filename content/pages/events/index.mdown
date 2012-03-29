@@ -1,0 +1,9 @@
+Title: CTMLabs Events
+H1: Events
+Summary: Events
+Menu: Events
+Menu Item: Events
+Template: page_list_2
+Articles Heading: Recent and upcoming events...
+
+

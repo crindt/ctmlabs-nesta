@@ -1,4 +1,7 @@
-- unless pages.empty?
+- if pages.empty?
+  .alert.alert-warning
+    There are no items in this category.
+- else
   %ol.thumbnails
     - pages.each do |page|
       - if page.summary.nil? || page.summary.empty?

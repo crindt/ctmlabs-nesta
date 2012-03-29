@@ -1,8 +1,9 @@
 Title: TMC Operator Training on May 1st, 2012
-Categories: facilities/atms-training-and-devel-system, services/tmc-operator-training
+Categories: events, facilities/atms-training-and-devel-system, services/tmc-operator-training
 Summary: Our next operator training is coming soon
 Read more: Click to get information about registration.
 Date: "2012-01-01"
+flags: draft
 
 # TMC Operator Training on May 1st, 2012
 
