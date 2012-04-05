@@ -26,7 +26,6 @@
             </li> \
           </ul> \
           <ul class="nav pull-right"> \
-            APPLOGIN \
             <li> \
               <a href="http://tracker.ctmlabs.net/projects/REDMINEPROJECT/issues/new" title="Report a problem with this website">Report Problem</a> \
             </li> \
