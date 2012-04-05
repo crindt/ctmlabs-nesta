@@ -1,8 +1,8 @@
 (function(){
     ctmlabs = {version:"0.0.1"};
 
-    $(document).ready(function(){
-        $(".container [title]").tooltip();
+    jQuery(document).ready(function(){
+        jQuery(".container [title]").tooltip();
     });
         
 })()
