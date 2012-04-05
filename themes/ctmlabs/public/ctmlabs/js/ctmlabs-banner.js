@@ -1,7 +1,7 @@
 (function(){
     ctmlabs = {version:"0.0.1"};
 
-    $(document).ready(function(){
+    jQuery(document).ready(function(){
         var menuStr ='  <nav id="ctmlabs-nav" class="navbar navbar-fixed-top"> \
     <div class="navbar-inner"> \
       <div class="container"> \
@@ -26,6 +26,7 @@
             </li> \
           </ul> \
           <ul class="nav pull-right"> \
+            APPLOGIN \
             <li> \
               <a href="http://tracker.ctmlabs.net/projects/REDMINEPROJECT/issues/new" title="Report a problem with this website">Report Problem</a> \
             </li> \
@@ -49,18 +50,18 @@
     </div> \
   </nav> \
 ';
-        $("body").prepend(menuStr);
-        $("body").css('padding-top','40px');
+        jQuery("body").prepend(menuStr);
+        jQuery("body").css('padding-top','40px');
 
-        $("#applications-list [title]").tooltip({placement:"right"});
-        $(".navbar-fixed-top [title]").tooltip({placement:"bottom"});
+        jQuery("#applications-list [title]").tooltip({placement:"right"});
+        jQuery(".navbar-fixed-top [title]").tooltip({placement:"bottom"});
         /*
-        $.getJSON("CTMLABSURLjson/ctmlabs-apps.json", function(data) {
-            $.each(data.ctmlabs,function(index,item) {
-                $("#applications-list").append("<li><a href="+item.url+" title="+item.title+">"+item.label+"</a></li>");
+        jQuery.getJSON("CTMLABSURLjson/ctmlabs-apps.json", function(data) {
+            jQuery.each(data.ctmlabs,function(index,item) {
+                jQuery("#applications-list").append("<li><a href="+item.url+" title="+item.title+">"+item.label+"</a></li>");
             });
 
-            $(".container [title]").tooltip();
+            jQuery(".container [title]").tooltip();
         }).error(function(jqXHR, textStatus, errorThrown) {
             alert( textStatus );
         });
