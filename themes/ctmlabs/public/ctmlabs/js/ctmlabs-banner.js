@@ -1,5 +1,6 @@
 (function(){
     ctmlabs = {version:"0.0.1"};
+    jQuery.noConflict();
 
     jQuery(document).ready(function(){
         var menuStr ='  <nav id="ctmlabs-nav" class="navbar navbar-fixed-top"> \
