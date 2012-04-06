@@ -10,20 +10,17 @@
           <span class="icon-bar"></span> \
           <span class="icon-bar"></span> \
         </a> \
-        <a class="ir brand" href="CTMLABSURL" id="ctmllink" title="CTMLabs home"></a> \
-        <a href="APPURL" class="brand">APPNAME</a> \
-        <div class="nav-collapse"> \
           <ul class="nav"> \
             <li class="dropdown"> \
-              <a class="dropdown-toggle" data-toggle="dropdown" href="#"> \
-                Applications\
-                <b class="caret"></b> \
-              </a> \
+              <a id="ctmllink" class="ir brand dropdown-toggle" data-toggle="dropdown" href="#" title="Click to select a CTMLabs application"></a> \
               <ul id="applications-list" class="dropdown-menu"> \
+                 <li><a href="CTMLABSURL" title="CTMLabs home">CTMLabs Portal</a></li> \
                  APPLIST \
               </ul> \
             </li> \
+            <a href="APPURL" class="brand">APPNAME</a> \
           </ul> \
+        <div class="nav-collapse"> \
           <ul class="nav pull-right"> \
             <li> \
               <a href="http://tracker.ctmlabs.net/projects/REDMINEPROJECT/issues/new" title="Report a problem with this website">Report Problem</a> \
