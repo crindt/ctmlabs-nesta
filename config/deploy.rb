@@ -33,4 +33,3 @@ task "vlad:development:deploy" => %w[
 task "vlad:production:deploy" => %w[
   set:production vlad:deploy
 ]
-
