@@ -12,6 +12,7 @@ require 'json'
 
 
 module Nesta
+
   module View
     module Helpers
       def article_summaries(articles, template = :summaries)
@@ -49,6 +50,12 @@ module Nesta
       # Add new helpers here.
       def get_user
         current_user
+      end
+
+      def urls(uri)
+        turl = url(uri)
+        surl = turl.sub(/^[^:]*:/,'') # return url without protocol
+        surl
       end
 
 

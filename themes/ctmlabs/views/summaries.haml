@@ -15,14 +15,14 @@
       - else
         %li.span6
           - if page.image_url()
-            %a.blank(href="#{url(page.abspath)}" title="Click for more information") 
+            %a.blank(href="#{urls(page.abspath)}" title="Click for more information") 
               .thumbnail.curl
                 .row-fluid
                   %header
                     %h3= page.heading
                 .row-fluid
                   %div.span6.align-right
-                    %img(src="#{url(page.image_url())}" width="100%")
+                    %img(src="#{urls(page.image_url())}" width="100%")
                   %div.span6              
                     %section
                       ~ page.summary
@@ -37,6 +37,6 @@
                   %div.span12
                     ~ page.summary
                   .pull-right
-                    %a(href="#{url(page.abspath)}")
+                    %a(href="#{urls(page.abspath)}")
                       ~ page.read_more
                 = haml :page_meta, :layout => false, :locals => { :page => page }

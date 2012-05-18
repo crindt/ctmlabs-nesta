@@ -4,40 +4,40 @@
   %meta(name="description" content=@description)
 - if @keywords
   %meta(name="keywords" content=@keywords)
-%base(href="#{url('/')}")
+%base(href="#{urls('/')}")
 %title= "CTMLabs - #{@title}"
 
 / Styles
-%link(rel="stylesheet" type="text/css" href="#{url('/ctmlabs/bootstrap/css/bootstrap.css')}")
-%link(rel="stylesheet" type="text/css" href="#{url('/ctmlabs/bootstrap/css/bootstrap-responsive.css')}")
-%link(href="#{url('/ctmlabs/js/simple.css')}" media="screen" rel="stylesheet")
-%link(href="#{url('/ctmlabs/css/curl.css')}" media="screen" rel="stylesheet")
+%link(rel="stylesheet" type="text/css" href="#{urls('/ctmlabs/bootstrap/css/bootstrap.css')}")
+%link(rel="stylesheet" type="text/css" href="#{urls('/ctmlabs/bootstrap/css/bootstrap-responsive.css')}")
+%link(href="#{urls('/ctmlabs/js/simple.css')}" media="screen" rel="stylesheet")
+%link(href="#{urls('/ctmlabs/css/curl.css')}" media="screen" rel="stylesheet")
 
 
 
 <!--[if ! lte IE 6]><!-->
 <!-- web fonts -->
-%link(href="#{url('/css/master.css')}" media="screen" rel="stylesheet")
+%link(href="#{urls('/css/master.css')}" media="screen" rel="stylesheet")
 <!--<![endif]-->
 
 /[if lte IE 6]
-  %link(rel="stylesheet" href="http://universal-ie6-css.googlecode.com/files/ie6.1.1.css" media="screen, projection")
+  %link(rel="stylesheet" href="//universal-ie6-css.googlecode.com/files/ie6.1.1.css" media="screen, projection")
 /[if lt IE 9]
   / HTML5 shim, for IE6-8 support of HTML5 elements
   %script(src="//html5shim.googlecode.com/svn/trunk/html5.js")
 
-%script(src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js")
-%script(src="#{url('/ctmlabs/bootstrap/js/bootstrap.js')}")
-%script(src="#{url('/ctmlabs/js/common.js')}")
-%script(src="#{url('/js/ctmlabs-banner.js')}?appname=CTMLabs @ UCI&apphelp=#{url('/help')}&appcontact=mailto:support@ctmlabs.net")
+%script(src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js")
+%script(src="#{urls('/ctmlabs/bootstrap/js/bootstrap.js')}")
+%script(src="#{urls('/ctmlabs/js/common.js')}")
+%script(src="#{urls('/js/ctmlabs-banner.js')}?appname=CTMLabs @ UCI&apphelp=#{urls('/help')}&appcontact=mailto:support@ctmlabs.net")
 
-/%script(src="#{url('/ctmlabs/js/slides.js')}")
+/%script(src="#{urls('/ctmlabs/js/slides.js')}")
 
 /%script(src="http://mbostock.github.com/d3/d3.js?2.7.0")
 = local_stylesheet_link_tag('local')
-%link(href="#{url('/articles.xml')}" rel="alternate" type="application/atom+xml")
+%link(href="#{urls('/articles.xml')}" rel="alternate" type="application/atom+xml")
 = haml :analytics, :layout => false
 
 / icons
-%link(rel="shortcut icon" href="#{url('attachments/ctmlabs_favicon.ico')}")
+%link(rel="shortcut icon" href="#{urls('attachments/ctmlabs_favicon.ico')}")
 
