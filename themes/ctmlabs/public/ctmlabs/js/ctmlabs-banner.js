@@ -25,7 +25,6 @@
                 <b class="caret"></b> \
               </a> \
               <ul id="applications-list" class="dropdown-menu"> \
-                 <li><a href="CTMLABSURL" title="CTMLabs home">CTMLabs Portal</a></li> \
                  APPLIST \
               </ul> \
             </li> \
