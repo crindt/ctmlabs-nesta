@@ -12,13 +12,23 @@
         </a> \
           <ul class="nav"> \
             <li class="dropdown"> \
-              <a id="ctmllink" class="ir brand dropdown-toggle" data-toggle="dropdown" href="#" title="Click to select a CTMLabs application"></a> \
+              <a id="ctmllink" class="ir brand dropdown-toggle" data-toggle="dropdown" href="#" title="Click to select a portal"></a> \
+              <ul id="applications-list" class="dropdown-menu"> \
+                 <li><a href="CTMLABSURL" title="CTMLabs Irvine home">@ UC Irvine</a></li> \
+                 <li><a href="http://bhl.path.berkeley.edu/" title="CTMLabs Berkeley home">@ UC Berkeley</a></li> \
+              </ul> \
+            </li> \
+            <a href="APPURL" class="brand">APPNAME</a> \
+            <li class="dropdown"> \
+              <a id="applink" class="dropdown-toggle" data-toggle="dropdown" href="#" title="Click to select a CTMLabs application">\
+                Applications\
+                <b class="caret"></b> \
+              </a> \
               <ul id="applications-list" class="dropdown-menu"> \
                  <li><a href="CTMLABSURL" title="CTMLabs home">CTMLabs Portal</a></li> \
                  APPLIST \
               </ul> \
             </li> \
-            <a href="APPURL" class="brand">APPNAME</a> \
           </ul> \
         <div class="nav-collapse"> \
           <ul class="nav pull-right"> \
