@@ -41,6 +41,21 @@ module Nesta
     #
     use Rack::Static, :urls => ["/ctmlabs"], :root => "themes/ctmlabs/public"
 
+    # add a session for omniauth
+    use Rack::Session::Cookie, :secret => 'This is a secret key'
+
+    use OmniAuth::Builder do
+      provider :cas, {
+        :setup  => true,
+        :cas_server => 'https://cas.ctmlabs.net/cas',
+        :host => 'cas.ctmlabs.net', 
+        :login_url => '/cas/login', 
+        :ssl => true, 
+        :service_validate_url => '/cas/serviceValidate', 
+        :logout_url => '/cas/logout'
+      }
+    end
+
     configure do        
       set :haml, { :format => :html5 }
       #set :scss, Compass.sass_engine_options
@@ -153,13 +168,6 @@ module Nesta
       end
     end
 
-    # Add new routes here.
-
-    # Assume stylesheets are SCSS, unless...
-    get '/css/:sheet.css' do
-      content_type 'text/css', :charset => 'utf-8'
-      cache scss(params[:sheet].to_sym)
-    end
 
     def get_ctmlabs_menu_items
       ml = category_page_list("projects")
@@ -173,6 +181,42 @@ module Nesta
       return mil
     end
 
+
+    # Add new routes here.
+
+    get '/auth/cas/logout' do
+      session.clear
+      redirect "https://cas.ctmlabs.net/cas/logout?service=#{url('/')}"
+    end
+
+    get '/auth/cas/callback' do
+      # store the session in the rack/cookie
+      session[:ticket] = params[:ticket]
+      omniauth = request.env['omniauth.auth']
+      $stderr.puts "OMNI: #{omniauth}"
+      $stderr.puts "INFO: #{omniauth[:info]}"
+      info = omniauth[:extra]
+      $stderr.puts "INFO4: #{info[:user]}"
+      session[:user] = info[:user]
+      session[:givenName] = info[:givenName]
+      session[:sn] = info[:sn]      
+      session[:cn] = info[:cn]      
+      session[:groups] = info[:groups]
+      
+      $stderr.puts "user:   #{session[:user]}"
+      $stderr.puts "groups: #{session[:groups]}"
+
+      url = params[:url] || '/'
+
+      redirect url
+    end
+
+    # Assume stylesheets are SCSS, unless...
+    get '/css/:sheet.css' do
+      content_type 'text/css', :charset => 'utf-8'
+      cache scss(params[:sheet].to_sym)
+    end
+
     # return 
     get '/js/ctmlabs-banner.js' do
       set :url => 'url'
@@ -184,6 +228,12 @@ module Nesta
 
       f = File.open('themes/ctmlabs/public/ctmlabs/js/ctmlabs-banner.js')
       contents = f.read
+      $stderr.puts "USER IS #{session[:user]}"
+      if session[:user] then
+        user = "<li class=\"dropdown\"><a class=\"dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\">#{session[:user]}<b class=\"caret\"></b></a><ul class=\"dropdown-menu\"><li><a href=\"#{urls('/auth/cas/logout')}\">Logout</a></li></ul></li>"
+      else
+        user = "<a href=\"#{url('/auth/cas')}\">Login</a>"
+      end
       cc = contents.gsub(/CTMLABSURL/,url("/"))
         .gsub(/APPURL/,params['appurl'] || url('/'))
         .gsub(/APPNAME/,params['appname'] || "CTMLabs")
@@ -191,6 +241,7 @@ module Nesta
         .gsub(/APPCONTACT/,params['appcontact'] || "docs/contact")
         .gsub(/APPLIST/,li || "")
         .gsub(/REDMINEPROJECT/,params['redmineproject'] || 'tb')
+        .gsub(/USERBLOCK/,user)
 
       if params['fixed'] == "false"
         cc = cc.gsub(/navbar-fixed-top/,'')

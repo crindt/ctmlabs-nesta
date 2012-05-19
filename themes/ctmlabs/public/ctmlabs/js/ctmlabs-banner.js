@@ -32,6 +32,9 @@
         <div class="nav-collapse"> \
           <ul class="nav pull-right"> \
             <li> \
+              USERBLOCK\
+            </li>\
+            <li> \
               <a href="http://tracker.ctmlabs.net/projects/REDMINEPROJECT/issues/new" title="Report a problem with this website">Report Problem</a> \
             </li> \
             <li class="dropdown"> \
