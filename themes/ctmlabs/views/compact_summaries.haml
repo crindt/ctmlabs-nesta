@@ -2,4 +2,4 @@
   %ul
     - pages.each do |page|
       %li
-        %a(href="#{url(page.abspath)}" title="#{page.summary}")= page.heading
+        %a(href="#{urls(page.abspath)}" title="#{page.summary}")= page.heading

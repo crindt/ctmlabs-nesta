@@ -9,6 +9,15 @@
 
       %a.ir.brand(id="ctmllink" title="CTMLabs home" href="#{url('/')}")
       %a.brand(href="#{url('/')}") CTMLabs
+      %ul.nav
+        %li.dropdown
+          %a.dropdown-toggle(href="#" data-toggle="dropdown")
+            @ UC Irvine
+            %b.caret
+          %ul.dropdown-menu
+            %li
+              %a(href="" data-placement="right" data-delay=50) UC Berkeley
+          - category_page_link_list( "projects", "dropdown-menu" )
       %div.nav-collapse      
         %ul.nav
           %li.dropdown

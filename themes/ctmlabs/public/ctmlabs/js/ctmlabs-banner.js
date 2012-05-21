@@ -10,12 +10,17 @@
           <span class="icon-bar"></span> \
           <span class="icon-bar"></span> \
         </a> \
-        <a class="ir brand" href="CTMLABSURL" id="ctmllink" title="CTMLabs home"></a> \
-        <a href="APPURL" class="brand">APPNAME</a> \
-        <div class="nav-collapse"> \
           <ul class="nav"> \
             <li class="dropdown"> \
-              <a class="dropdown-toggle" data-toggle="dropdown" href="#"> \
+              <a id="ctmllink" class="ir brand dropdown-toggle" data-toggle="dropdown" href="#" title="Click to select a portal"></a> \
+              <ul id="applications-list" class="dropdown-menu"> \
+                 <li><a href="CTMLABSURL" title="CTMLabs Irvine home">@ UC Irvine</a></li> \
+                 <li><a href="http://bhl.path.berkeley.edu/" title="CTMLabs Berkeley home">@ UC Berkeley</a></li> \
+              </ul> \
+            </li> \
+            <a href="APPURL" class="brand">APPNAME</a> \
+            <li class="dropdown"> \
+              <a id="applink" class="dropdown-toggle" data-toggle="dropdown" href="#" title="Click to select a CTMLabs application">\
                 Applications\
                 <b class="caret"></b> \
               </a> \
@@ -24,7 +29,11 @@
               </ul> \
             </li> \
           </ul> \
+        <div class="nav-collapse"> \
           <ul class="nav pull-right"> \
+            <li> \
+              USERBLOCK\
+            </li>\
             <li> \
               <a href="http://tracker.ctmlabs.net/projects/REDMINEPROJECT/issues/new" title="Report a problem with this website">Report Problem</a> \
             </li> \

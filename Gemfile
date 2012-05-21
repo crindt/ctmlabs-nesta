@@ -3,6 +3,9 @@ source 'http://rubygems.org'
 #gem 'nesta', '0.9.13'
 gem "nesta", :git => "git://github.com/gma/nesta.git"
 
+gem "omniauth", :git => "git://github.com/intridea/omniauth.git"
+gem "omniauth-cas", :git => "git://github.com/dlindahl/omniauth-cas.git"
+
 # these are really theme requirements
 gem 'json'
 
