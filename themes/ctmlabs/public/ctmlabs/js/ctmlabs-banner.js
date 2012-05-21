@@ -35,7 +35,7 @@
               USERBLOCK\
             </li>\
             <li> \
-              <a href="http://tracker.ctmlabs.net/projects/REDMINEPROJECT/issues/new" title="Report a problem with this website">Report Problem</a> \
+              MANAGEBLOCK\
             </li> \
             <li class="dropdown"> \
               <a class="dropdown-toggle" data-toggle="dropdown" href="#"> \
