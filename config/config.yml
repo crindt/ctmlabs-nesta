@@ -65,3 +65,6 @@ production:
   cache: true    
 #  content: /Web/apps/ctmlabs-nesta/shared/content
   google_analytics_code: "UA-30207196-1"
+
+# Website version
+version: 2.2.0

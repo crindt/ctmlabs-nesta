@@ -13,6 +13,11 @@ require 'json'
 
 module Nesta
 
+  class Config
+    # handle custom parameter(s) in the config.yml
+    @settings.push('version')
+  end
+
   module View
     module Helpers
       def article_summaries(articles, template = :summaries)
@@ -30,6 +35,14 @@ module Nesta
           return all
         end
         return []
+      end
+
+      # overloading this to pull site version (which is added as a @setting above)
+      def set_common_variables
+        @menu_items = Nesta::Menu.for_path('/')
+        @site_title = Nesta::Config.title
+        set_from_config(:title, :subtitle, :google_analytics_code, :version)
+        @heading = @title
       end
     end
   end
