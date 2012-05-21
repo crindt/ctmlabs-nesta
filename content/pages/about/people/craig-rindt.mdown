@@ -1,7 +1,21 @@
 Title: Craig Rindt
-Categories: about/people:1
-flags: draft
+Categories: about/people:-10
+Image: craig-rindt.jpg
+flags: 
 
 # Craig Rindt
 
-is...
+Dr. Rindt is a researcher with the Institute of Transportation Studies
+at the University of California, Irvine, where he was awarded a Ph.D. in
+Civil and Environmental Engineering for his work in travel behavior
+modeling and transportation systems management using intelligent
+transportation systems technology.  He is a chief architect of the
+CTMLabs traffic management research architecture.  His recent research
+has emphasized the use of advanced communications and ubiquitous
+computing technology for improving transportation system performance.
+His efforts focus on both traveler-oriented and management-oriented
+solutions to balancing transportation system demand and capacity.  He
+also contributes research in the area of using agent-based models for
+exploratory simulation of travel behavior based upon activity-based
+modeling concepts.
+

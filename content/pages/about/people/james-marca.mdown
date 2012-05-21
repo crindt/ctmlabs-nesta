@@ -1,0 +1,13 @@
+Title: James E. Marca
+Categories: about/people:-11
+flags: 
+
+# James E. Marca
+
+Dr. Marca is a researcher with the Institute of Transportation Studies
+at the University of California, Irvine.  His research interests include
+studying the applications of information and communications technologies
+to transportation; discovering new applications for Caltrans' existing
+data streams; collecting real-time vehicle telematics using wireless
+communications systems; and how communications technology can lead to
+travel patterns and urban forms that are more sustainable.
