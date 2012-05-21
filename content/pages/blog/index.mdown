@@ -1,9 +1,0 @@
-Title: CTMLabs Blog
-H1: Blog
-Summary: Updates on what's happening at CTMLabs
-Menu: Blog
-Menu Item: Blog
-Template: page_list_2
-Articles Heading: Recent blog entries
-
-

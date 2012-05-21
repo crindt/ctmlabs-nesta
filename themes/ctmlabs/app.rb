@@ -256,10 +256,13 @@ module Nesta
       f = File.open('themes/ctmlabs/public/ctmlabs/js/ctmlabs-banner.js')
       contents = f.read
       $stderr.puts "USER IS #{session[:user]}"
+      proj = params['redmineproject'] || 'tb'  # default project for reporting
       if session[:user] then
         user = "<li class=\"dropdown\"><a class=\"dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\">#{session[:user]}<b class=\"caret\"></b></a><ul class=\"dropdown-menu\"><li><a href=\"#{urls('/auth/cas/logout')}\">Logout</a></li></ul></li>"
+        manage = "<li class=\"dropdown\"><a class=\"dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\">Manage<b class=\"caret\"></b></a><ul class=\"dropdown-menu\"><li><a href=\"http://tracker.ctmlabs.net/projects/#{proj}/issues/new\">Report a problem</a></li><li><a href=\"http://tracker.ctmlabs.net/\">Issue Tracker</a></li><li><a href=\"https://krypton.its.uci.edu/NewQuarterly/index.cgi\">Quarterly Reports</a></li></ul></li>"
       else
         user = "<a href=\"#{url('/auth/cas')}\">Login</a>"
+        manage = "<a href=\"http://tracker.ctmlabs.net/projects/#{proj}/issues/new\" title=\"Report a problem with this website\">Report Problem</a>"
       end
       cc = contents.gsub(/CTMLABSURL/,url("/"))
         .gsub(/APPURL/,params['appurl'] || url('/'))
@@ -267,7 +270,8 @@ module Nesta
         .gsub(/APPHELP/,params['apphelp'] || "docs/help")
         .gsub(/APPCONTACT/,params['appcontact'] || "docs/contact")
         .gsub(/APPLIST/,li || "")
-        .gsub(/REDMINEPROJECT/,params['redmineproject'] || 'tb')
+        .gsub(/REDMINEPROJECT/,proj)
+        .gsub(/MANAGEBLOCK/,manage)
         .gsub(/USERBLOCK/,user)
 
       if params['fixed'] == "false"

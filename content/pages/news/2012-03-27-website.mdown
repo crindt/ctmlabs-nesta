@@ -1,5 +1,5 @@
 Title: Updated CTMLabs website goes live
-categories: blog
+categories: news
 Summary: Improvements in usability and maintainability should provide a better user experience.
 Author: Craig Rindt
 Menu: "2012-03-27"

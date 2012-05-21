@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 #gem 'nesta', '0.9.13'
-gem "nesta", :git => "git://github.com/gma/nesta.git"
+gem "nesta", :git => "git://github.com/gma/nesta.git", :branch => 'master'
 
 gem "omniauth", :git => "git://github.com/intridea/omniauth.git"
 gem "omniauth-cas", :git => "git://github.com/dlindahl/omniauth-cas.git"
