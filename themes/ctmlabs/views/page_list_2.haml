@@ -18,6 +18,10 @@
 
       = haml :page_meta, :layout => false, :locals => { :page => @page }
 
+    %aside.span4(role="aside")
+      
+      = haml :twitter, :layout => false
+
     = haml :comments, :layout => false
 
 /= haml :sidebar, :layout => false

@@ -1,0 +1,22 @@
+#tweets
+  #twitter_container
+    %h3 Latest Tweets
+    .tweet
+
+:javascript
+  jQuery('document').ready(function() {
+     jQuery(".tweet").tweet({
+          username: 'CTMLabs',
+          join_text: "auto",
+          avatar_size: 32,
+          count: 3,
+          loading_text: "loading tweets...",
+          auto_join_text_default: "We said,",
+          auto_join_text_ed: "We",
+          auto_join_text_ing: "We are",               // [string]   auto tense for present tense: "I was" surfing
+          auto_join_text_reply: "We replied to",      // [string]   auto tense for replies: "I replied to" @someone "with"
+          auto_join_text_url: "We were looking at",   // [string]   auto tense for urls: "I was looking at" http:...
+          refresh_interval: 60,
+          tweet_class: ''
+      });
+  });
