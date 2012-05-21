@@ -14,6 +14,8 @@
         %a(href="http://www.its.uci.edu") Institute of Transportation Studies
         at 
         %a(href="http://www.uci.edu") UC Irvine
+      - if @version        
+        %small= "CTMLabs portal release #{@version}."
 
-    %nav.subnav.span3
+    %nav.subnav.span3    
       - display_bootstrap_menu(@menu_items, :class => "nav pull-right", :levels => 1)
