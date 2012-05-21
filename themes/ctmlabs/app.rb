@@ -181,30 +181,44 @@ module Nesta
       return mil
     end
 
+    def session_has_user
+      session[:user] != null
+    end
+
 
     # Add new routes here.
+
+    get '/user/register' do
+      set_common_variables
+      haml(:no_register)
+    end
 
     get '/auth/cas/logout' do
       session.clear
       redirect "https://cas.ctmlabs.net/cas/logout?service=#{url('/')}"
     end
 
+    get '/auth/failure' do
+      flash[:notice] = params[:origin]
+      redirect '/'
+    end
+
     get '/auth/cas/callback' do
       # store the session in the rack/cookie
       session[:ticket] = params[:ticket]
       omniauth = request.env['omniauth.auth']
-      $stderr.puts "OMNI: #{omniauth}"
-      $stderr.puts "INFO: #{omniauth[:info]}"
+      # $stderr.puts "OMNI: #{omniauth}"
+      # $stderr.puts "INFO: #{omniauth[:info]}"
       info = omniauth[:extra]
-      $stderr.puts "INFO4: #{info[:user]}"
+      # $stderr.puts "INFO4: #{info[:user]}"
       session[:user] = info[:user]
       session[:givenName] = info[:givenName]
       session[:sn] = info[:sn]      
       session[:cn] = info[:cn]      
       session[:groups] = info[:groups]
       
-      $stderr.puts "user:   #{session[:user]}"
-      $stderr.puts "groups: #{session[:groups]}"
+      # $stderr.puts "user:   #{session[:user]}"
+      # $stderr.puts "groups: #{session[:groups]}"
 
       url = params[:url] || '/'
 
