@@ -1,3 +1,4 @@
+require "rake"
 require "bundler/vlad"
 
 set :application, "ctmlabs-nesta"
@@ -17,14 +18,28 @@ namespace :set do
   
   task :production do
     set :domain, "www.ctmlabs.net"
-    set :revision, "origin/master"
+    set :revision, "v2.2.2" #"origin/master"
   end
 end
-
 
 task "vlad:deploy" => %w[
   vlad:update vlad:bundle:install vlad:start_app vlad:cleanup
 ]
+
+task "vlad:deployv", :server, :version do |t, args|
+  puts "ARGS #{args}"
+  if ! :server
+    args[:server] = ":development"
+    puts "Defaulting to server #{args[:server]}"
+  end
+  if ! :version
+    args[:version] = "origin/develop"
+    puts "Defaulting to revision #{args[:version]}"
+  end
+  Rake.application.invoke_task("set:#{args[:server]}")
+  set :revision, args[:version]
+  Rake.application.invoke_task("vlad:deploy")
+end
 
 task "vlad:development:deploy" => %w[
   set:development vlad:deploy
